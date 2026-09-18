@@ -1,6 +1,6 @@
 /*
 N2O PAPER
-Version 1.0.2
+Version 1.0.3
 
 A theme for Obsidian, by N2O Sync.
 https://n2osync.com
@@ -1006,6 +1006,23 @@ body:where(.theme-light) { --n2o-font-set: var(--font-family-serif); }
   --n2o-font-tracking: -0.03rem;
 }
 
+/* The same sets again, for a class that is NOT on body.
+ *
+ * A note picks its own face with a `cssclasses` property, and Obsidian puts
+ * those classes on the VIEW, not on body: .markdown-source-view and
+ * .markdown-preview-view. The block above only ever matched body, so the
+ * per-note font, and the plugin command that writes it, changed nothing on
+ * screen. These rules carry more specificity than the body ones, which is
+ * what a note overriding the vault-wide choice should do. */
+body.theme-light .n2o-font-default            { --n2o-font-set: var(--font-family-serif); }
+body.theme-light .n2o-font-inter              { --n2o-font-set: var(--font-family-inter); }
+body.theme-light .n2o-font-ibm                { --n2o-font-set: var(--font-family-ibm); }
+body.theme-light .n2o-font-fira               { --n2o-font-set: var(--font-family-fira); }
+body.theme-light .n2o-font-iawriter-quattro {
+  --n2o-font-set: var(--font-family-iawriter-quattro);
+  --n2o-font-tracking: -0.03rem;
+}
+
 :where(.theme-light) .markdown-source-view,
 :where(.theme-light) .markdown-preview-view {
   font-family: var(--n2o-font-set, var(--font-family-sans));
@@ -1162,9 +1179,14 @@ DARK VARIABLES
 /*** 
 Body text 
 ***/
+/* Readable line width, in BOTH renderers. Live preview sizes .cm-sizer and
+ * reading view sizes .markdown-preview-sizer, and for a long time only the
+ * first was listed here, so the control moved the editor and left the reading
+ * pane at Obsidian's own 700px. */
 :where(.theme-light) .markdown-source-view.mod-cm6.is-readable-line-width .cm-content,
 :where(.theme-light) .markdown-source-view.mod-cm6.is-readable-line-width .cm-line,
-:where(.theme-light) .markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer {
+:where(.theme-light) .markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer,
+:where(.theme-light) .markdown-preview-view.is-readable-line-width .markdown-preview-sizer {
   max-width: var(--width-body-content);
 }
 
@@ -3397,8 +3419,13 @@ body.theme-light .cm-sizer {
     1px 2px 3px rgba(43, 42, 38, 0.14),
     4px 10px 28px rgba(43, 42, 38, 0.16),
     0 30px 80px rgba(43, 42, 38, calc(0.1 * var(--n2o-softbox) / 100));
-  padding-left: 56px;
-  padding-right: 56px;
+  /* The sheet's own inset, clamped against the pane. A percentage padding
+   * resolves against the container, so min() gives 56px on a wide pane and
+   * gives way as the pane narrows. Flat 56px plus the desk margin was 304px of
+   * fixed chrome: at a 700px window with the file explorer open the text
+   * column came out 43px wide, one character to a line. */
+  padding-left: min(56px, 6%);
+  padding-right: min(56px, 6%);
   margin-top: 28px;
   margin-bottom: 40px;
 }
@@ -3522,7 +3549,9 @@ body.theme-light .inline-title {
  * specificity so the plugin's inline value on body wins. */
 body:where(.theme-light) { --n2o-desk-margin: 96px; }
 body.theme-light {
-  --file-margins: 32px var(--n2o-desk-margin);
+  /* Clamped the same way as the sheet's inset: the desk gives way before the
+   * text column does, so a split pane or a small window still reads. */
+  --file-margins: 32px min(var(--n2o-desk-margin), 9%);
 }
 
 /* Coil binding. A strip down the left edge of the sheet from the texture
@@ -3668,7 +3697,7 @@ body.theme-light {
 body.theme-light .metadata-property-key,
 body.theme-light .metadata-properties-heading,
 body.theme-light .view-header-title-parent,
-body.theme-light .tag,
+body.theme-light a.tag,
 body.theme-light .cm-hashtag,
 body.theme-light .markdown-rendered th,
 body.theme-light .status-bar {
@@ -3679,12 +3708,15 @@ body.theme-light .status-bar {
   color: var(--n2o-mono);
 }
 
-body.theme-light .tag,
+/* a.tag, not .tag: Prism gives an HTML tag token the class "tag" too, so the
+ * bare selector painted every <div> in a code block with the tag colour and
+ * beat Obsidian's own --code-tag on specificity. A note's tag is a link. */
+body.theme-light a.tag,
 body.theme-light .cm-hashtag {
   color: var(--tag-color);
   text-decoration: none;
 }
-body.theme-light .tag,
+body.theme-light a.tag,
 body.theme-light .cm-hashtag {
   font-size: var(--tag-size);
 }
@@ -3709,6 +3741,19 @@ body.theme-light {
 body.theme-light:not(.n2o-headings-plain) {
   --h3-color: var(--n2o-head-vermilion);
   --h4-color: var(--n2o-head-cobalt);
+}
+
+/* Plain headings: every level on the palette's own colour. The ramp below is
+ * written as :not(.n2o-headings-plain), but the fifth and sixth levels also
+ * have plain values in 30-palette.css, so without this they kept their own
+ * colours and "plain" was plain for four levels out of six. */
+body.theme-light.n2o-headings-plain {
+  --h1-color: var(--heading-text-color);
+  --h2-color: var(--heading-text-color);
+  --h3-color: var(--heading-text-color);
+  --h4-color: var(--heading-text-color);
+  --h5-color: var(--heading-text-color);
+  --h6-color: var(--heading-text-color);
 }
 
 /* Forest: meadow green, deep sea, vermilion, cobalt, sunlit olive, sea grey.
@@ -4173,7 +4218,10 @@ body.theme-light .callout-title {
   gap: 0.45em;
   width: auto;
   min-width: 140px;
-  max-width: calc(100% - 8px);
+  /* The tape starts at --n2o-tape-left, which is negative at the top level and
+   * a real inset inside a nested callout, so a flat 100% budget let a nested
+   * title run past its own callout's right edge with no ellipsis. */
+  max-width: calc(100% - var(--n2o-tape-left, 0px) - 8px);
   margin: 0;
   padding: 8px 22px 8px 18px;
   font-family: var(--font-monospace-theme, var(--font-monospace));
@@ -4183,6 +4231,18 @@ body.theme-light .callout-title {
   text-transform: uppercase;
   color: var(--n2o-tape-ink);
   isolation: isolate;
+  /* One line, always. The tape is out of the flow and the scrap reserves a
+   * fixed 32px for it, so a title long enough to wrap used to print its
+   * second line over the first line of the body. A strip of tape is one
+   * line anyway; a title longer than the scrap is cut with an ellipsis. */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* the label itself carries the ellipsis, the icon and fold arrow stay put */
+body.theme-light .callout-title .callout-title-inner {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 /* The strip is a layer behind the label, and only the strip tilts: the
  * label stays level. A little larger than the label so a tilted strip
@@ -5721,12 +5781,32 @@ body.theme-light:where(.n2o-palette-ink, .n2o-palette-oxblood, .n2o-palette-grap
  * strip and the sheet is the screen, so the sheet's inner margins come in
  * and the page starts higher. Everything else, tapes, scraps, tables that
  * scroll inside their own frame, already fits. */
+/* The desk margin is 96px a side on a desktop. On a 390px phone that plus the
+ * sheet's own inset left a 137px column, three words to a line, with callouts
+ * and properties clipped against it. The desk is a hairline here. */
+body.theme-light.is-phone {
+  --n2o-desk-margin: 4px;
+}
 body.theme-light.is-phone .markdown-reading-view > .markdown-preview-view > .markdown-preview-sizer,
 body.theme-light.is-phone .cm-sizer {
-  padding-left: 26px;
-  padding-right: 26px;
+  padding-left: 14px;
+  padding-right: 14px;
   margin-top: 10px;
   margin-bottom: 20px;
+}
+/* A table wider than the phone scrolls inside its own card instead of being
+ * cut off at the sheet's edge with its last columns unreachable. */
+body.theme-light.is-phone .markdown-rendered .table-wrapper,
+body.theme-light.is-phone .markdown-rendered .el-table,
+body.theme-light.is-phone .markdown-source-view .table-wrapper {
+  overflow-x: auto;
+  max-width: 100%;
+}
+/* a tag is one word: "fixture" was breaking as "fixtur / e" */
+body.theme-light.is-phone a.tag,
+body.theme-light.is-phone .cm-hashtag {
+  word-break: keep-all;
+  white-space: nowrap;
 }
 /* the tape hangs 14px past its scrap; on a phone that is most of the
  * margin, so it hangs less and stays on the sheet */
