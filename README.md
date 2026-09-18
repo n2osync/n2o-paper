@@ -6,6 +6,22 @@ the traditional colours of Japan.
 
 ![N2O Paper in the Forest palette](images/palette-forest.jpg)
 
+## Make it yours: N2O Paper Settings
+
+The theme carries 110 controls: the palette, the fonts and sizes, the paper
+texture and light, headings, callouts, code, tables and the interface itself.
+A theme is CSS and cannot draw a settings tab, so the controls are rendered by
+a companion plugin, [N2O Paper Settings](https://github.com/n2osync/n2o-paper-settings),
+free and in the community plugin list. Install that and everything below is a
+dropdown, a slider or a colour swatch.
+
+![N2O Paper Settings](images/settings.jpg)
+
+Install the plugin and it brings this theme with it. The controls also work with
+the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plugin,
+if that is the one you already have. With neither installed the theme still
+looks the way it is meant to: every default is the theme's own.
+
 ## Seven palettes
 
 One hue runs through the whole app: the title, the links, the table header, the
@@ -73,16 +89,16 @@ Appearance.
 N2O Paper is a light theme. In dark mode it applies nothing and Obsidian's own
 dark look shows, so there is no half painted page.
 
-## Settings
+## What the settings cover
 
-The theme ships with 110 controls: palette, fonts, sizes, paper texture and
-light, headings, callouts, code, tables, and the interface itself. They work
-out of the box with the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings)
-plugin, or with [N2O Paper Settings](https://github.com/n2osync/n2o-paper-settings),
-a companion plugin that renders the same controls with live colour swatches, a
-search box, and export and import.
-
-![N2O Paper Settings](images/settings.jpg)
+Nine sections, 110 controls, through
+[N2O Paper Settings](https://github.com/n2osync/n2o-paper-settings) or Style
+Settings: **Looks** (palette, sidebars, heading size, font set), **Colours**
+(every ink on the page, with live swatches), **Typography**, **Layout**,
+**Paper** (grain, light, drift, softbox), **Components** (callouts, tables,
+tasks, tags, embeds), **Code** (syntax colour by colour), **Interface**, and
+**Advanced**, which holds the fine numbers behind the presets. Export writes
+what you changed to the clipboard, and Import puts it back.
 
 ## Licence
 
