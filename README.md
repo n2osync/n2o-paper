@@ -175,6 +175,8 @@ grain of its own, deeper at the foot, a hairline edge, a faint sheen where the
 light catches it, and one corner lifting a little. That is the default and it
 costs you nothing: write the embed and you get the print.
 
+![A print floated into the left margin, with the text wrapping past it](images/pic-left.jpg)
+
 Everything past that is a flag. Obsidian puts whatever follows the pipe into the
 embed's alt text, and the theme reads a word there as a switch.
 
@@ -187,6 +189,10 @@ embed's alt text, and the theme reads a word there as a switch.
 | `![[photo.png\|aged]]` | one photo faded warm, with dust, fine scratches and a crease |
 | `![[photo.png\|A cabin in the pines]]` | the print, captioned in pen along its foot |
 
+A round print drops the frame entirely.
+
+![A round print](images/pic-round.jpg)
+
 ### Sizing, and the one thing that catches people
 
 Obsidian reads a width only after a FURTHER pipe, so the flag goes first and the
@@ -197,11 +203,15 @@ number goes last:
 ![[photo.png|left 300]]     left margin, and NO width
 ```
 
+![The same picture at 160px, 480px and the full width of the column](images/pic-sizes.jpg)
+
 The second one looks like it should work and does not. `left 300` is one piece
 of alt text: the theme sees the word `left` in it and floats the picture,
 Obsidian sees no width field at all and sets none.
 
 ### Captions
+
+![A print captioned in pen along its foot](images/pic-caption.jpg)
 
 Any text that is not a flag word becomes the caption, written in pen across the
 foot of the print. A bare file name does not: `.png`, `.jpg`, `.jpeg`, `.gif`,
@@ -218,7 +228,13 @@ A note embedded in another note is a sheet held on with a steel paperclip.
 | `![[note\|seamless]]` | no frame and no clip, the text flowing straight in |
 | `![[note\|torn]]` | a torn scrap of khaki |
 
+![A note embedded seamlessly, with no frame and no clip](images/pic-seamless.jpg)
+
+![A note embedded as a torn scrap of khaki](images/pic-torn.jpg)
+
 ### Ageing everything
+
+![An aged print: faded warm, with dust, fine scratches and a crease](images/pic-aged.jpg)
 
 `aged` on one embed ages that photo. The **Aged photos** switch under Paper in
 the settings plugin ages every photo in the vault instead, which is worth trying
