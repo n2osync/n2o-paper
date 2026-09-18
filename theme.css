@@ -1,6 +1,6 @@
 /*
 N2O PAPER
-Version 1.0.6
+Version 1.0.7
 
 A theme for Obsidian, by N2O Sync.
 https://n2osync.com
@@ -2358,7 +2358,7 @@ body.theme-light .callout-title {
  * window's edges where the light does not reach. */
 body.theme-light .app-container {
   background:
-    radial-gradient(60% 70% at 52% 30%, hsl(from var(--n2o-sunlight) h s l / calc(0.3 * var(--n2o-softbox) / 100)), hsl(from var(--n2o-sunlight) h s l / 0) 70%),
+    radial-gradient(60% 70% at 52% 30%, color-mix(in srgb, var(--n2o-sunlight) calc((calc(0.3 * var(--n2o-softbox) / 100)) * 100%), transparent), transparent 70%),
     radial-gradient(85% 95% at 52% 38%, rgba(43, 42, 38, 0) 55%, rgba(43, 42, 38, calc(0.12 * var(--n2o-softbox) / 100)) 100%),
     var(--n2o-tex-scan-smooth) repeat 0 0 / 448px 448px,
     var(--n2o-tex-ground) repeat 0 0 / 512px 512px,
@@ -2572,27 +2572,27 @@ body.theme-light .workspace-split.mod-left-split .workspace-drawer-vault-switche
 :where(body.theme-light) .workspace-split:is(.mod-left-split, .mod-right-split) {
   --n2o-sun-a: calc(0.3 * var(--n2o-softbox-panels) / 100);
   --n2o-panel-light:
-    hsl(from var(--n2o-sun) h s l / var(--n2o-sun-a)) 0%,
-    hsl(from var(--n2o-sun) h s l / calc(var(--n2o-sun-a) * 0.9894)) 5%,
-    hsl(from var(--n2o-sun) h s l / calc(var(--n2o-sun-a) * 0.9582)) 10%,
-    hsl(from var(--n2o-sun) h s l / calc(var(--n2o-sun-a) * 0.9085)) 15%,
-    hsl(from var(--n2o-sun) h s l / calc(var(--n2o-sun-a) * 0.843)) 20%,
-    hsl(from var(--n2o-sun) h s l / calc(var(--n2o-sun-a) * 0.7656)) 25%,
-    hsl(from var(--n2o-sun) h s l / calc(var(--n2o-sun-a) * 0.6804)) 30%,
-    hsl(from var(--n2o-sun) h s l / calc(var(--n2o-sun-a) * 0.5917)) 35%,
-    hsl(from var(--n2o-sun) h s l / calc(var(--n2o-sun-a) * 0.5032)) 40%,
-    hsl(from var(--n2o-sun) h s l / calc(var(--n2o-sun-a) * 0.4185)) 45%,
-    hsl(from var(--n2o-sun) h s l / calc(var(--n2o-sun-a) * 0.34)) 50%,
-    hsl(from var(--n2o-sun) h s l / calc(var(--n2o-sun-a) * 0.2697)) 55%,
-    hsl(from var(--n2o-sun) h s l / calc(var(--n2o-sun-a) * 0.2086)) 60%,
-    hsl(from var(--n2o-sun) h s l / calc(var(--n2o-sun-a) * 0.1569)) 65%,
-    hsl(from var(--n2o-sun) h s l / calc(var(--n2o-sun-a) * 0.1144)) 70%,
-    hsl(from var(--n2o-sun) h s l / calc(var(--n2o-sun-a) * 0.0804)) 75%,
-    hsl(from var(--n2o-sun) h s l / calc(var(--n2o-sun-a) * 0.0538)) 80%,
-    hsl(from var(--n2o-sun) h s l / calc(var(--n2o-sun-a) * 0.0336)) 85%,
-    hsl(from var(--n2o-sun) h s l / calc(var(--n2o-sun-a) * 0.0186)) 90%,
-    hsl(from var(--n2o-sun) h s l / calc(var(--n2o-sun-a) * 0.0077)) 95%,
-    hsl(from var(--n2o-sun) h s l / 0) 100%;
+    color-mix(in srgb, var(--n2o-sun) calc((var(--n2o-sun-a)) * 100%), transparent) 0%,
+    color-mix(in srgb, var(--n2o-sun) calc((calc(var(--n2o-sun-a) * 0.9894)) * 100%), transparent) 5%,
+    color-mix(in srgb, var(--n2o-sun) calc((calc(var(--n2o-sun-a) * 0.9582)) * 100%), transparent) 10%,
+    color-mix(in srgb, var(--n2o-sun) calc((calc(var(--n2o-sun-a) * 0.9085)) * 100%), transparent) 15%,
+    color-mix(in srgb, var(--n2o-sun) calc((calc(var(--n2o-sun-a) * 0.843)) * 100%), transparent) 20%,
+    color-mix(in srgb, var(--n2o-sun) calc((calc(var(--n2o-sun-a) * 0.7656)) * 100%), transparent) 25%,
+    color-mix(in srgb, var(--n2o-sun) calc((calc(var(--n2o-sun-a) * 0.6804)) * 100%), transparent) 30%,
+    color-mix(in srgb, var(--n2o-sun) calc((calc(var(--n2o-sun-a) * 0.5917)) * 100%), transparent) 35%,
+    color-mix(in srgb, var(--n2o-sun) calc((calc(var(--n2o-sun-a) * 0.5032)) * 100%), transparent) 40%,
+    color-mix(in srgb, var(--n2o-sun) calc((calc(var(--n2o-sun-a) * 0.4185)) * 100%), transparent) 45%,
+    color-mix(in srgb, var(--n2o-sun) calc((calc(var(--n2o-sun-a) * 0.34)) * 100%), transparent) 50%,
+    color-mix(in srgb, var(--n2o-sun) calc((calc(var(--n2o-sun-a) * 0.2697)) * 100%), transparent) 55%,
+    color-mix(in srgb, var(--n2o-sun) calc((calc(var(--n2o-sun-a) * 0.2086)) * 100%), transparent) 60%,
+    color-mix(in srgb, var(--n2o-sun) calc((calc(var(--n2o-sun-a) * 0.1569)) * 100%), transparent) 65%,
+    color-mix(in srgb, var(--n2o-sun) calc((calc(var(--n2o-sun-a) * 0.1144)) * 100%), transparent) 70%,
+    color-mix(in srgb, var(--n2o-sun) calc((calc(var(--n2o-sun-a) * 0.0804)) * 100%), transparent) 75%,
+    color-mix(in srgb, var(--n2o-sun) calc((calc(var(--n2o-sun-a) * 0.0538)) * 100%), transparent) 80%,
+    color-mix(in srgb, var(--n2o-sun) calc((calc(var(--n2o-sun-a) * 0.0336)) * 100%), transparent) 85%,
+    color-mix(in srgb, var(--n2o-sun) calc((calc(var(--n2o-sun-a) * 0.0186)) * 100%), transparent) 90%,
+    color-mix(in srgb, var(--n2o-sun) calc((calc(var(--n2o-sun-a) * 0.0077)) * 100%), transparent) 95%,
+    transparent 100%;
 }
 body.theme-light .workspace-split.mod-left-split {
   --n2o-panel-softbox: radial-gradient(210% 125% at 100% -12%, var(--n2o-panel-light));
@@ -3320,7 +3320,7 @@ body.theme-light .mod-root .workspace-leaf .view-header .view-header-title-conta
   flex: 0 1 auto;
   margin-inline: auto;
   padding-inline: 80px;
-  background: radial-gradient(closest-side, hsl(from var(--n2o-sunlight) h s l / 0.3) 0, hsl(from var(--n2o-sunlight) h s l / 0.3) 50%, hsl(from var(--n2o-sunlight) h s l / 0) 100%);
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--n2o-sunlight) 30%, transparent) 0, color-mix(in srgb, var(--n2o-sunlight) 30%, transparent) 50%, transparent 100%);
 }
 
 /* The right sidebar a step apart from the left: deeper, the palette's own
@@ -3429,8 +3429,8 @@ body.theme-light .cm-sizer {
   /* Over all of it, the softbox: a broad glow across the head of the
    * page, where the light falls straight down onto the sheet. */
   background:
-    radial-gradient(80% 900px at 50% 0, hsl(from var(--n2o-sunlight) h s l / calc(0.14 * var(--n2o-softbox) / 100)), hsl(from var(--n2o-sunlight) h s l / 0) 100%),
-    linear-gradient(118deg, hsl(from var(--n2o-sunlight) h s l / calc(0.224 * var(--n2o-paper-light) / 100)), hsl(from var(--n2o-sunlight) h s l / 0) 38%, rgba(43, 42, 38, 0) 62%, rgba(43, 42, 38, calc(0.098 * var(--n2o-paper-light) / 100))),
+    radial-gradient(80% 900px at 50% 0, color-mix(in srgb, var(--n2o-sunlight) calc((calc(0.14 * var(--n2o-softbox) / 100)) * 100%), transparent), transparent 100%),
+    linear-gradient(118deg, color-mix(in srgb, var(--n2o-sunlight) calc((calc(0.224 * var(--n2o-paper-light) / 100)) * 100%), transparent), transparent 38%, rgba(43, 42, 38, 0) 62%, rgba(43, 42, 38, calc(0.098 * var(--n2o-paper-light) / 100))),
     linear-gradient(color-mix(in srgb, var(--n2o-sheet) calc(100% - var(--n2o-paper-texture) * 1%), transparent), color-mix(in srgb, var(--n2o-sheet) calc(100% - var(--n2o-paper-texture) * 1%), transparent)),
     var(--n2o-l-creases) repeat 0 0 / 640px 640px,
     var(--n2o-l-fibres) repeat 0 0 / 256px 256px,
@@ -4147,7 +4147,7 @@ body.theme-light :is(.markdown-preview-view, .cm-content) blockquote::before {
   z-index: -1;
   /* the softbox falls on the strip from above */
   background:
-    linear-gradient(to bottom, hsl(from var(--n2o-sunlight) h s l / calc(0.2 * var(--n2o-softbox) / 100)), hsl(from var(--n2o-sunlight) h s l / 0) 50%, rgba(43, 42, 38, 0) 72%, rgba(43, 42, 38, calc(0.05 * var(--n2o-softbox) / 100))),
+    linear-gradient(to bottom, color-mix(in srgb, var(--n2o-sunlight) calc((calc(0.2 * var(--n2o-softbox) / 100)) * 100%), transparent), transparent 50%, rgba(43, 42, 38, 0) 72%, rgba(43, 42, 38, calc(0.05 * var(--n2o-softbox) / 100))),
     linear-gradient(to bottom, rgba(var(--n2o-quote-fringe), 0.9), rgba(var(--n2o-quote-fringe), 0) 7px),
     linear-gradient(to top, rgba(var(--n2o-quote-fringe), 0.9), rgba(var(--n2o-quote-fringe), 0) 7px),
     linear-gradient(to right, rgba(var(--n2o-quote-fringe), 0.7), rgba(var(--n2o-quote-fringe), 0) 4px),
@@ -4215,7 +4215,7 @@ body.theme-light .callout::before {
    * flat paper, so it is one gentle, even fall of light over the whole
    * scrap, never a bright band that would make it read as domed. */
   background:
-    linear-gradient(to bottom, hsl(from var(--n2o-sunlight) h s l / calc(0.06 * var(--n2o-softbox) / 100)), hsl(from var(--n2o-sunlight) h s l / 0) 60%, rgba(43, 42, 38, calc(0.03 * var(--n2o-softbox) / 100))),
+    linear-gradient(to bottom, color-mix(in srgb, var(--n2o-sunlight) calc((calc(0.06 * var(--n2o-softbox) / 100)) * 100%), transparent), transparent 60%, rgba(43, 42, 38, calc(0.03 * var(--n2o-softbox) / 100))),
     linear-gradient(to top, rgba(var(--n2o-fringe), 0.3), rgba(var(--n2o-fringe), 0) 3px),
     linear-gradient(to right, rgba(var(--n2o-fringe), 0.25), rgba(var(--n2o-fringe), 0) 2px),
     linear-gradient(to left, rgba(var(--n2o-fringe), 0.25), rgba(var(--n2o-fringe), 0) 2px),
@@ -5726,31 +5726,31 @@ body.theme-light .kanban-plugin__lane-items > .kanban-plugin__placeholder:only-c
  * these, so order wins here and print, later still, wins over it. */
 body.theme-light:where(.n2o-palette-ink, .n2o-palette-oxblood, .n2o-palette-graphite, .n2o-palette-sepia, .n2o-palette-rose, .n2o-palette-coal) {
   --n2o-tone: 50%;
-  --n2o-desk: color-mix(in oklab, #dcd6c6, hsl(from #dcd6c6 var(--n2o-h) s l) var(--n2o-tone));
-  --n2o-sheet: color-mix(in oklab, #f1ece1, hsl(from #f1ece1 var(--n2o-h) s l) var(--n2o-tone));
-  --n2o-paper: color-mix(in oklab, #ede8dc, hsl(from #ede8dc var(--n2o-h) s l) var(--n2o-tone));
-  --n2o-paper-deep: color-mix(in oklab, #e4dfd1, hsl(from #e4dfd1 var(--n2o-h) s l) var(--n2o-tone));
-  --n2o-card: color-mix(in oklab, #f6f3ea, hsl(from #f6f3ea var(--n2o-h) s l) var(--n2o-tone));
-  --n2o-menu-paper: color-mix(in oklab, #f3efe5, hsl(from #f3efe5 var(--n2o-h) s l) var(--n2o-tone));
-  --background-primary-alt: color-mix(in oklab, #f3efe4, hsl(from #f3efe4 var(--n2o-h) s l) var(--n2o-tone));
-  --n2o-paper-cream: color-mix(in oklab, #f3eee3, hsl(from #f3eee3 var(--n2o-h) s l) var(--n2o-tone));
-  --n2o-paper-pale: color-mix(in oklab, #f8f5ee, hsl(from #f8f5ee var(--n2o-h) s l) var(--n2o-tone));
-  --n2o-paper-grey: color-mix(in oklab, #ebe9e3, hsl(from #ebe9e3 var(--n2o-h) s l) var(--n2o-tone));
-  --n2o-rule: color-mix(in oklab, #cdc7b6, hsl(from #cdc7b6 var(--n2o-h) s l) var(--n2o-tone));
-  --n2o-panel-ink: color-mix(in oklab, #ece7d8, hsl(from #ece7d8 var(--n2o-h) s l) var(--n2o-tone));
-  --n2o-ink-on-moss: color-mix(in oklab, #eee9dc, hsl(from #eee9dc var(--n2o-h) s l) var(--n2o-tone));
-  --n2o-ink: color-mix(in oklab, #2b2a26, hsl(from #2b2a26 var(--n2o-h) s l) var(--n2o-tone));
-  --text-muted: color-mix(in oklab, #5d5c55, hsl(from #5d5c55 var(--n2o-h) s l) var(--n2o-tone));
-  --text-faint: color-mix(in oklab, #9a978c, hsl(from #9a978c var(--n2o-h) s l) var(--n2o-tone));
-  --nav-item-color: color-mix(in oklab, #6b6a62, hsl(from #6b6a62 var(--n2o-h) s l) var(--n2o-tone));
-  --color-base-00: color-mix(in oklab, #f6f2e8, hsl(from #f6f2e8 var(--n2o-h) s l) var(--n2o-tone));
-  --color-base-05: color-mix(in oklab, #f0ebdf, hsl(from #f0ebdf var(--n2o-h) s l) var(--n2o-tone));
-  --color-base-10: color-mix(in oklab, #ede8dc, hsl(from #ede8dc var(--n2o-h) s l) var(--n2o-tone));
-  --color-base-15: color-mix(in oklab, #e8e3d6, hsl(from #e8e3d6 var(--n2o-h) s l) var(--n2o-tone));
-  --color-base-20: color-mix(in oklab, #e4dfd1, hsl(from #e4dfd1 var(--n2o-h) s l) var(--n2o-tone));
-  --color-base-25: color-mix(in oklab, #ddd8ca, hsl(from #ddd8ca var(--n2o-h) s l) var(--n2o-tone));
-  --color-base-30: color-mix(in oklab, #cdc7b6, hsl(from #cdc7b6 var(--n2o-h) s l) var(--n2o-tone));
-  --color-base-50: color-mix(in oklab, #a8a498, hsl(from #a8a498 var(--n2o-h) s l) var(--n2o-tone));
+  --n2o-desk: color-mix(in oklab, #dcd6c6, hsl(var(--n2o-h) 23.913% 81.961%) var(--n2o-tone));
+  --n2o-sheet: color-mix(in oklab, #f1ece1, hsl(var(--n2o-h) 36.364% 91.373%) var(--n2o-tone));
+  --n2o-paper: color-mix(in oklab, #ede8dc, hsl(var(--n2o-h) 32.075% 89.608%) var(--n2o-tone));
+  --n2o-paper-deep: color-mix(in oklab, #e4dfd1, hsl(var(--n2o-h) 26.027% 85.686%) var(--n2o-tone));
+  --n2o-card: color-mix(in oklab, #f6f3ea, hsl(var(--n2o-h) 40% 94.118%) var(--n2o-tone));
+  --n2o-menu-paper: color-mix(in oklab, #f3efe5, hsl(var(--n2o-h) 36.842% 92.549%) var(--n2o-tone));
+  --background-primary-alt: color-mix(in oklab, #f3efe4, hsl(var(--n2o-h) 38.462% 92.353%) var(--n2o-tone));
+  --n2o-paper-cream: color-mix(in oklab, #f3eee3, hsl(var(--n2o-h) 40% 92.157%) var(--n2o-tone));
+  --n2o-paper-pale: color-mix(in oklab, #f8f5ee, hsl(var(--n2o-h) 41.667% 95.294%) var(--n2o-tone));
+  --n2o-paper-grey: color-mix(in oklab, #ebe9e3, hsl(var(--n2o-h) 16.667% 90.588%) var(--n2o-tone));
+  --n2o-rule: color-mix(in oklab, #cdc7b6, hsl(var(--n2o-h) 18.699% 75.882%) var(--n2o-tone));
+  --n2o-panel-ink: color-mix(in oklab, #ece7d8, hsl(var(--n2o-h) 34.483% 88.627%) var(--n2o-tone));
+  --n2o-ink-on-moss: color-mix(in oklab, #eee9dc, hsl(var(--n2o-h) 34.615% 89.804%) var(--n2o-tone));
+  --n2o-ink: color-mix(in oklab, #2b2a26, hsl(var(--n2o-h) 6.173% 15.882%) var(--n2o-tone));
+  --text-muted: color-mix(in oklab, #5d5c55, hsl(var(--n2o-h) 4.494% 34.902%) var(--n2o-tone));
+  --text-faint: color-mix(in oklab, #9a978c, hsl(var(--n2o-h) 6.481% 57.647%) var(--n2o-tone));
+  --nav-item-color: color-mix(in oklab, #6b6a62, hsl(var(--n2o-h) 4.39% 40.196%) var(--n2o-tone));
+  --color-base-00: color-mix(in oklab, #f6f2e8, hsl(var(--n2o-h) 43.75% 93.725%) var(--n2o-tone));
+  --color-base-05: color-mix(in oklab, #f0ebdf, hsl(var(--n2o-h) 36.17% 90.784%) var(--n2o-tone));
+  --color-base-10: color-mix(in oklab, #ede8dc, hsl(var(--n2o-h) 32.075% 89.608%) var(--n2o-tone));
+  --color-base-15: color-mix(in oklab, #e8e3d6, hsl(var(--n2o-h) 28.125% 87.451%) var(--n2o-tone));
+  --color-base-20: color-mix(in oklab, #e4dfd1, hsl(var(--n2o-h) 26.027% 85.686%) var(--n2o-tone));
+  --color-base-25: color-mix(in oklab, #ddd8ca, hsl(var(--n2o-h) 21.839% 82.941%) var(--n2o-tone));
+  --color-base-30: color-mix(in oklab, #cdc7b6, hsl(var(--n2o-h) 18.699% 75.882%) var(--n2o-tone));
+  --color-base-50: color-mix(in oklab, #a8a498, hsl(var(--n2o-h) 8.421% 62.745%) var(--n2o-tone));
 }
 
 /* The Note tape, and the tape of any type the table does not name, is
