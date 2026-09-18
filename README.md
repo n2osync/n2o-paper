@@ -35,26 +35,41 @@
 
 <p align="center">
   <a href="#a-page-not-a-screen">A page, not a screen</a> /
+  <a href="#install-the-settings-plugin-too">Settings plugin</a> /
   <a href="#the-details-we-sweated">The details we sweated</a> /
   <a href="#thirteen-callouts">Thirteen callouts</a> /
-  <a href="#quotes">Quotes</a> /
-  <a href="#seven-palettes">Seven palettes</a>
+  <a href="#quotes">Quotes</a>
   <br/>
+  <a href="#seven-palettes">Seven palettes</a> /
   <a href="#pictures">Pictures</a> /
   <a href="#sizing-and-the-one-thing-that-catches-people">Sizing</a> /
   <a href="#captions">Captions</a> /
-  <a href="#embedded-notes">Embedded notes</a> /
-  <a href="#the-rest-of-the-page">The rest of the page</a>
+  <a href="#embedded-notes">Embedded notes</a>
   <br/>
+  <a href="#ageing-everything">Ageing</a> /
+  <a href="#the-rest-of-the-page">The rest of the page</a> /
   <a href="#made-to-be-read">Made to be read</a> /
   <a href="#make-it-yours">Make it yours</a> /
-  <a href="#install-the-settings-plugin-too">Settings plugin</a> /
-  <a href="#install">Install</a> /
+  <a href="#install">Install</a>
+  <br/>
   <a href="#light-only">Light only</a> /
   <a href="#licence">Licence</a>
 </p>
 
 ---
+
+---
+
+> **Not an Obsidian product.** N2O Paper is an independent theme. It is not made
+> by, endorsed by, or affiliated with Obsidian.
+
+## A page, not a screen
+
+The window is a desk. The note is a sheet of cream stock resting on it, with a
+grain you can see at full zoom and never at reading distance, and a light that
+falls from the top left and softens at the foot of the page.
+
+![A note in N2O Paper, Forest palette](https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/hero.png)
 
 ## Install the settings plugin too
 
@@ -72,19 +87,6 @@ become a dropdown, a slider or a colour swatch.
 > install this theme for you as well, so either one can come first.
 
 ![The settings tab](https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/settings.png)
-
----
-
-> **Not an Obsidian product.** N2O Paper is an independent theme. It is not made
-> by, endorsed by, or affiliated with Obsidian.
-
-## A page, not a screen
-
-The window is a desk. The note is a sheet of cream stock resting on it, with a
-grain you can see at full zoom and never at reading distance, and a light that
-falls from the top left and softens at the foot of the page.
-
-![A note in N2O Paper, Forest palette](https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/hero.png)
 
 ## The details we sweated
 
@@ -269,7 +271,7 @@ teals and warm greys, so an hour in a note is an hour your eyes can take.
 
 ## Make it yours
 
-The controls also work with the
+All 110 controls live in the settings plugin above, and they also work with the
 [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plugin if
 that is the one you already have.
 
