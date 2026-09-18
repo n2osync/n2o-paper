@@ -29,6 +29,25 @@
 
 ---
 
+## Install the settings plugin too
+
+The theme looks the way it is meant to on its own. Every default below is the
+theme's own, and nothing else is needed to read with it.
+
+**The plugin is what makes it yours.** A theme is CSS and cannot draw a settings
+tab, so the 110 controls are rendered by
+**[N2O Paper Settings](https://github.com/n2osync/n2o-paper-settings)**, free and
+in the community plugin list. Install it and the palette, the fonts, the paper
+grain and the light, the callout style, the table style and every syntax colour
+become a dropdown, a slider or a colour swatch.
+
+> Search **N2O Paper Settings** in Settings, Community plugins, Browse. It will
+> install this theme for you as well, so either one can come first.
+
+![The settings tab](images/settings.jpg)
+
+---
+
 > **Not an Obsidian product.** N2O Paper is an independent theme. It is not made
 > by, endorsed by, or affiliated with Obsidian.
 
@@ -151,19 +170,9 @@ teals and warm greys, so an hour in a note is an hour your eyes can take.
 
 ## Make it yours
 
-The theme carries 110 controls: the palette, fonts and sizes, paper texture and
-light, headings, callouts, code, tables and the interface itself. A theme is CSS
-and cannot draw a settings tab, so they are rendered by
-[N2O Paper Settings](https://github.com/n2osync/n2o-paper-settings), free and in
-the community plugin list. Install that and everything above is a dropdown, a
-slider or a colour swatch.
-
-![N2O Paper Settings](images/settings.jpg)
-
-Install the plugin and it brings this theme with it. The controls also work with
-the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plugin
-if that is the one you already have. With neither installed the theme still
-looks the way it is meant to: every default is the theme's own.
+The controls also work with the
+[Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plugin if
+that is the one you already have.
 
 Nine sections, 110 controls: **Looks** (palette, sidebars, heading size, font
 set), **Colours** (every ink on the page, with live swatches), **Typography**,
