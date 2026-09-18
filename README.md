@@ -1,8 +1,16 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/n2o-wordmark-dark.svg">
+  <img src="images/n2o-wordmark.svg" alt="N2O" height="46">
+</picture>
+
 # N2O Paper
 
 A light theme for Obsidian that reads like paper on a desk. Warm cream sheets,
 bookcloth sidebars, tape and pencil marks, and seven colour palettes taken from
 the traditional colours of Japan.
+
+Part of **N2O**, with [N2O Paper Settings](https://github.com/n2osync/n2o-paper-settings)
+for the controls and [N2O Sync](https://n2osync.com) for Notion.
 
 ![N2O Paper in the Forest palette](images/palette-forest.jpg)
 
