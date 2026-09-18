@@ -1,6 +1,6 @@
 /*
 N2O PAPER
-Version 1.0.3
+Version 1.0.4
 
 A theme for Obsidian, by N2O Sync.
 https://n2osync.com
@@ -1047,23 +1047,23 @@ body:where(.theme-light) {
 Preview Mode
 *****/
 
-:where(.theme-light) .markdown-rendered div:has( > :is(p,pre,table,ul,ol)) + div > :is(h1) {
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) div:has( > :is(p,pre,table,ul,ol)) + div > :is(h1) {
     margin-bottom: calc(var(--heading-spacing) + -56px);
     margin-top: calc(var(--heading-spacing) + -10px);
 }
 
-:where(.theme-light) .markdown-rendered div:has( > :is(p,pre,table,ul,ol)) + div > :is(h2) {
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) div:has( > :is(p,pre,table,ul,ol)) + div > :is(h2) {
     margin-bottom: calc(var(--heading-spacing) + -12px);
     margin-top: calc(var(--heading-spacing) + 5px);
 }
 
-/*.markdown-rendered div:has( > :is(p,pre,table,ul,ol)) + div > :is(h1,h2,h3,h4,h5,h6) {
+/*.markdown-preview-view div:has( > :is(p,pre,table,ul,ol)) + div > :is(h1,h2,h3,h4,h5,h6) {
   margin: calc(var(--heading-spacing) + 8px) 0 calc(var(--heading-spacing) + -57px);
 }*/
 
-:where(.theme-light) .markdown-rendered p {margin-bottom: 28px}
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) p {margin-bottom: 28px}
 
-body.theme-light .markdown-rendered .metadata-properties-heading:before {font-size: 10px;}
+body.theme-light :is(.markdown-preview-view, .cm-content) .metadata-properties-heading:before {font-size: 10px;}
 
 :where(.theme-light) .metadata-container .metadata-add-button {cursor: pointer; transition: all .07s linear;}
 :where(.theme-light) .show-properties .metadata-container {padding-bottom: 40px}
@@ -1079,7 +1079,7 @@ Body Lists
   text-indent: 0;
 }
 
-:where(.theme-light) .markdown-rendered.show-indentation-guide li > ul::before, :where(.theme-light) .markdown-rendered.show-indentation-guide li > ol::before {border: 0;}
+:where(.theme-light) :is(.markdown-preview-view, .cm-content).show-indentation-guide li > ul::before, :where(.theme-light) :is(.markdown-preview-view, .cm-content).show-indentation-guide li > ol::before {border: 0;}
 
 body.theme-light .cm-indent::before {border:0;}
 
@@ -1193,7 +1193,7 @@ Body text
 :where(.theme-light) .external-link {background-position-y: 1px;}
 
 /* Lines of Text */
-:where(.theme-light) .cm-contentContainer .cm-content .cm-line, :where(.theme-light) .markdown-rendered {
+:where(.theme-light) .cm-contentContainer .cm-content .cm-line, :where(.theme-light) :is(.markdown-preview-view, .cm-content) {
   font-size: var(--font-paragraph); 
   /* The one declaration that reaches editor and reading text. */
   font-family: var(--n2o-font-set, var(--font-family-sans));
@@ -1206,7 +1206,7 @@ body.theme-light .table-view-table > thead > tr > th {
   background: rgba(0,0,0,.05)
 }
 
-:where(.theme-light) .markdown-rendered table {margin-block-start: 0;}
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) table {margin-block-start: 0;}
 
 
 /*** 
@@ -1278,19 +1278,19 @@ body.theme-light .cm-hashtag.cm-hashtag-end {
 :where(.theme-light) .view-content .cm-editor,
 
 /*** Headings ***/
-:where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-1.cm-line, :where(.theme-light) .markdown-rendered h1 {font-size: var(--size-h1); line-height: 1.2;}
-:where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-2.cm-line, :where(.theme-light) .markdown-rendered h2 {font-size: var(--size-h2);}
-:where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-3.cm-line, :where(.theme-light) .markdown-rendered h3 {font-size: var(--size-h3);}
-:where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-4.cm-line, :where(.theme-light) .markdown-rendered h4 {font-size: var(--size-h4);}
-:where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-5.cm-line, :where(.theme-light) .markdown-rendered h5 {font-size: var(--size-h5);}
-:where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-6.cm-line, :where(.theme-light) .markdown-rendered h6 {font-size: var(--size-h6);}
+:where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-1.cm-line, :where(.theme-light) :is(.markdown-preview-view, .cm-content) h1 {font-size: var(--size-h1); line-height: 1.2;}
+:where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-2.cm-line, :where(.theme-light) :is(.markdown-preview-view, .cm-content) h2 {font-size: var(--size-h2);}
+:where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-3.cm-line, :where(.theme-light) :is(.markdown-preview-view, .cm-content) h3 {font-size: var(--size-h3);}
+:where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-4.cm-line, :where(.theme-light) :is(.markdown-preview-view, .cm-content) h4 {font-size: var(--size-h4);}
+:where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-5.cm-line, :where(.theme-light) :is(.markdown-preview-view, .cm-content) h5 {font-size: var(--size-h5);}
+:where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-6.cm-line, :where(.theme-light) :is(.markdown-preview-view, .cm-content) h6 {font-size: var(--size-h6);}
 
-:where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-1.cm-line, :where(.theme-light) .markdown-rendered h1,
-:where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-2.cm-line, :where(.theme-light) .markdown-rendered h2,
-:where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-3.cm-line, :where(.theme-light) .markdown-rendered h3,
-:where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-4.cm-line, :where(.theme-light) .markdown-rendered h4,
-:where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-5.cm-line, :where(.theme-light) .markdown-rendered h5,
-:where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-6.cm-line, :where(.theme-light) .markdown-rendered h6 {
+:where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-1.cm-line, :where(.theme-light) :is(.markdown-preview-view, .cm-content) h1,
+:where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-2.cm-line, :where(.theme-light) :is(.markdown-preview-view, .cm-content) h2,
+:where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-3.cm-line, :where(.theme-light) :is(.markdown-preview-view, .cm-content) h3,
+:where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-4.cm-line, :where(.theme-light) :is(.markdown-preview-view, .cm-content) h4,
+:where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-5.cm-line, :where(.theme-light) :is(.markdown-preview-view, .cm-content) h5,
+:where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-6.cm-line, :where(.theme-light) :is(.markdown-preview-view, .cm-content) h6 {
   color: var(--heading-text-color);
   line-height: 1.2;
   padding-bottom: 5px;
@@ -1605,12 +1605,12 @@ body.theme-light.n2o-small-pinned-tabs .workspace-tab-header:has(.mod-pinned) {
 /* ------------------- */
 /* Tasks Plugin */
 /* ------------------- */
-:where(.theme-light) .markdown-rendered h1,
-:where(.theme-light) .markdown-rendered h2,
-:where(.theme-light) .markdown-rendered h3,
-:where(.theme-light) .markdown-rendered h4,
-:where(.theme-light) .markdown-rendered h5,
-:where(.theme-light) .markdown-rendered h6 {
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) h1,
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) h2,
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) h3,
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) h4,
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) h5,
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) h6 {
   margin-bottom: 5px;
 }
 
@@ -2167,29 +2167,29 @@ body:where(.theme-light) {
  * so six colours need six rules that beat it. Same selector shape, later in the
  * file, which wins the tie without !important. */
 :where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-1.cm-line,
-:where(.theme-light) .markdown-rendered h1 { color: var(--h1-color); font-style: var(--h1-style); }
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) h1 { color: var(--h1-color); font-style: var(--h1-style); }
 
 :where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-2.cm-line,
-:where(.theme-light) .markdown-rendered h2 { color: var(--h2-color); font-style: var(--h2-style); }
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) h2 { color: var(--h2-color); font-style: var(--h2-style); }
 
 :where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-3.cm-line,
-:where(.theme-light) .markdown-rendered h3 { color: var(--h3-color); font-style: var(--h3-style); }
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) h3 { color: var(--h3-color); font-style: var(--h3-style); }
 
 :where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-4.cm-line,
-:where(.theme-light) .markdown-rendered h4 { color: var(--h4-color); font-style: var(--h4-style); }
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) h4 { color: var(--h4-color); font-style: var(--h4-style); }
 
 :where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-5.cm-line,
-:where(.theme-light) .markdown-rendered h5 { color: var(--h5-color); font-style: var(--h5-style); }
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) h5 { color: var(--h5-color); font-style: var(--h5-style); }
 
 :where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-6.cm-line,
-:where(.theme-light) .markdown-rendered h6 { color: var(--h6-color); font-style: var(--h6-style); }
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) h6 { color: var(--h6-color); font-style: var(--h6-style); }
 
 /* Emphasis colours. Obsidian defines these variables but does not apply them
  * everywhere, so the editor and the rendered view both get told explicitly. */
-:where(.theme-light) .markdown-rendered strong,
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) strong,
 :where(.theme-light) .cm-s-obsidian .cm-strong { color: var(--bold-color); font-weight: var(--bold-weight); }
 
-:where(.theme-light) .markdown-rendered em,
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) em,
 :where(.theme-light) .cm-s-obsidian .cm-em { color: var(--italic-color); }
 
 /* The counterpart to ungating the icon rules above: this is now how you turn
@@ -3443,7 +3443,7 @@ body.theme-light .cm-contentContainer {
 /* A done task strikes its own text, not the open tasks nested under it.
  * text-decoration propagates to every in-flow descendant and no child can
  * cancel it, but it stops at an inline-block, so the nested list is one. */
-body.theme-light .markdown-rendered li.task-list-item.is-checked > :is(ul, ol) {
+body.theme-light :is(.markdown-preview-view, .cm-content) li.task-list-item.is-checked > :is(ul, ol) {
   display: inline-block;
   width: 100%;
 }
@@ -3486,15 +3486,15 @@ body.theme-light:not(.n2o-flat-paper) .callout::after {
 }
 /* Media is not ink on paper either: photos, video, PDFs and canvases sit
  * above the ink screen, in both modes. */
-body.theme-light .markdown-rendered img,
-body.theme-light .markdown-rendered video,
-body.theme-light .markdown-rendered audio,
-body.theme-light .markdown-rendered iframe,
-body.theme-light .markdown-rendered canvas,
-body.theme-light .markdown-rendered .image-embed,
-body.theme-light .markdown-rendered .media-embed,
-body.theme-light .markdown-rendered .pdf-embed,
-body.theme-light .markdown-rendered .canvas-embed,
+body.theme-light :is(.markdown-preview-view, .cm-content) img,
+body.theme-light :is(.markdown-preview-view, .cm-content) video,
+body.theme-light :is(.markdown-preview-view, .cm-content) audio,
+body.theme-light :is(.markdown-preview-view, .cm-content) iframe,
+body.theme-light :is(.markdown-preview-view, .cm-content) canvas,
+body.theme-light :is(.markdown-preview-view, .cm-content) .image-embed,
+body.theme-light :is(.markdown-preview-view, .cm-content) .media-embed,
+body.theme-light :is(.markdown-preview-view, .cm-content) .pdf-embed,
+body.theme-light :is(.markdown-preview-view, .cm-content) .canvas-embed,
 body.theme-light .cm-content img,
 body.theme-light .cm-content video,
 body.theme-light .cm-content .image-embed,
@@ -3511,7 +3511,7 @@ body.theme-light .markdown-source-view.mod-cm6 .cm-embed-block:is(.image-embed, 
  * a tight contact shadow under it and a soft ambient one around it, both
  * warmed so they read as shadow on cream rather than grey. A true colour
  * bleed would need the plugin to sample the image. */
-body.theme-light .markdown-rendered img:not(.emoji):not([width="0"]),
+body.theme-light :is(.markdown-preview-view, .cm-content) img:not(.emoji):not([width="0"]),
 body.theme-light .cm-content img:not(.emoji):not(.cm-widgetBuffer) {
   border-radius: 3px;
   box-shadow:
@@ -3520,23 +3520,23 @@ body.theme-light .cm-content img:not(.emoji):not(.cm-widgetBuffer) {
     0 6px 14px rgba(60, 50, 34, 0.16),
     0 18px 40px rgba(60, 50, 34, 0.14);
 }
-body.theme-light .markdown-rendered .image-embed,
+body.theme-light :is(.markdown-preview-view, .cm-content) .image-embed,
 body.theme-light .cm-content .image-embed {
   margin: 0.4em 0 0.8em;
 }
 
 /* Code is a printed slab, not ink on paper: no specks, no texture. */
-body.theme-light .markdown-rendered pre,
+body.theme-light :is(.markdown-preview-view, .cm-content) pre,
 body.theme-light .cm-line.HyperMD-codeblock {
   position: relative;
   z-index: 61;
   text-shadow: none;
 }
-body.theme-light .markdown-rendered,
+body.theme-light :is(.markdown-preview-view, .cm-content),
 body.theme-light .cm-content {
   text-shadow: 0 0 0.5px rgba(43, 42, 38, 0.3);
 }
-body.theme-light .markdown-rendered :is(h1, h2, h3, h4),
+body.theme-light :is(.markdown-preview-view, .cm-content) :is(h1, h2, h3, h4),
 body.theme-light .cm-content :is(.cm-header-1, .cm-header-2, .cm-header-3, .cm-header-4),
 body.theme-light .inline-title {
   text-shadow: 0 0 0.8px hsla(var(--n2o-h), var(--n2o-s), var(--n2o-l), 0.4);
@@ -3618,7 +3618,7 @@ body.theme-light.n2o-coil-binding .cm-sizer {
  * straight top to above the tear, so none is cut in half. The turn is
  * sized from the strip's own padding and line, so three always fit a
  * one-line quote whatever the line height. */
-body.theme-light:not(.n2o-quote-no-coil) .markdown-rendered blockquote::after {
+body.theme-light:not(.n2o-quote-no-coil) :is(.markdown-preview-view, .cm-content) blockquote::after {
   --n2o-quote-turn: calc((2.1em + 1lh) / 3.05);
   /* the wire a size down from the room each turn has, spaced to fill it */
   --n2o-quote-wire: calc(var(--n2o-quote-turn) * 0.85);
@@ -3636,7 +3636,7 @@ body.theme-light:not(.n2o-quote-no-coil) .markdown-rendered blockquote::after {
   background: var(--n2o-tex-coil1) 0 0 / calc(var(--n2o-quote-wire) * 1.8) var(--n2o-quote-wire) no-repeat space;
   image-rendering: auto;
 }
-body.theme-light:not(.n2o-quote-no-coil) .markdown-rendered blockquote blockquote::after {
+body.theme-light:not(.n2o-quote-no-coil) :is(.markdown-preview-view, .cm-content) blockquote blockquote::after {
   content: none;
 }
 
@@ -3661,23 +3661,23 @@ body.theme-light {
 /* Headings. Regular weight, tight, in the title green, with the H1 carrying
  * the hairline the poster draws under its title. */
 :where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.cm-line,
-:where(.theme-light) .markdown-rendered :is(h1, h2, h3, h4, h5, h6),
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) :is(h1, h2, h3, h4, h5, h6),
 :where(.theme-light) .inline-title {
   font-family: var(--font-family-serif);
   font-weight: 400;
   letter-spacing: -0.01em;
 }
-:where(.theme-light) .markdown-rendered h1, :where(.theme-light) .cm-content .HyperMD-header-1.cm-line, :where(.theme-light) .inline-title { font-weight: var(--h1-weight, 400); }
-:where(.theme-light) .markdown-rendered h2, :where(.theme-light) .cm-content .HyperMD-header-2.cm-line { font-weight: var(--h2-weight, 400); }
-:where(.theme-light) .markdown-rendered h3, :where(.theme-light) .cm-content .HyperMD-header-3.cm-line { font-weight: var(--h3-weight, 400); }
-:where(.theme-light) .markdown-rendered h4, :where(.theme-light) .cm-content .HyperMD-header-4.cm-line { font-weight: var(--h4-weight, 400); }
-:where(.theme-light) .markdown-rendered h5, :where(.theme-light) .cm-content .HyperMD-header-5.cm-line { font-weight: var(--h5-weight, 400); }
-:where(.theme-light) .markdown-rendered h6, :where(.theme-light) .cm-content .HyperMD-header-6.cm-line { font-weight: var(--h6-weight, 400); }
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) h1, :where(.theme-light) .cm-content .HyperMD-header-1.cm-line, :where(.theme-light) .inline-title { font-weight: var(--h1-weight, 400); }
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) h2, :where(.theme-light) .cm-content .HyperMD-header-2.cm-line { font-weight: var(--h2-weight, 400); }
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) h3, :where(.theme-light) .cm-content .HyperMD-header-3.cm-line { font-weight: var(--h3-weight, 400); }
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) h4, :where(.theme-light) .cm-content .HyperMD-header-4.cm-line { font-weight: var(--h4-weight, 400); }
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) h5, :where(.theme-light) .cm-content .HyperMD-header-5.cm-line { font-weight: var(--h5-weight, 400); }
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) h6, :where(.theme-light) .cm-content .HyperMD-header-6.cm-line { font-weight: var(--h6-weight, 400); }
 
 /* .el-h1 h1 rather than h1 alone: the preview-mode rule above pulls the
  * next block up with a negative margin, and this has to outrank it. */
-:where(.theme-light) .markdown-rendered .el-h1 h1,
-:where(.theme-light) .markdown-rendered h1,
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) .el-h1 h1,
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) h1,
 :where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-1.cm-line {
   border-bottom: 1px solid var(--n2o-green-deep);
   padding-bottom: 0.25em;
@@ -3699,7 +3699,7 @@ body.theme-light .metadata-properties-heading,
 body.theme-light .view-header-title-parent,
 body.theme-light a.tag,
 body.theme-light .cm-hashtag,
-body.theme-light .markdown-rendered th,
+body.theme-light :is(.markdown-preview-view, .cm-content) th,
 body.theme-light .status-bar {
   font-family: var(--n2o-code-font);
   font-size: 0.72em;
@@ -3827,20 +3827,20 @@ body.theme-light .list-bullet::after {
   opacity: 1;
   transition: opacity 120ms ease, transform 120ms ease;
 }
-body.theme-light .markdown-rendered ul ul > li > .list-bullet::after,
+body.theme-light :is(.markdown-preview-view, .cm-content) ul ul > li > .list-bullet::after,
 body.theme-light .HyperMD-list-line-2 .list-bullet::after {
   background: transparent;
   box-shadow: inset 0 0 0 1.5px var(--list-marker-color);
   transform: scale(1.12); /* a ring reads smaller than a disc of the same size */
 }
-body.theme-light .markdown-rendered ul ul ul > li > .list-bullet::after,
+body.theme-light :is(.markdown-preview-view, .cm-content) ul ul ul > li > .list-bullet::after,
 body.theme-light .HyperMD-list-line-3 .list-bullet::after {
   background: var(--list-marker-color);
   box-shadow: none;
   border-radius: 1px;
   transform: rotate(45deg) scale(0.98);
 }
-body.theme-light .markdown-rendered ul ul ul ul > li > .list-bullet::after,
+body.theme-light :is(.markdown-preview-view, .cm-content) ul ul ul ul > li > .list-bullet::after,
 body.theme-light .HyperMD-list-line-4 .list-bullet::after,
 body.theme-light .HyperMD-list-line-5 .list-bullet::after,
 body.theme-light .HyperMD-list-line-6 .list-bullet::after {
@@ -3852,7 +3852,7 @@ body.theme-light .HyperMD-list-line-6 .list-bullet::after {
   transform: none;
 }
 /* the line under the pointer lets its marker go pale */
-body.theme-light .markdown-rendered li:hover > .list-bullet::after,
+body.theme-light :is(.markdown-preview-view, .cm-content) li:hover > .list-bullet::after,
 body.theme-light .HyperMD-list-line:hover .list-bullet::after {
   opacity: 0.62;
 }
@@ -3860,7 +3860,7 @@ body.theme-light .HyperMD-list-line:hover .list-bullet::after {
 /* numbers: the interface font, whose figures are lining and sit on the
  * baseline where the serif's old-style figures dipped below it; bold,
  * solid at rest, pale under the pointer, as the bullets are */
-body.theme-light .markdown-rendered ol > li::marker,
+body.theme-light :is(.markdown-preview-view, .cm-content) ol > li::marker,
 body.theme-light .cm-formatting-list-ol {
   font-family: var(--n2o-ui-font, var(--font-interface));
   font-variant-numeric: lining-nums tabular-nums;
@@ -3868,7 +3868,7 @@ body.theme-light .cm-formatting-list-ol {
   font-weight: 600;
   color: var(--list-marker-color);
 }
-body.theme-light .markdown-rendered ol > li:hover::marker,
+body.theme-light :is(.markdown-preview-view, .cm-content) ol > li:hover::marker,
 body.theme-light .HyperMD-list-line:hover .cm-formatting-list-ol {
   color: color-mix(in srgb, var(--list-marker-color) 68%, transparent);
 }
@@ -3884,7 +3884,7 @@ body.theme-light .cm-formatting-list-ol {
 /* Scores. The rule keeps its colour, and under it the paper
  * catches the light the way it does beside a coil's score: a lit
  * hairline where the fold turns. Both renderers. */
-body.theme-light:not(.n2o-flat) .markdown-rendered hr,
+body.theme-light:not(.n2o-flat) :is(.markdown-preview-view, .cm-content) hr,
 body.theme-light:not(.n2o-flat) .cm-line.hr hr {
   border: 0;
   height: 4px;
@@ -3910,8 +3910,8 @@ body.theme-light:not(.n2o-flat) .cm-line.hr hr {
  * and the lit edges below are shadows on the element, so nothing
  * moves. The properties ledger sits right under the title's rule and
  * takes none, a second fold there read as a stray line. */
-body.theme-light:not(.n2o-flat) .markdown-rendered .el-h1 h1,
-body.theme-light:not(.n2o-flat) .markdown-rendered h1,
+body.theme-light:not(.n2o-flat) :is(.markdown-preview-view, .cm-content) .el-h1 h1,
+body.theme-light:not(.n2o-flat) :is(.markdown-preview-view, .cm-content) h1,
 body.theme-light:not(.n2o-flat) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-1.cm-line,
 body.theme-light:not(.n2o-flat) .inline-title {
   box-shadow:
@@ -3923,7 +3923,7 @@ body.theme-light:not(.n2o-flat) .inline-title {
 /* Letterpress on the headings, both renderers and the inline title: a
  * lit edge under each letter where the paper rises out of the
  * impression, and a breath of shadow above where it goes in */
-body.theme-light:not(.n2o-flat) .markdown-rendered :is(h1, h2, h3, h4, h5, h6),
+body.theme-light:not(.n2o-flat) :is(.markdown-preview-view, .cm-content) :is(h1, h2, h3, h4, h5, h6),
 body.theme-light:not(.n2o-flat) .cm-line.HyperMD-header,
 body.theme-light:not(.n2o-flat) .inline-title {
   text-shadow:
@@ -3936,13 +3936,13 @@ body.theme-light:not(.n2o-flat) .inline-title {
  * letters and no shadow above, so a paragraph reads as pressed without
  * reading as blurred. The headings above set their own, stronger press
  * and keep it. */
-body.theme-light:not(.n2o-flat) .markdown-rendered,
+body.theme-light:not(.n2o-flat) :is(.markdown-preview-view, .cm-content),
 body.theme-light:not(.n2o-flat) .cm-contentContainer .cm-content .cm-line {
   text-shadow: 0 1px 0 rgba(255, 253, 246, 0.42);
 }
 /* code sits on its own dark stock and prints flat */
-body.theme-light:not(.n2o-flat) .markdown-rendered pre,
-body.theme-light:not(.n2o-flat) .markdown-rendered code,
+body.theme-light:not(.n2o-flat) :is(.markdown-preview-view, .cm-content) pre,
+body.theme-light:not(.n2o-flat) :is(.markdown-preview-view, .cm-content) code,
 body.theme-light:not(.n2o-flat) .cm-line.HyperMD-codeblock,
 body.theme-light:not(.n2o-flat) .cm-inline-code {
   text-shadow: none;
@@ -3951,8 +3951,8 @@ body.theme-light:not(.n2o-flat) .cm-inline-code {
 /* Maths presses as hard as a heading: a formula is set large and alone,
  * and a display block is the one place on the page a plate would press
  * deepest. Inline maths takes the body's touch through inheritance. */
-body.theme-light:not(.n2o-flat) .markdown-rendered .math-block,
-body.theme-light:not(.n2o-flat) .markdown-rendered .MathJax[display="true"],
+body.theme-light:not(.n2o-flat) :is(.markdown-preview-view, .cm-content) .math-block,
+body.theme-light:not(.n2o-flat) :is(.markdown-preview-view, .cm-content) .MathJax[display="true"],
 body.theme-light:not(.n2o-flat) .cm-embed-block.math-block {
   text-shadow:
     0 1px 0 rgba(255, 253, 246, 0.85),
@@ -3964,7 +3964,7 @@ body.theme-light:not(.n2o-flat) .cm-embed-block.math-block {
  * the palette's highlight colour. A chisel marker's stroke, its edges
  * wandering and its felt running dry in streaks, and the ink pooling where
  * the pen was set down and lifted, at both ends of every line it covers. */
-body.theme-light .markdown-rendered mark,
+body.theme-light :is(.markdown-preview-view, .cm-content) mark,
 body.theme-light .cm-highlight {
   --n2o-hl: var(--text-highlight-bg);
   color: inherit;
@@ -3990,7 +3990,7 @@ body.theme-light .cm-highlight {
  * until somebody sets one. The box is drawn as a MASK filled with a
  * colour rather than as an image, because an image's ink cannot be
  * recoloured and that is what left the colour control dead. */
-body.theme-light:not(.n2o-plain-checkboxes) .markdown-rendered li:is([data-task=""], [data-task=" "], [data-task="x"], [data-task="X"]) > .task-list-item-checkbox,
+body.theme-light:not(.n2o-plain-checkboxes) :is(.markdown-preview-view, .cm-content) li:is([data-task=""], [data-task=" "], [data-task="x"], [data-task="X"]) > .task-list-item-checkbox,
 body.theme-light:not(.n2o-plain-checkboxes) .HyperMD-task-line:is([data-task=""], [data-task=" "], [data-task="x"], [data-task="X"]) .task-list-item-checkbox {
   /* larger than Obsidian's 16px, so the box reads as drawn */
   width: var(--n2o-checkbox-size, 22px);
@@ -4001,14 +4001,14 @@ body.theme-light:not(.n2o-plain-checkboxes) .HyperMD-task-line:is([data-task=""]
   background: var(--n2o-checkbox-color, #3b3833);
   -webkit-mask: var(--n2o-pencil-box) center / 100% 100% no-repeat;
 }
-body.theme-light:not(.n2o-plain-checkboxes) .markdown-rendered li:is([data-task=""], [data-task=" "]) > .task-list-item-checkbox::after,
+body.theme-light:not(.n2o-plain-checkboxes) :is(.markdown-preview-view, .cm-content) li:is([data-task=""], [data-task=" "]) > .task-list-item-checkbox::after,
 body.theme-light:not(.n2o-plain-checkboxes) .HyperMD-task-line:is([data-task=""], [data-task=" "]) .task-list-item-checkbox::after {
   content: none;
 }
 /* done: the box inked in solid, by hand, in the palette's colour, and a
  * small tick cut into it in cream. The checkbox takes the shape of the
  * inked square, and the tick sits inside it. */
-body.theme-light:not(.n2o-plain-checkboxes) .markdown-rendered li:is([data-task="x"], [data-task="X"]) > .task-list-item-checkbox,
+body.theme-light:not(.n2o-plain-checkboxes) :is(.markdown-preview-view, .cm-content) li:is([data-task="x"], [data-task="X"]) > .task-list-item-checkbox,
 body.theme-light:not(.n2o-plain-checkboxes) .HyperMD-task-line:is([data-task="x"], [data-task="X"]) .task-list-item-checkbox {
   background: var(--n2o-checkbox-color, hsl(var(--n2o-h), var(--n2o-s), calc(var(--n2o-l) + 4%)));
   -webkit-mask: var(--n2o-pencil-fill) center / 100% 100% no-repeat;
@@ -4020,7 +4020,7 @@ body.theme-light.n2o-plain-checkboxes {
   --checkbox-radius: var(--n2o-checkbox-radius, var(--radius-s));
   --checkbox-color: var(--n2o-checkbox-color, var(--interactive-accent));
 }
-body.theme-light:not(.n2o-plain-checkboxes) .markdown-rendered li:is([data-task="x"], [data-task="X"]) > .task-list-item-checkbox::after,
+body.theme-light:not(.n2o-plain-checkboxes) :is(.markdown-preview-view, .cm-content) li:is([data-task="x"], [data-task="X"]) > .task-list-item-checkbox::after,
 body.theme-light:not(.n2o-plain-checkboxes) .HyperMD-task-line:is([data-task="x"], [data-task="X"]) .task-list-item-checkbox::after {
   content: "";
   position: absolute;
@@ -4042,7 +4042,7 @@ body.theme-light {
  * own slight angle, and now and then a faint second impression. In the
  * editor a tag is two pieces, so it takes the ink and the border but not
  * the angle. */
-body.theme-light .markdown-rendered a.tag,
+body.theme-light :is(.markdown-preview-view, .cm-content) a.tag,
 body.theme-light .cm-hashtag {
   --n2o-stamp: hsl(var(--n2o-h), var(--n2o-s), calc(var(--n2o-l) + 4%));
   color: var(--n2o-stamp);
@@ -4051,22 +4051,22 @@ body.theme-light .cm-hashtag {
   font-weight: 700;
   -webkit-mask: var(--n2o-tex-stamp) repeat 0 0 / 64px 64px;
 }
-body.theme-light .markdown-rendered a.tag {
+body.theme-light :is(.markdown-preview-view, .cm-content) a.tag {
   display: inline-block;
   border-radius: 3px;
   padding: 0 0.45em;
   line-height: 1.55;
   rotate: -1.4deg;
 }
-body.theme-light .markdown-rendered a.tag:hover {
+body.theme-light :is(.markdown-preview-view, .cm-content) a.tag:hover {
   background: transparent;
   color: var(--n2o-stamp);
 }
-body.theme-light .markdown-rendered a.tag:nth-of-type(3n + 2) {
+body.theme-light :is(.markdown-preview-view, .cm-content) a.tag:nth-of-type(3n + 2) {
   rotate: 1deg;
   -webkit-mask-position: 23px 11px;
 }
-body.theme-light .markdown-rendered a.tag:nth-of-type(3n) {
+body.theme-light :is(.markdown-preview-view, .cm-content) a.tag:nth-of-type(3n) {
   rotate: -0.5deg;
   -webkit-mask-position: 41px 30px;
   text-shadow: 0.7px 0.5px 0 color-mix(in srgb, var(--n2o-stamp) 35%, transparent);
@@ -4091,7 +4091,7 @@ body.theme-light .cm-line.HyperMD-quote {
 /* A quote is a torn strip of khaki. A quote inside it is a strip of
  * cream on the khaki, and a third level is pale on the cream, each with
  * its own tear, so nesting reads as pieces on pieces. */
-body.theme-light .markdown-rendered blockquote {
+body.theme-light :is(.markdown-preview-view, .cm-content) blockquote {
   --n2o-quote-paper: var(--n2o-sage);
   --n2o-quote-fringe: 240, 242, 228;
   --n2o-quote-tear: var(--n2o-tex-tear-qa);
@@ -4106,16 +4106,16 @@ body.theme-light .markdown-rendered blockquote {
           drop-shadow(1px 2px 3px rgba(43, 42, 38, 0.14))
           drop-shadow(0 12px 18px rgba(43, 42, 38, calc(0.08 * var(--n2o-softbox) / 100)));
 }
-body.theme-light .markdown-rendered blockquote blockquote {
+body.theme-light :is(.markdown-preview-view, .cm-content) blockquote blockquote {
   --n2o-quote-paper: var(--n2o-paper-cream);
   --n2o-quote-fringe: 255, 253, 246;
   margin: 1em 0 0.4em;
 }
-body.theme-light .markdown-rendered blockquote blockquote blockquote {
+body.theme-light :is(.markdown-preview-view, .cm-content) blockquote blockquote blockquote {
   --n2o-quote-paper: var(--n2o-paper-pale);
   --n2o-quote-fringe: 255, 255, 252;
 }
-body.theme-light .markdown-rendered blockquote::before {
+body.theme-light :is(.markdown-preview-view, .cm-content) blockquote::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -4518,7 +4518,7 @@ body.theme-light .markdown-source-view.mod-cm6 .cm-embed-block.cm-callout {
  * cream on it; cells are the body serif a step down, on hairlines; columns
  * are divided by hairlines and the outer edge stays open. The same in the
  * reading view and in the editor's table widget. */
-body.theme-light .markdown-rendered table,
+body.theme-light :is(.markdown-preview-view, .cm-content) table,
 body.theme-light .table-editor {
   border-collapse: collapse;
   margin: 1.2em 0 1.6em;
@@ -4538,29 +4538,29 @@ body.theme-light .markdown-source-view.mod-cm6 .cm-embed-block.cm-table-widget {
   position: relative;
   z-index: 60;
 }
-body.theme-light .markdown-rendered th,
+body.theme-light :is(.markdown-preview-view, .cm-content) th,
 body.theme-light .table-editor th {
   text-shadow: none;
 }
-body.theme-light .markdown-rendered :is(th, td),
+body.theme-light :is(.markdown-preview-view, .cm-content) :is(th, td),
 body.theme-light .table-editor :is(th, td) {
   border: 0;
   border-bottom: 1px solid var(--n2o-rule);
   padding: 0.5em 1em 0.5em 0.85em;
   vertical-align: baseline;
 }
-body.theme-light .markdown-rendered :is(th, td):not(:last-child),
+body.theme-light :is(.markdown-preview-view, .cm-content) :is(th, td):not(:last-child),
 body.theme-light .table-editor :is(th, td):not(:last-child) {
   border-right: 1px solid var(--n2o-rule);
 }
-body.theme-light .markdown-rendered td,
+body.theme-light :is(.markdown-preview-view, .cm-content) td,
 body.theme-light .table-editor td {
   font-family: var(--n2o-font-set, var(--font-family-serif));
   font-size: var(--table-cell-fontsize);
   line-height: 1.5;
   color: var(--n2o-ink);
 }
-body.theme-light .markdown-rendered th,
+body.theme-light :is(.markdown-preview-view, .cm-content) th,
 body.theme-light .table-editor th {
   font-family: var(--n2o-code-font, var(--font-monospace-theme));
   font-size: calc(var(--table-head-fontsize) * 0.76);
@@ -4579,23 +4579,23 @@ body.theme-light .table-editor th {
 /* Obsidian paints even header cells from the alt-column variable, which is
  * transparent so body columns stay clean, so those cells take the accent
  * directly at the same specificity. */
-body.theme-light .markdown-rendered thead tr > th:nth-child(2n+2),
+body.theme-light :is(.markdown-preview-view, .cm-content) thead tr > th:nth-child(2n+2),
 body.theme-light .table-editor thead tr > th:nth-child(2n+2) {
   /* every second header cell a shade lighter, matching the column wash below */
   background: var(--n2o-tex-panel) repeat 0 0 / 192px 192px, hsl(var(--n2o-h), var(--n2o-s), calc(var(--n2o-l) + 2.5%));
 }
 /* inside the header band the column rules are cream, not paper */
-body.theme-light .markdown-rendered th:not(:last-child),
+body.theme-light :is(.markdown-preview-view, .cm-content) th:not(:last-child),
 body.theme-light .table-editor th:not(:last-child) {
   border-right: 1px solid rgba(255, 253, 246, 0.18);
 }
 /* the first column is the row's own label: a hair more room on the left */
-body.theme-light .markdown-rendered :is(th, td):first-child,
+body.theme-light :is(.markdown-preview-view, .cm-content) :is(th, td):first-child,
 body.theme-light .table-editor :is(th, td):first-child {
   padding-left: 0.6em;
 }
 /* inline code in a cell keeps to the cell's size */
-body.theme-light .markdown-rendered td code,
+body.theme-light :is(.markdown-preview-view, .cm-content) td code,
 body.theme-light .table-editor td code {
   font-size: 0.88em;
 }
@@ -4611,28 +4611,28 @@ body.theme-light .cm-content .table-cell-wrapper {
  * every second row instead of every second column. */
 
 /* ledger */
-body.theme-light.n2o-table-ledger .markdown-rendered table,
+body.theme-light.n2o-table-ledger :is(.markdown-preview-view, .cm-content) table,
 body.theme-light.n2o-table-ledger .table-editor {
   background: transparent;
   border: 0;
   box-shadow: none;
 }
-body.theme-light.n2o-table-ledger .markdown-rendered th,
+body.theme-light.n2o-table-ledger :is(.markdown-preview-view, .cm-content) th,
 body.theme-light.n2o-table-ledger .table-editor th,
-body.theme-light.n2o-table-ledger .markdown-rendered thead tr > th:nth-child(2n+2),
+body.theme-light.n2o-table-ledger :is(.markdown-preview-view, .cm-content) thead tr > th:nth-child(2n+2),
 body.theme-light.n2o-table-ledger .table-editor thead tr > th:nth-child(2n+2) {
   background: transparent;
   color: var(--n2o-green);
   border-bottom: 1.5px solid var(--n2o-green);
   padding-left: 0;
 }
-body.theme-light.n2o-table-ledger .markdown-rendered th:not(:last-child),
+body.theme-light.n2o-table-ledger :is(.markdown-preview-view, .cm-content) th:not(:last-child),
 body.theme-light.n2o-table-ledger .table-editor th:not(:last-child),
-body.theme-light.n2o-table-ledger .markdown-rendered :is(th, td):not(:last-child),
+body.theme-light.n2o-table-ledger :is(.markdown-preview-view, .cm-content) :is(th, td):not(:last-child),
 body.theme-light.n2o-table-ledger .table-editor :is(th, td):not(:last-child) {
   border-right: 0;
 }
-body.theme-light.n2o-table-ledger .markdown-rendered td,
+body.theme-light.n2o-table-ledger :is(.markdown-preview-view, .cm-content) td,
 body.theme-light.n2o-table-ledger .table-editor td {
   padding-left: 0;
 }
@@ -4648,7 +4648,7 @@ body.theme-light.n2o-table-rows {
   --table-column-alt-background: transparent;
   --table-row-alt-background: hsla(var(--n2o-h), var(--n2o-s), var(--n2o-l), 0.04);
 }
-body.theme-light.n2o-table-rows .markdown-rendered tbody tr:nth-child(2n),
+body.theme-light.n2o-table-rows :is(.markdown-preview-view, .cm-content) tbody tr:nth-child(2n),
 body.theme-light.n2o-table-rows .table-editor tbody tr:nth-child(2n) {
   background: var(--table-row-alt-background);
 }
@@ -4656,15 +4656,15 @@ body.theme-light.n2o-table-rows .table-editor tbody tr:nth-child(2n) {
 /* Maths. A display block at body size reads small once a fraction and a
  * sum stack up, so it goes up a third, with room above and below. Inline
  * maths a touch up so it sits with the serif. */
-body.theme-light .markdown-rendered .math-block,
+body.theme-light :is(.markdown-preview-view, .cm-content) .math-block,
 body.theme-light .cm-content .cm-embed-block.math-block {
   font-size: 1.45em;
 }
-body.theme-light .markdown-rendered .math-block,
+body.theme-light :is(.markdown-preview-view, .cm-content) .math-block,
 body.theme-light .cm-content .cm-embed-block.math-block {
   margin: 1.1em 0 1.3em;
 }
-body.theme-light .markdown-rendered .math-inline .MathJax,
+body.theme-light :is(.markdown-preview-view, .cm-content) .math-inline .MathJax,
 body.theme-light .cm-content .cm-math .MathJax {
   font-size: 1.08em;
 }
@@ -4755,26 +4755,26 @@ body.theme-light .mermaid .cluster-label span {
  * ![[photo.png|left|300]]. |left 300 sets no width. */
 
 /* pictures in the margin, with a little room and the text wrapping past */
-body.theme-light .markdown-rendered .image-embed[alt~="left"],
+body.theme-light :is(.markdown-preview-view, .cm-content) .image-embed[alt~="left"],
 body.theme-light .cm-content .image-embed[alt~="left"] {
   float: left;
   max-width: 46%;
   margin: 0.3em 1.6em 0.8em 0;
 }
-body.theme-light .markdown-rendered .image-embed[alt~="right"],
+body.theme-light :is(.markdown-preview-view, .cm-content) .image-embed[alt~="right"],
 body.theme-light .cm-content .image-embed[alt~="right"] {
   float: right;
   max-width: 46%;
   margin: 0.3em 0 0.8em 1.6em;
 }
-body.theme-light .markdown-rendered .image-embed[alt~="round"] img,
+body.theme-light :is(.markdown-preview-view, .cm-content) .image-embed[alt~="round"] img,
 body.theme-light .cm-content .image-embed[alt~="round"] img {
   border-radius: 50%;
   aspect-ratio: 1;
   object-fit: cover;
 }
 /* the float ends before the next heading, so a heading never wraps beside a picture */
-body.theme-light .markdown-rendered :is(h1, h2, h3, h4, h5, h6) {
+body.theme-light :is(.markdown-preview-view, .cm-content) :is(h1, h2, h3, h4, h5, h6) {
   clear: both;
 }
 
@@ -4833,7 +4833,7 @@ body.theme-light .internal-embed[alt~="torn"] .markdown-embed-link {
 
 /* the print: the embed shrinks to the picture, so its caption and its
  * sheen land on it */
-body.theme-light :is(.markdown-rendered, .cm-content) .image-embed:not([alt~="round"]) {
+body.theme-light :is(.markdown-preview-view, .cm-content) .image-embed:not([alt~="round"]) {
   position: relative;
   width: fit-content;
 }
@@ -4841,14 +4841,14 @@ body.theme-light :is(.markdown-rendered, .cm-content) .image-embed:not([alt~="ro
  * an inline box cannot hold anything over the picture; as an inline block
  * it shrinks to the picture and the window, sheen and caption land on it.
  * A picture in a margin is floated, which makes it a block anyway. */
-body.theme-light .markdown-rendered .image-embed:not([alt~="round"]) {
+body.theme-light :is(.markdown-preview-view, .cm-content) .image-embed:not([alt~="round"]) {
   display: inline-block;
   vertical-align: top;
 }
 body.theme-light .cm-content .image-embed:not([alt~="round"]) .image-wrapper {
   position: relative;
 }
-body.theme-light :is(.markdown-rendered, .cm-content) .image-embed img:not(.emoji) {
+body.theme-light :is(.markdown-preview-view, .cm-content) .image-embed img:not(.emoji) {
   /* a block, so no line's descender gap opens under the print */
   display: block;
   padding: 10px 10px 46px;
@@ -4865,7 +4865,7 @@ body.theme-light :is(.markdown-rendered, .cm-content) .image-embed img:not(.emoj
     12px 16px 14px -12px rgba(60, 50, 34, 0.34);
 }
 /* a round print stays round: a thin ring of print paper, no foot */
-body.theme-light :is(.markdown-rendered, .cm-content) .image-embed[alt~="round"] img {
+body.theme-light :is(.markdown-preview-view, .cm-content) .image-embed[alt~="round"] img {
   padding: 6px;
   border-radius: 50%;
 }
@@ -4874,7 +4874,7 @@ body.theme-light :is(.markdown-rendered, .cm-content) .image-embed[alt~="round"]
  * picture's square corners, and a faint sheen where the light catches it.
  * The picture itself is lifted to 61 to clear the sheet's ink screen, so
  * what lies on it sits at 62. */
-body.theme-light .markdown-rendered .image-embed:not([alt~="round"])::after,
+body.theme-light :is(.markdown-preview-view, .cm-content) .image-embed:not([alt~="round"])::after,
 body.theme-light .cm-content .image-embed:not([alt~="round"]) .image-wrapper::after {
   content: "";
   position: absolute;
@@ -4886,7 +4886,7 @@ body.theme-light .cm-content .image-embed:not([alt~="round"]) .image-wrapper::af
   background: linear-gradient(118deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0) 62%, rgba(255, 255, 255, 0.07) 78%, rgba(255, 255, 255, 0) 92%);
 }
 /* the caption, in pen on the foot */
-body.theme-light :is(.markdown-rendered, .cm-content) .image-embed:not([alt~="round"]):not([alt~="left"]):not([alt~="right"]):not([alt~="aged"]):not([alt=""]):not([alt$=".png" i]):not([alt$=".jpg" i]):not([alt$=".jpeg" i]):not([alt$=".gif" i]):not([alt$=".webp" i]):not([alt$=".svg" i]):not([alt$=".avif" i]):not([alt$=".bmp" i])::before {
+body.theme-light :is(.markdown-preview-view, .cm-content) .image-embed:not([alt~="round"]):not([alt~="left"]):not([alt~="right"]):not([alt~="aged"]):not([alt=""]):not([alt$=".png" i]):not([alt$=".jpg" i]):not([alt$=".jpeg" i]):not([alt$=".gif" i]):not([alt$=".webp" i]):not([alt$=".svg" i]):not([alt$=".avif" i]):not([alt$=".bmp" i])::before {
   content: attr(alt);
   position: absolute;
   left: 14px;
@@ -4935,8 +4935,8 @@ body.theme-light .internal-embed.markdown-embed:not([alt~="seamless"])::after {
  * flag ages one, ![[photo.png|aged]]. */
 
 /* the fade, on the whole print so the frame's paper yellows with it */
-body.theme-light.n2o-aged-photos :is(.markdown-rendered, .cm-content) .image-embed,
-body.theme-light :is(.markdown-rendered, .cm-content) .image-embed[alt~="aged"] {
+body.theme-light.n2o-aged-photos :is(.markdown-preview-view, .cm-content) .image-embed,
+body.theme-light :is(.markdown-preview-view, .cm-content) .image-embed[alt~="aged"] {
   filter: sepia(0.42) saturate(0.74) contrast(0.88) brightness(1.05);
 }
 
@@ -4944,9 +4944,9 @@ body.theme-light :is(.markdown-rendered, .cm-content) .image-embed[alt~="aged"] 
  * photo so a print of any size has exactly one, the dust and scratches
  * repeating at true size beneath it, the corners darkening, the sheen
  * dimmer, and the edges worn pale inside the ring of frame paper */
-body.theme-light.n2o-aged-photos .markdown-rendered .image-embed:not([alt~="round"])::after,
+body.theme-light.n2o-aged-photos :is(.markdown-preview-view, .cm-content) .image-embed:not([alt~="round"])::after,
 body.theme-light.n2o-aged-photos .cm-content .image-embed:not([alt~="round"]) .image-wrapper::after,
-body.theme-light .markdown-rendered .image-embed[alt~="aged"]:not([alt~="round"])::after,
+body.theme-light :is(.markdown-preview-view, .cm-content) .image-embed[alt~="aged"]:not([alt~="round"])::after,
 body.theme-light .cm-content .image-embed[alt~="aged"]:not([alt~="round"]) .image-wrapper::after {
   background:
     var(--n2o-tex-aged-crease) 0 0 / 100% 100% no-repeat,
@@ -5093,7 +5093,7 @@ body.theme-light:not(.n2o-code-light):not(.n2o-code-contrast) {
   --code-normal-inline: var(--n2o-green);
 }
 
-body.theme-light:not(.n2o-code-light):not(.n2o-code-contrast) .markdown-rendered code:not(pre code),
+body.theme-light:not(.n2o-code-light):not(.n2o-code-contrast) :is(.markdown-preview-view, .cm-content) code:not(pre code),
 body.theme-light:not(.n2o-code-light):not(.n2o-code-contrast) .cm-inline-code {
   background-color: rgba(226, 224, 220, 0.5);
   color: var(--code-normal-inline);
@@ -5101,7 +5101,7 @@ body.theme-light:not(.n2o-code-light):not(.n2o-code-contrast) .cm-inline-code {
 
 /* The block itself. Rounded, quiet border, and the flair sits on the dark
  * surface so it needs lifting off the near-black. */
-body:where(.theme-light):not(.n2o-code-light) .markdown-rendered pre,
+body:where(.theme-light):not(.n2o-code-light) :is(.markdown-preview-view, .cm-content) pre,
 body:where(.theme-light):not(.n2o-code-light) .HyperMD-codeblock-bg {
   border-radius: var(--code-radius, 6px);
 }
@@ -5121,7 +5121,7 @@ body.theme-light:not(.n2o-code-light):not(.n2o-code-contrast) .code-block-flair 
  * selector can match on. :has() does work and can spot an empty flair on the
  * opening line, but CSS cannot style the following lines of that block, so
  * the whole-block effect is not reachable. */
-body:where(.theme-light):not(.n2o-code-plain-as-code) .markdown-rendered pre:has(> code:not([class*="language-"])) {
+body:where(.theme-light):not(.n2o-code-plain-as-code) :is(.markdown-preview-view, .cm-content) pre:has(> code:not([class*="language-"])) {
   background-color: var(--background-primary-alt);
   color: var(--text-normal);
   border: 1px solid var(--divider-color);
@@ -5131,7 +5131,7 @@ body:where(.theme-light):not(.n2o-code-plain-as-code) .markdown-rendered pre:has
   padding: 14px 16px;
 }
 
-body:where(.theme-light):not(.n2o-code-plain-as-code) .markdown-rendered pre:has(> code:not([class*="language-"])) code {
+body:where(.theme-light):not(.n2o-code-plain-as-code) :is(.markdown-preview-view, .cm-content) pre:has(> code:not([class*="language-"])) code {
   color: inherit;
   font-family: inherit;
 }
@@ -5224,32 +5224,32 @@ body:where(.theme-light).n2o-code-text-large {
 /* Line height applies in both renderers. Padding is reading mode only: in live
  * preview each line is its own element, so padding there would space every
  * line rather than the block. */
-:where(.theme-light) .markdown-rendered pre,
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) pre,
 :where(.theme-light) .HyperMD-codeblock-bg {
   line-height: var(--n2o-code-leading);
 }
 
-:where(.theme-light) .markdown-rendered pre {
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) pre {
   padding: var(--n2o-code-pad);
 }
 
 /* Code text size, wired.
  *
  * --code-size is not read by Obsidian: the theme sets
- * font-size: var(--font-paragraph) on every .cm-line and on .markdown-rendered,
+ * font-size: var(--font-paragraph) on every .cm-line and on .markdown-preview-view,
  * and a code block is made of those, so code inherited the prose size and the
  * Code size control did nothing.
  *
  * The live-preview selector carries four classes because the rule it has to
  * beat, .cm-contentContainer .cm-content .cm-line, carries three. */
 :where(.theme-light) .cm-contentContainer .cm-content .cm-line.HyperMD-codeblock,
-:where(.theme-light) .markdown-rendered pre {
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) pre {
   font-size: var(--code-size);
 }
 /* the code inside the block takes the block's size, not the factor again:
  * measured, Small at 0.78em on both came out at 0.78 x 0.78 of the body,
  * 11px */
-:where(.theme-light) .markdown-rendered pre code {
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) pre code {
   font-size: 1em;
 }
 
@@ -5283,9 +5283,9 @@ body:where(.theme-light).n2o-code-font-body {
  * rule deliberately still wins over this: it carries far higher specificity,
  * so a fence with no language keeps the body font whatever is chosen here. */
 :where(.theme-light) .cm-inline-code,
-:where(.theme-light) .markdown-rendered pre,
-:where(.theme-light) .markdown-rendered pre code,
-:where(.theme-light) .markdown-rendered code {
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) pre,
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) pre code,
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) code {
   font-family: var(--n2o-code-font);
 }
 
@@ -5761,17 +5761,17 @@ body.theme-light:where(.n2o-palette-ink, .n2o-palette-oxblood, .n2o-palette-grap
   body.theme-light .callout::after {
     display: none;
   }
-  body.theme-light .markdown-rendered,
+  body.theme-light :is(.markdown-preview-view, .cm-content),
   body.theme-light .cm-content {
     text-shadow: none;
   }
   body.theme-light .callout,
-  body.theme-light .markdown-rendered blockquote,
-  body.theme-light .markdown-rendered img {
+  body.theme-light :is(.markdown-preview-view, .cm-content) blockquote,
+  body.theme-light :is(.markdown-preview-view, .cm-content) img {
     filter: none;
     box-shadow: none;
   }
-  body.theme-light .markdown-rendered table {
+  body.theme-light :is(.markdown-preview-view, .cm-content) table {
     box-shadow: none;
   }
 }
@@ -5796,8 +5796,8 @@ body.theme-light.is-phone .cm-sizer {
 }
 /* A table wider than the phone scrolls inside its own card instead of being
  * cut off at the sheet's edge with its last columns unreachable. */
-body.theme-light.is-phone .markdown-rendered .table-wrapper,
-body.theme-light.is-phone .markdown-rendered .el-table,
+body.theme-light.is-phone :is(.markdown-preview-view, .cm-content) .table-wrapper,
+body.theme-light.is-phone :is(.markdown-preview-view, .cm-content) .el-table,
 body.theme-light.is-phone .markdown-source-view .table-wrapper {
   overflow-x: auto;
   max-width: 100%;
