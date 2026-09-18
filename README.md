@@ -29,6 +29,33 @@
 
 ---
 
+<p align="center">
+  <b>Contents</b>
+</p>
+
+<p align="center">
+  <a href="#a-page-not-a-screen">A page, not a screen</a> /
+  <a href="#the-details-we-sweated">The details we sweated</a> /
+  <a href="#thirteen-callouts">Thirteen callouts</a> /
+  <a href="#quotes">Quotes</a> /
+  <a href="#seven-palettes">Seven palettes</a>
+  <br/>
+  <a href="#pictures">Pictures</a> /
+  <a href="#sizing-and-the-one-thing-that-catches-people">Sizing</a> /
+  <a href="#captions">Captions</a> /
+  <a href="#embedded-notes">Embedded notes</a> /
+  <a href="#the-rest-of-the-page">The rest of the page</a>
+  <br/>
+  <a href="#made-to-be-read">Made to be read</a> /
+  <a href="#make-it-yours">Make it yours</a> /
+  <a href="#install-the-settings-plugin-too">Settings plugin</a> /
+  <a href="#install">Install</a> /
+  <a href="#light-only">Light only</a> /
+  <a href="#licence">Licence</a>
+</p>
+
+---
+
 ## Install the settings plugin too
 
 The theme looks the way it is meant to on its own. Every default below is the
