@@ -1,6 +1,6 @@
 /*
 N2O PAPER
-Version 1.0.4
+Version 1.0.5
 
 A theme for Obsidian, by N2O Sync.
 https://n2osync.com
@@ -2456,6 +2456,31 @@ body.theme-light .workspace-split.mod-right-split {
   --text-selection: rgba(255, 253, 246, 0.22);
   --text-accent: var(--n2o-panel-ink);
   --text-accent-hover: #ffffff;
+  /* The accent is mixed to sit on CREAM paper, and the panel is a dark shade
+   * of the same hue, so anything drawn in accent on the panel disappears:
+   * measured at 1.87 against the bookcloth on N2O Sync's dashboard, where the
+   * italic display words, the feature numbers and the tier icon all went.
+   *
+   * Lifting the whole accent FAMILY here rather than writing a rule per
+   * offender is the point. Every other text token on this panel is already
+   * redefined a few lines up; the accent was the one left at its page value,
+   * and any view that draws a control or a mark in accent falls into that
+   * gap, ours and everybody else's. Mixed from --accent-h/s/l rather than a
+   * fixed colour so it follows the palette and the accent control, and with
+   * color-mix rather than relative colour syntax, which the theme lint
+   * refuses. */
+  --n2o-panel-accent: color-mix(
+    in srgb,
+    hsl(var(--accent-h) var(--accent-s) var(--accent-l)) 42%,
+    var(--n2o-panel-ink)
+  );
+  --color-accent: var(--n2o-panel-accent);
+  --color-accent-1: var(--n2o-panel-accent);
+  --color-accent-2: var(--n2o-panel-accent);
+  --interactive-accent: var(--n2o-panel-accent);
+  --interactive-accent-hover: var(--n2o-panel-ink);
+  /* a pale chip on dark cloth, so what sits ON it has to be dark */
+  --text-on-accent: var(--n2o-panel-base);
   --link-color: var(--n2o-panel-ink);
   --tag-background: rgba(255, 253, 246, 0.14);
   --tag-color: var(--n2o-panel-ink);
