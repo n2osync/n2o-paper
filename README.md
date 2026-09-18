@@ -1,16 +1,36 @@
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="images/n2o-wordmark-dark.svg">
-  <img src="images/n2o-wordmark.svg" alt="N2O" height="46">
-</picture>
+<p align="center">
+  <img src="https://n2osync.com/logo-square.png" alt="N2O Paper" width="110" />
+</p>
 
-# N2O Paper
+<h1 align="center">N2O Paper</h1>
 
-A light theme for Obsidian that reads like paper on a desk. Warm cream sheets,
-bookcloth sidebars, tape and pencil marks, and seven colour palettes taken from
-the traditional colours of Japan.
+<p align="center">
+  <strong>A light theme for Obsidian that reads like paper on a desk.</strong><br/>
+  Warm cream sheets, bookcloth sidebars, tape and pencil marks, and seven colour palettes taken from the traditional colours of Japan.
+</p>
 
-Part of **N2O**, with [N2O Paper Settings](https://github.com/n2osync/n2o-paper-settings)
-for the controls and [N2O Sync](https://n2osync.com) for Notion.
+<p align="center">
+  <a href="https://github.com/n2osync/n2o-paper/releases/latest"><img src="https://img.shields.io/github/v/release/n2osync/n2o-paper?style=flat-square&sort=semver&label=version" alt="Latest release"></a>
+  <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="MIT licence">
+  <img src="https://img.shields.io/badge/Obsidian-1.6%2B-7c3aed?style=flat-square" alt="Obsidian 1.6+">
+  <img src="https://img.shields.io/badge/palettes-7-3e542b?style=flat-square" alt="Seven palettes">
+</p>
+
+<p align="center">
+  <a href="https://n2osync.com">Website</a> /
+  <a href="https://github.com/n2osync/n2o-paper-settings">Settings plugin</a> /
+  <a href="https://github.com/n2osync/n2o-paper/issues/new">Report a bug</a> /
+  <a href="https://github.com/n2osync/n2o-paper/issues/new">Request a feature</a>
+</p>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/palettes.gif" alt="Switching between the seven palettes of the N2O Paper theme in Obsidian" width="820" />
+</p>
+
+---
+
+> **Not an Obsidian product.** N2O Paper is an independent theme. It is not made
+> by, endorsed by, or affiliated with Obsidian.
 
 ![N2O Paper in the Forest palette](images/palette-forest.jpg)
 
