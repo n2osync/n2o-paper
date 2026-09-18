@@ -1,6 +1,6 @@
 /*
 N2O PAPER
-Version 1.0.1
+Version 1.0.2
 
 A theme for Obsidian, by N2O Sync.
 https://n2osync.com
@@ -1041,12 +1041,12 @@ Preview Mode
 }
 
 /*.markdown-rendered div:has( > :is(p,pre,table,ul,ol)) + div > :is(h1,h2,h3,h4,h5,h6) {
-  margin: calc(var(--heading-spacing) + 8px) 0 calc(var(--heading-spacing) + -57px) !important;
+  margin: calc(var(--heading-spacing) + 8px) 0 calc(var(--heading-spacing) + -57px);
 }*/
 
 :where(.theme-light) .markdown-rendered p {margin-bottom: 28px}
 
-:where(.theme-light) .markdown-rendered .metadata-properties-heading:before {font-size: 10px !important;}
+body.theme-light .markdown-rendered .metadata-properties-heading:before {font-size: 10px;}
 
 :where(.theme-light) .metadata-container .metadata-add-button {cursor: pointer; transition: all .07s linear;}
 :where(.theme-light) .show-properties .metadata-container {padding-bottom: 40px}
@@ -1064,7 +1064,7 @@ Body Lists
 
 :where(.theme-light) .markdown-rendered.show-indentation-guide li > ul::before, :where(.theme-light) .markdown-rendered.show-indentation-guide li > ol::before {border: 0;}
 
-:where(.theme-light) .cm-indent::before {border:0 !important;}
+body.theme-light .cm-indent::before {border:0;}
 
 :where(.theme-light) div > ul,
 :where(.theme-light) div > ol {
@@ -1207,9 +1207,9 @@ Tags Styles
 
 :where(.theme-light) .cm-hashtag.cm-hashtag-begin {padding-right: 0;}
 
-:where(.theme-light) .cm-hashtag.cm-hashtag-end {
+body.theme-light .cm-hashtag.cm-hashtag-end {
   padding-left: 0;
-  padding-right: var(--tag-padding-x) !important;
+  padding-right: var(--tag-padding-x);
 }
 
 
@@ -1421,7 +1421,7 @@ Tags Styles
   /* box-shadow: rgba(0, 0, 0, 0.3) 0 0 1rem -0.3rem; */
   position: relative;
   padding: var(--size-2-3);
-  padding-left: var(--size-4-3) !important;
+  padding-left: var(--size-4-3);
   border-bottom: var(--divider-width) solid var(--divider-color);
   border-left: 1px solid var(--color-base-20);
   left: -1px; z-index: 2;
@@ -1444,7 +1444,7 @@ Tags Styles
 :where(.theme-light) .sidebar-toggle-button {padding-left: var(--size-4-3); opacity: .5;}
 :where(.theme-light) .workspace-tab-header-inner {padding: 0 var(--size-4-1);}
 
-:where(.theme-light) .nav-header,
+/* the nav header keeps the wider inset set above; this is for the root folder title */
 :where(.theme-light) .mod-root > .nav-folder-title[data-path="/"] {padding-left: var(--size-4-2);}
 
 :where(.theme-light) .search-result-file-matches {box-shadow: none;}
@@ -1515,11 +1515,11 @@ body:where(.theme-light):not(.n2o-new-note-button-top) .clickable-icon[aria-labe
 
 /* SETTINGS MODAL                                      */
 /* ─────────────────────────────────────────────────── */
-:where(.theme-light) .setting-item.setting-item-heading,
-:where(.theme-light) .vertical-tab-content h2 {
+body.theme-light .setting-item.setting-item-heading,
+body.theme-light .vertical-tab-content h2 {
   border-bottom: 1px solid rgba(0, 0, 0, .1);
   padding-bottom: 10px;
-  font-size: 1.3rem !important;
+  font-size: 1.3rem;
 }
 :where(.theme-light) .vertical-tab-content h3 {font-size: 1rem;}
 
@@ -1554,8 +1554,8 @@ body:where(.theme-light):not(.n2o-hide-scrollbar) ::-webkit-scrollbar-thumb {
 
 :where(.theme-light) .workspace .mod-root .workspace-tab-header {order: 2;}
 
-:where(body.theme-light).n2o-small-pinned-tabs .workspace-tab-header:has(.mod-pinned) {
-  max-width: 70px !important;
+body.theme-light.n2o-small-pinned-tabs .workspace-tab-header:has(.mod-pinned) {
+  max-width: 70px;
   order: 1;
 }
 
@@ -1617,10 +1617,10 @@ body:where(.theme-light):not(.n2o-hide-scrollbar) ::-webkit-scrollbar-thumb {
   padding-top: 5px;
 }
 
-:where(.theme-light) .task-list-item-checkbox {
+body.theme-light .task-list-item-checkbox {
   vertical-align: middle;
   position: relative;
-  top: 2px !important;
+  top: 2px;
 }
 
 :where(.theme-light) li.task-list-item.plugin-tasks-list-item {
@@ -1631,13 +1631,13 @@ body:where(.theme-light):not(.n2o-hide-scrollbar) ::-webkit-scrollbar-thumb {
   vertical-align: middle;
 }
 
-:where(.theme-light) li.task-list-item.plugin-tasks-list-item > ul,
-:where(.theme-light) li.task-list-item.plugin-tasks-list-item > ol {
+body.theme-light li.task-list-item.plugin-tasks-list-item > ul,
+body.theme-light li.task-list-item.plugin-tasks-list-item > ol {
   flex: 0 0 100%;
   width: 100%;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-  padding-top: 0 !important;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
 }
 
 :where(.theme-light) li.task-list-item.plugin-tasks-list-item .task-extras {
@@ -1925,16 +1925,13 @@ body:where(.theme-light):not(.n2o-plain-checkboxes) li[data-task='b'] > p > inpu
 /* CUSTOM CALLOUTS                                  */
 /* ─────────────────────────────────────────────────── */
 
-:where(.theme-light) .callout[data-callout-metadata*="black"] {background-color: rgba(var(--color-black-rgb)) !important; color: #fff;}
-:where(.theme-light) .callout[data-callout-metadata*="black"] .callout-title {color: #fff;}
-
-:where(.theme-light) .callout[data-callout-metadata*="gray"],
-:where(.theme-light) .callout[data-callout-metadata*="grey"] {background-color: rgba(var(--color-gray-rgb), .30);}
-:where(.theme-light) .callout[data-callout-metadata*="gray"] .callout-title,
-:where(.theme-light) .callout[data-callout-metadata*="grey"] .callout-title {color: rgb(var(--color-black-rgb));}
+/* The black and grey metadata callouts came over from the port reading
+ * --color-black-rgb and --color-gray-rgb. Obsidian defines neither, so every
+ * one of those declarations was invalid and painted nothing, even with
+ * !important on it. Removed rather than given invented colours: this theme
+ * dresses a callout as a taped scrap, and the tape carries its colour. */
 
 :where(.theme-light) .callout-icon .svg-icon {color: inherit}
-/* .callout[data-callout-metadata] .callout-title {color: rgb(0, 0, 0);} */
 
 /* =====================================================================
  * N2O PAPER PALETTE
@@ -3910,9 +3907,8 @@ body.theme-light:not(.n2o-flat) .cm-inline-code {
  * and a display block is the one place on the page a plate would press
  * deepest. Inline maths takes the body's touch through inheritance. */
 body.theme-light:not(.n2o-flat) .markdown-rendered .math-block,
-body.theme-light:not(.n2o-flat) .markdown-rendered mjx-container[display="true"],
-body.theme-light:not(.n2o-flat) .cm-embed-block.math-block,
-body.theme-light:not(.n2o-flat) .cm-line .cm-math:has(mjx-container[display="true"]) {
+body.theme-light:not(.n2o-flat) .markdown-rendered .MathJax[display="true"],
+body.theme-light:not(.n2o-flat) .cm-embed-block.math-block {
   text-shadow:
     0 1px 0 rgba(255, 253, 246, 0.85),
     0 2px 1px rgba(255, 253, 246, 0.35),
@@ -4608,8 +4604,8 @@ body.theme-light .markdown-rendered .math-block,
 body.theme-light .cm-content .cm-embed-block.math-block {
   margin: 1.1em 0 1.3em;
 }
-body.theme-light .markdown-rendered .math-inline mjx-container,
-body.theme-light .cm-content .cm-math mjx-container {
+body.theme-light .markdown-rendered .math-inline .MathJax,
+body.theme-light .cm-content .cm-math .MathJax {
   font-size: 1.08em;
 }
 
