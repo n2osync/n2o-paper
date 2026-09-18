@@ -42,16 +42,19 @@
   <br/>
   <a href="#seven-palettes">Seven palettes</a> /
   <a href="#pictures">Pictures</a> /
+  <a href="#the-four-things-you-can-write">How to write one</a> /
+  <a href="#the-flags">The flags</a> /
+  <a href="#flags-and-a-caption-together">Flags + caption</a>
+  <br/>
   <a href="#sizing-and-the-one-thing-that-catches-people">Sizing</a> /
   <a href="#captions">Captions</a> /
-  <a href="#embedded-notes">Embedded notes</a>
-  <br/>
+  <a href="#embedded-notes">Embedded notes</a> /
   <a href="#ageing-everything">Ageing</a> /
-  <a href="#the-rest-of-the-page">The rest of the page</a> /
+  <a href="#the-rest-of-the-page">The rest of the page</a>
+  <br/>
   <a href="#made-to-be-read">Made to be read</a> /
   <a href="#make-it-yours">Make it yours</a> /
-  <a href="#install">Install</a>
-  <br/>
+  <a href="#install">Install</a> /
   <a href="#light-only">Light only</a> /
   <a href="#licence">Licence</a>
 </p>
@@ -175,56 +178,105 @@ nothing coloured but the two fixed heading levels.
 A picture is an instant print laid on the sheet. Warm white frame paper with a
 grain of its own, deeper at the foot, a hairline edge, a faint sheen where the
 light catches it, and one corner lifting a little. That is the default and it
-costs you nothing: write the embed and you get the print.
+costs nothing: write the embed and you get the print.
+
+```
+![[cabin.png]]
+```
+
+Everything past that is written after a pipe. Obsidian puts what follows the
+pipe into the picture's alt text, and the theme reads it.
+
+### The four things you can write
+
+Every picture takes up to four pieces, in this order, each separated by a pipe:
+
+```
+![[ file | flags | caption | width ]]
+```
+
+You can leave any of them out. The order is what matters, not the count.
+
+| What you write | What you get |
+|---|---|
+| `![[cabin.png]]` | the print, on the sheet |
+| `![[cabin.png\|400]]` | the print, 400px wide |
+| `![[cabin.png\|A cabin in the pines]]` | captioned in pen along the foot |
+| `![[cabin.png\|A cabin in the pines\|400]]` | captioned, 400px wide |
+| `![[cabin.png\|left]]` | floated into the left margin |
+| `![[cabin.png\|aged\|A cabin in the pines\|400]]` | aged, captioned and sized, all three |
+
+### The flags
+
+A flag is a single word in the flags position. Six of them do something:
+
+| Flag | What it does |
+|---|---|
+| `left` | floats the picture into the left margin, the text wrapping past it |
+| `right` | the same on the right |
+| `round` | a round print, no frame and no caption, because there is no foot to write on |
+| `aged` | one photo faded warm, with dust, fine scratches and a crease |
+| `seamless` | for an embedded NOTE: no frame, no paperclip, the text flowing straight in |
+| `torn` | for an embedded NOTE: a torn scrap of khaki |
 
 ![A print floated into the left margin, with the text wrapping past it](https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/pic-left.png)
 
-Everything past that is a flag. Obsidian puts whatever follows the pipe into the
-embed's alt text, and the theme reads a word there as a switch.
-
-| Write this | You get |
-|---|---|
-| `![[photo.png]]` | the print, on the sheet |
-| `![[photo.png\|left]]` | floated into the left margin, the text wrapping past it |
-| `![[photo.png\|right]]` | the same on the right |
-| `![[photo.png\|round]]` | a round print, no frame |
-| `![[photo.png\|aged]]` | one photo faded warm, with dust, fine scratches and a crease |
-| `![[photo.png\|A cabin in the pines]]` | the print, captioned in pen along its foot |
-
-A round print drops the frame entirely.
-
 ![A round print](https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/pic-round.png)
+
+### Flags and a caption together
+
+Put the flag first, the caption after it, a pipe between them:
+
+```
+![[cabin.png|aged|A cabin in the pines|340]]
+```
+
+![An aged print, captioned in pen on its foot](https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/pipe-demo.png)
+
+**This one needs the settings plugin.** A theme is CSS, the caption it draws is
+the alt text itself, and CSS cannot take a word out of the middle of an
+attribute. The plugin splits the two apart for it. Without the plugin the flag
+and the caption still work on their own, just not together.
+
+The pipe is what makes it unambiguous. A caption is free to contain a flag word:
+
+```
+![[seine.png|left|The left bank of the Seine|320]]
+```
+
+floats the picture and captions it "The left bank of the Seine", with the word
+`left` left alone where it belongs.
 
 ### Sizing, and the one thing that catches people
 
-Obsidian reads a width only after a FURTHER pipe, so the flag goes first and the
-number goes last:
+The width goes LAST, after its own pipe:
 
 ```
-![[photo.png|left|300]]     300px wide, in the left margin
-![[photo.png|left 300]]     left margin, and NO width
+![[cabin.png|left|300]]     300px wide, in the left margin
+![[cabin.png|left 300]]     left margin, and NO width
 ```
+
+The second one looks like it should work and does not. `left 300` is one piece
+of text: the theme sees the word `left` in it and floats the picture, Obsidian
+sees no width field at all and sets none.
 
 ![The same picture at 160px, 480px and the full width of the column](https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/pic-sizes.png)
 
-The second one looks like it should work and does not. `left 300` is one piece
-of alt text: the theme sees the word `left` in it and floats the picture,
-Obsidian sees no width field at all and sets none.
-
 ### Captions
+
+The caption is written in pen across the foot of the print.
 
 ![A print captioned in pen along its foot](https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/pic-caption.png)
 
-Any text that is not a flag word becomes the caption, written in pen across the
-foot of the print. A bare file name does not: `.png`, `.jpg`, `.jpeg`, `.gif`,
-`.webp`, `.svg`, `.avif` and `.bmp` are recognised and left off, so an embed you
-never captioned stays clean instead of being labelled with its own filename.
+A bare file name is not a caption: `.png`, `.jpg`, `.jpeg`, `.gif`, `.webp`,
+`.svg`, `.avif` and `.bmp` are recognised and left off, so a picture you never
+captioned stays clean instead of being labelled with its own filename.
 
 ### Embedded notes
 
 A note embedded in another note is a sheet held on with a steel paperclip.
 
-| Write this | You get |
+| What you write | What you get |
 |---|---|
 | `![[note]]` | the sheet, with the clip over its top edge |
 | `![[note\|seamless]]` | no frame and no clip, the text flowing straight in |
@@ -238,9 +290,9 @@ A note embedded in another note is a sheet held on with a steel paperclip.
 
 ![An aged print: faded warm, with dust, fine scratches and a crease](https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/pic-aged.png)
 
-`aged` on one embed ages that photo. The **Aged photos** switch under Paper in
-the settings plugin ages every photo in the vault instead, which is worth trying
-once even if you turn it straight back off.
+`aged` on one picture ages that one. The **Aged photos** switch under Paper in
+the settings plugin ages every photo in the vault instead, and then captions
+work normally on all of them without needing a flag at all.
 
 ## The rest of the page
 
