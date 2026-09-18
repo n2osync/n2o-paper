@@ -1,6 +1,6 @@
 /*
 N2O PAPER
-Version 1.0.5
+Version 1.0.6
 
 A theme for Obsidian, by N2O Sync.
 https://n2osync.com
@@ -4911,7 +4911,8 @@ body.theme-light .cm-content .image-embed:not([alt~="round"]) .image-wrapper::af
   background: linear-gradient(118deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0) 62%, rgba(255, 255, 255, 0.07) 78%, rgba(255, 255, 255, 0) 92%);
 }
 /* the caption, in pen on the foot */
-body.theme-light :is(.markdown-preview-view, .cm-content) .image-embed:not([alt~="round"]):not([alt~="left"]):not([alt~="right"]):not([alt~="aged"]):not([alt=""]):not([alt$=".png" i]):not([alt$=".jpg" i]):not([alt$=".jpeg" i]):not([alt$=".gif" i]):not([alt$=".webp" i]):not([alt$=".svg" i]):not([alt$=".avif" i]):not([alt$=".bmp" i])::before {
+body.theme-light :is(.markdown-preview-view, .cm-content) .image-embed:not([alt~="round"]):not([alt~="left"]):not([alt~="right"]):not([alt~="aged"]):not([alt=""]):not([alt$=".png" i]):not([alt$=".jpg" i]):not([alt$=".jpeg" i]):not([alt$=".gif" i]):not([alt$=".webp" i]):not([alt$=".svg" i]):not([alt$=".avif" i]):not([alt$=".bmp" i])::before,
+body.theme-light :is(.markdown-preview-view, .cm-content) .image-embed[data-n2o-caption]::before {
   content: attr(alt);
   position: absolute;
   left: 14px;
@@ -4927,6 +4928,17 @@ body.theme-light :is(.markdown-preview-view, .cm-content) .image-embed:not([alt~
   font-size: 15px;
   line-height: 22px;
   color: rgba(34, 32, 28, 0.86);
+}
+
+/* A FLAGGED picture cannot be captioned by the theme alone: the caption is the
+ * alt text, the rule above has to exclude any alt carrying a flag word (or the
+ * word `aged` would be written across the foot of the print), and CSS cannot
+ * take a substring of an attribute. N2O Paper Settings computes the leftover
+ * and puts it here, so `![[a.png|aged A cabin in the pines]]` gets both. With
+ * no plugin installed nothing sets this and the theme behaves as it always
+ * has: it only ever ADDS a combination that was impossible. */
+body.theme-light :is(.markdown-preview-view, .cm-content) .image-embed[data-n2o-caption]::before {
+  content: attr(data-n2o-caption);
 }
 
 /* An embedded note is held on the sheet with a steel paperclip over its
