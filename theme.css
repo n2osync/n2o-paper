@@ -1,6 +1,6 @@
 /*
 N2O PAPER
-Version 1.0.7
+Version 1.0.8
 
 A theme for Obsidian, by N2O Sync.
 https://n2osync.com
@@ -1056,10 +1056,6 @@ Preview Mode
     margin-bottom: calc(var(--heading-spacing) + -12px);
     margin-top: calc(var(--heading-spacing) + 5px);
 }
-
-/*.markdown-preview-view div:has( > :is(p,pre,table,ul,ol)) + div > :is(h1,h2,h3,h4,h5,h6) {
-  margin: calc(var(--heading-spacing) + 8px) 0 calc(var(--heading-spacing) + -57px);
-}*/
 
 :where(.theme-light) :is(.markdown-preview-view, .cm-content) p {margin-bottom: 28px}
 
@@ -2315,13 +2311,9 @@ body.theme-light {
  */
 body:where(.theme-light).n2o-palette-ink { --n2o-h: 215; --n2o-s: 82%; --n2o-l: 24%; --n2o-shade: #0F2540; --n2o-sun: #7DB9DE; --n2o-sunlight: color-mix(in oklab, #7DB9DE 30%, #fffdf6); --text-highlight-bg: rgb(129 199 212 / 0.45); --text-selection: rgb(129 199 212 / 0.28); }
 body:where(.theme-light).n2o-palette-oxblood { --n2o-h: 355; --n2o-s: 44%; --n2o-l: 29%; --n2o-shade: #5A2229; --n2o-sun: #9F353A; --n2o-sunlight: #fffdf6; --text-highlight-bg: rgb(159 53 58 / 0.22); --text-selection: rgb(159 53 58 / 0.15); --scrollbar-color: hsl(355 20% 42% / 0.55); }
-/* Paper tint toward the hue (55-palette-tone.css) kept low for Oxblood and Rose:
- * at the default the whole page went pink. Higher specificity than that rule. */
-body.theme-light.n2o-palette-oxblood { --n2o-tone: 8%; }
 body:where(.theme-light).n2o-palette-graphite { --n2o-h: 60; --n2o-s: 5%; --n2o-l: 30%; --n2o-shade: #434343; --n2o-sun: #FFFFFB; --n2o-sunlight: color-mix(in oklab, #FFFFFB 30%, #fffdf6); --text-highlight-bg: rgb(145 152 159 / 0.45); --text-selection: rgb(145 152 159 / 0.28); }
 body:where(.theme-light).n2o-palette-sepia { --n2o-h: 22; --n2o-s: 45%; --n2o-l: 29%; --n2o-shade: #563F2E; --n2o-sun: #CA7A2C; --n2o-sunlight: color-mix(in oklab, #CA7A2C 30%, #fffdf6); --text-highlight-bg: rgb(105 176 172 / 0.45); --text-selection: rgb(105 176 172 / 0.28); }
 body:where(.theme-light).n2o-palette-rose { --n2o-h: 343; --n2o-s: 50%; --n2o-l: 46%; --n2o-shade: #6B2440; --n2o-sun: #DB4D6D; --n2o-sunlight: #fffdf6; --text-highlight-bg: rgb(220 159 180 / 0.45); --text-selection: rgb(220 159 180 / 0.28); }
-body.theme-light.n2o-palette-rose { --n2o-tone: 8%; }
 body:where(.theme-light).n2o-palette-coal { --n2o-h: 0; --n2o-s: 0%; --n2o-l: 26%; --n2o-shade: #1C1C1C; --n2o-sun: #FFFFFB; --n2o-sunlight: color-mix(in oklab, #FFFFFB 30%, #fffdf6); --text-highlight-bg: rgb(130 130 130 / 0.45); --text-selection: rgb(130 130 130 / 0.28); }
 body:where(.theme-light).n2o-paper-no-fibres { --n2o-l-fibres: none; }
 body:where(.theme-light).n2o-paper-no-tooth { --n2o-l-tooth: none; }
@@ -4697,7 +4689,21 @@ body.theme-light .cm-content .cm-math .MathJax {
 /* Mermaid. The library injects its own theme inside the SVG with id
  * selectors, so these need !important to reach it (none of them is a
  * custom property). Nodes are pieces of paper drawn in the accent, labels
- * in the serif, arrows in the accent, edge labels on the page. */
+ * in the serif, arrows in the accent, edge labels on the page.
+ *
+ * DO NOT REMOVE THE !important HERE. Owner decision, 2026-09-18.
+ *
+ * Obsidian's community scorecard counts all 23 of them and says "override
+ * styles by increasing selector specificity instead". That advice cannot work
+ * against what Mermaid does: an ID selector outranks ANY number of classes,
+ * because specificity compares the id column first and a class never carries
+ * into it. `.mermaid.mermaid.mermaid` still loses to `#mermaid-1`. Cascade
+ * layers make it worse rather than better, since Mermaid's injected <style> is
+ * unlayered and unlayered author styles beat layered ones.
+ *
+ * So the whole choice was: drop Mermaid styling and take the 23 warnings off
+ * the grade, or keep it. Keeping it. A diagram that clashes with the paper in
+ * somebody's vault costs more than a word on a scorecard. */
 body.theme-light .mermaid svg,
 body.theme-light .mermaid .nodeLabel,
 body.theme-light .mermaid .edgeLabel,
@@ -5714,44 +5720,219 @@ body.theme-light .kanban-plugin__lane-items > .kanban-plugin__placeholder:only-c
   margin-bottom: 6px;
 }
 
-/* The page's own tone. Forest's stock was chosen against its green, so
- * every other palette turns the whole of it toward its own hue: the desk,
- * the sheet, the cards and scraps, the rules, the cream ink on the panel,
- * the grey scale Obsidian builds its chrome from, and the ink itself.
- * Each keeps its own lightness and strength and goes part of the way, so
- * it still reads as paper rather than coloured stock. Forest keeps its
- * captured values, and is also what shows with no palette chosen.
+/* The page's own tone, resolved.
  *
- * Base strength, in a partial after every component that declares one of
- * these, so order wins here and print, later still, wins over it. */
-body.theme-light:where(.n2o-palette-ink, .n2o-palette-oxblood, .n2o-palette-graphite, .n2o-palette-sepia, .n2o-palette-rose, .n2o-palette-coal) {
-  --n2o-tone: 50%;
-  --n2o-desk: color-mix(in oklab, #dcd6c6, hsl(var(--n2o-h) 23.913% 81.961%) var(--n2o-tone));
-  --n2o-sheet: color-mix(in oklab, #f1ece1, hsl(var(--n2o-h) 36.364% 91.373%) var(--n2o-tone));
-  --n2o-paper: color-mix(in oklab, #ede8dc, hsl(var(--n2o-h) 32.075% 89.608%) var(--n2o-tone));
-  --n2o-paper-deep: color-mix(in oklab, #e4dfd1, hsl(var(--n2o-h) 26.027% 85.686%) var(--n2o-tone));
-  --n2o-card: color-mix(in oklab, #f6f3ea, hsl(var(--n2o-h) 40% 94.118%) var(--n2o-tone));
-  --n2o-menu-paper: color-mix(in oklab, #f3efe5, hsl(var(--n2o-h) 36.842% 92.549%) var(--n2o-tone));
-  --background-primary-alt: color-mix(in oklab, #f3efe4, hsl(var(--n2o-h) 38.462% 92.353%) var(--n2o-tone));
-  --n2o-paper-cream: color-mix(in oklab, #f3eee3, hsl(var(--n2o-h) 40% 92.157%) var(--n2o-tone));
-  --n2o-paper-pale: color-mix(in oklab, #f8f5ee, hsl(var(--n2o-h) 41.667% 95.294%) var(--n2o-tone));
-  --n2o-paper-grey: color-mix(in oklab, #ebe9e3, hsl(var(--n2o-h) 16.667% 90.588%) var(--n2o-tone));
-  --n2o-rule: color-mix(in oklab, #cdc7b6, hsl(var(--n2o-h) 18.699% 75.882%) var(--n2o-tone));
-  --n2o-panel-ink: color-mix(in oklab, #ece7d8, hsl(var(--n2o-h) 34.483% 88.627%) var(--n2o-tone));
-  --n2o-ink-on-moss: color-mix(in oklab, #eee9dc, hsl(var(--n2o-h) 34.615% 89.804%) var(--n2o-tone));
-  --n2o-ink: color-mix(in oklab, #2b2a26, hsl(var(--n2o-h) 6.173% 15.882%) var(--n2o-tone));
-  --text-muted: color-mix(in oklab, #5d5c55, hsl(var(--n2o-h) 4.494% 34.902%) var(--n2o-tone));
-  --text-faint: color-mix(in oklab, #9a978c, hsl(var(--n2o-h) 6.481% 57.647%) var(--n2o-tone));
-  --nav-item-color: color-mix(in oklab, #6b6a62, hsl(var(--n2o-h) 4.39% 40.196%) var(--n2o-tone));
-  --color-base-00: color-mix(in oklab, #f6f2e8, hsl(var(--n2o-h) 43.75% 93.725%) var(--n2o-tone));
-  --color-base-05: color-mix(in oklab, #f0ebdf, hsl(var(--n2o-h) 36.17% 90.784%) var(--n2o-tone));
-  --color-base-10: color-mix(in oklab, #ede8dc, hsl(var(--n2o-h) 32.075% 89.608%) var(--n2o-tone));
-  --color-base-15: color-mix(in oklab, #e8e3d6, hsl(var(--n2o-h) 28.125% 87.451%) var(--n2o-tone));
-  --color-base-20: color-mix(in oklab, #e4dfd1, hsl(var(--n2o-h) 26.027% 85.686%) var(--n2o-tone));
-  --color-base-25: color-mix(in oklab, #ddd8ca, hsl(var(--n2o-h) 21.839% 82.941%) var(--n2o-tone));
-  --color-base-30: color-mix(in oklab, #cdc7b6, hsl(var(--n2o-h) 18.699% 75.882%) var(--n2o-tone));
-  --color-base-50: color-mix(in oklab, #a8a498, hsl(var(--n2o-h) 8.421% 62.745%) var(--n2o-tone));
+ * Every value below is one captured cream mixed toward that palette's hue, then
+ * lifted toward white, with each surface put back at its own distance below the
+ * sheet. Resolved rather than written as a formula because lift and spread are
+ * operations on oklab lightness RELATIVE TO THE SHEET, which CSS cannot express.
+ * Nothing is lost: the palette is a seven option class-select, so there is no
+ * free hue for a live formula to follow.
+ *
+ * Chosen 2026-09-18: tint 40%, lift 20%, layers 2x, desk 1x.
+ * Regenerate with: node scripts/apply-tone.mjs --tone 40 --lift 20 --layers 2 --desk 1
+ *
+ * Forest is the captured stock, so its tint is 0 and it carries the lift alone.
+ * Its selector covers the class AND its absence, because a vault that has never
+ * opened the settings plugin has no palette class at all. */
+
+body.theme-light.n2o-palette-forest,
+body.theme-light:not([class*="n2o-palette-"]) {
+  --n2o-desk: #dfdacd;
+  --n2o-sheet: #f4f0e7;
+  --n2o-paper: #ece8de;
+  --n2o-paper-deep: #dad6cb;
+  --n2o-card: #fffdf6;
+  --n2o-menu-paper: #f9f6ee;
+  --background-primary-alt: #f9f6ed;
+  --n2o-paper-cream: #f8f4ec;
+  --n2o-paper-pale: #fffffc;
+  --n2o-paper-grey: #ebe9e5;
+  --n2o-rule: #aba799;
+  --n2o-panel-ink: #eae6da;
+  --n2o-ink-on-moss: #eeeae0;
+  --n2o-ink: #2b2a26;
+  --text-muted: #5d5c55;
+  --text-faint: #9a978c;
+  --nav-item-color: #6b6a62;
+  --color-base-00: #fffcf4;
+  --color-base-05: #f2eee4;
+  --color-base-10: #ece8de;
+  --color-base-15: #e2ded3;
+  --color-base-20: #dad6cb;
+  --color-base-25: #ccc8bc;
+  --color-base-30: #aba799;
+  --color-base-50: #67655c;
 }
+
+body.theme-light.n2o-palette-ink {
+  --n2o-desk: #d7d7d3;
+  --n2o-sheet: #efeeed;
+  --n2o-paper: #e6e6e4;
+  --n2o-paper-deep: #d2d3d0;
+  --n2o-card: #fcfcfa;
+  --n2o-menu-paper: #f4f4f2;
+  --background-primary-alt: #f4f4f1;
+  --n2o-paper-cream: #f3f2f0;
+  --n2o-paper-pale: #ffffff;
+  --n2o-paper-grey: #eaeae8;
+  --n2o-rule: #a3a39f;
+  --n2o-panel-ink: #e2e2df;
+  --n2o-ink-on-moss: #e8e8e5;
+  --n2o-ink: #292928;
+  --text-muted: #5a5a58;
+  --text-faint: #949592;
+  --nav-item-color: #676866;
+  --color-base-00: #fafaf8;
+  --color-base-05: #ececea;
+  --color-base-10: #e6e6e4;
+  --color-base-15: #dcdcd9;
+  --color-base-20: #d2d3d0;
+  --color-base-25: #c5c6c3;
+  --color-base-30: #a3a39f;
+  --color-base-50: #636361;
+}
+
+body.theme-light.n2o-palette-oxblood {
+  --n2o-desk: #dfd5ce;
+  --n2o-sheet: #f4ede7;
+  --n2o-paper: #ebe3dd;
+  --n2o-paper-deep: #d8d0ca;
+  --n2o-card: #fffaf6;
+  --n2o-menu-paper: #f9f3ee;
+  --background-primary-alt: #f9f3ed;
+  --n2o-paper-cream: #f8f1ec;
+  --n2o-paper-pale: #fffffd;
+  --n2o-paper-grey: #edeae7;
+  --n2o-rule: #aa9f98;
+  --n2o-panel-ink: #e8dfd9;
+  --n2o-ink-on-moss: #ede5e0;
+  --n2o-ink: #2b2826;
+  --text-muted: #5d5955;
+  --text-faint: #9a938c;
+  --nav-item-color: #6b6762;
+  --color-base-00: #fff9f5;
+  --color-base-05: #f1e9e3;
+  --color-base-10: #ebe3dd;
+  --color-base-15: #e1d9d3;
+  --color-base-20: #d8d0ca;
+  --color-base-25: #cbc2bc;
+  --color-base-30: #aa9f98;
+  --color-base-50: #66605b;
+}
+
+body.theme-light.n2o-palette-rose {
+  --n2o-desk: #dfd5cf;
+  --n2o-sheet: #f4ede9;
+  --n2o-paper: #ebe3df;
+  --n2o-paper-deep: #d8d0cb;
+  --n2o-card: #fffaf7;
+  --n2o-menu-paper: #f9f3f0;
+  --background-primary-alt: #f9f3ef;
+  --n2o-paper-cream: #f8f1ed;
+  --n2o-paper-pale: #fffffe;
+  --n2o-paper-grey: #edeae7;
+  --n2o-rule: #aa9f9a;
+  --n2o-panel-ink: #e8dfd9;
+  --n2o-ink-on-moss: #ede5e1;
+  --n2o-ink: #2b2826;
+  --text-muted: #5d5956;
+  --text-faint: #9a938e;
+  --nav-item-color: #6b6763;
+  --color-base-00: #fff9f6;
+  --color-base-05: #f1e9e5;
+  --color-base-10: #ebe3df;
+  --color-base-15: #e1d9d4;
+  --color-base-20: #d8d0cb;
+  --color-base-25: #cbc2bd;
+  --color-base-30: #aa9f9a;
+  --color-base-50: #67605c;
+}
+
+body.theme-light.n2o-palette-sepia {
+  --n2o-desk: #ded7cc;
+  --n2o-sheet: #f4eee7;
+  --n2o-paper: #ece6de;
+  --n2o-paper-deep: #d8d2ca;
+  --n2o-card: #fffcf6;
+  --n2o-menu-paper: #f8f4ed;
+  --background-primary-alt: #f8f4ec;
+  --n2o-paper-cream: #f7f2eb;
+  --n2o-paper-pale: #fffffd;
+  --n2o-paper-grey: #ebe9e5;
+  --n2o-rule: #aaa297;
+  --n2o-panel-ink: #e9e2d9;
+  --n2o-ink-on-moss: #ede8df;
+  --n2o-ink: #2b2926;
+  --text-muted: #5d5a55;
+  --text-faint: #9a958c;
+  --nav-item-color: #6b6862;
+  --color-base-00: #fffaf4;
+  --color-base-05: #f2ece4;
+  --color-base-10: #ece6de;
+  --color-base-15: #e2dcd3;
+  --color-base-20: #d8d2ca;
+  --color-base-25: #cbc4bc;
+  --color-base-30: #aaa297;
+  --color-base-50: #67635c;
+}
+
+body.theme-light.n2o-palette-graphite {
+  --n2o-desk: #dedbcc;
+  --n2o-sheet: #f4f1e7;
+  --n2o-paper: #ece9de;
+  --n2o-paper-deep: #d9d7ca;
+  --n2o-card: #fffdf5;
+  --n2o-menu-paper: #f8f7ed;
+  --background-primary-alt: #f8f7ec;
+  --n2o-paper-cream: #f7f5eb;
+  --n2o-paper-pale: #fffffb;
+  --n2o-paper-grey: #eae9e4;
+  --n2o-rule: #aba899;
+  --n2o-panel-ink: #eae7da;
+  --n2o-ink-on-moss: #edebdf;
+  --n2o-ink: #2b2a26;
+  --text-muted: #5d5c55;
+  --text-faint: #9a988c;
+  --nav-item-color: #6b6a62;
+  --color-base-00: #fffdf4;
+  --color-base-05: #f1efe3;
+  --color-base-10: #ece9de;
+  --color-base-15: #e2dfd3;
+  --color-base-20: #d9d7ca;
+  --color-base-25: #ccc9bc;
+  --color-base-30: #aba899;
+  --color-base-50: #67665c;
+}
+
+body.theme-light.n2o-palette-coal {
+  --n2o-desk: #dfd5cd;
+  --n2o-sheet: #f4ede7;
+  --n2o-paper: #ebe3dd;
+  --n2o-paper-deep: #d8d0c9;
+  --n2o-card: #fffaf6;
+  --n2o-menu-paper: #f9f3ee;
+  --background-primary-alt: #f9f3ed;
+  --n2o-paper-cream: #f8f1ec;
+  --n2o-paper-pale: #fffffd;
+  --n2o-paper-grey: #edeae7;
+  --n2o-rule: #a99f97;
+  --n2o-panel-ink: #e8dfd8;
+  --n2o-ink-on-moss: #ede5df;
+  --n2o-ink: #2b2826;
+  --text-muted: #5d5955;
+  --text-faint: #9a938c;
+  --nav-item-color: #6b6762;
+  --color-base-00: #fff9f5;
+  --color-base-05: #f1e9e3;
+  --color-base-10: #ebe3dd;
+  --color-base-15: #e1d9d2;
+  --color-base-20: #d8d0c9;
+  --color-base-25: #cbc2bb;
+  --color-base-30: #a99f97;
+  --color-base-50: #66605b;
+}
+
 
 /* The Note tape, and the tape of any type the table does not name, is
  * Forest's olive. Every other palette tapes it in its own colour at the
