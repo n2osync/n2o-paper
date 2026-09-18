@@ -71,7 +71,7 @@ become a dropdown, a slider or a colour swatch.
 > Search **N2O Paper Settings** in Settings, Community plugins, Browse. It will
 > install this theme for you as well, so either one can come first.
 
-![The settings tab](images/settings.jpg)
+![The settings tab](images/settings.png)
 
 ---
 
@@ -84,7 +84,7 @@ The window is a desk. The note is a sheet of cream stock resting on it, with a
 grain you can see at full zoom and never at reading distance, and a light that
 falls from the top left and softens at the foot of the page.
 
-![A note in N2O Paper, Forest palette](images/hero.jpg)
+![A note in N2O Paper, Forest palette](images/hero.png)
 
 ## The details we sweated
 
@@ -93,24 +93,24 @@ in one of thirteen colours. The torn edge is a real tear, drawn as a nine slice
 mask so it never repeats the same way twice, and the shadow follows the tear
 rather than a rectangle.
 
-![A callout: the tape, the torn edge, the paper grain](images/detail-tape.jpg)
+![A callout: the tape, the torn edge, the paper grain](images/detail-tape.png)
 
 **Tasks are pencil marks.** A checked box is drawn in pencil, and the line
 through the text is struck in the same hand. A nested list under a done task
 keeps its own ink.
 
-![Pencil checkboxes and a struck line](images/detail-tasks.jpg)
+![Pencil checkboxes and a struck line](images/detail-tasks.png)
 
 **Code sits on its own slip**, syntax coloured, with no paper texture over it,
 because ink on a printed slab does not break the way ink on paper does.
 
-![A code block on the sheet](images/detail-code.jpg)
+![A code block on the sheet](images/detail-code.png)
 
 **Tables are cards**, with a coloured header band, hairline rules and a quiet
 alternating tint. Dataview and Kanban get the same treatment: a board is a desk,
 each lane a sheet, each card a slip of paper.
 
-![A table as a card](images/detail-table.jpg)
+![A table as a card](images/detail-table.png)
 
 ## Thirteen callouts
 
@@ -118,7 +118,7 @@ Every type Obsidian ships, each with its own tape colour and icon. The tape
 lands in a different place on each one, the tear along the bottom is drawn fresh
 every time, and the tint of the paper shifts with the type.
 
-![The thirteen callout types in N2O Paper](images/callouts.jpg)
+![The thirteen callout types in N2O Paper](images/callouts.png)
 
 Three styles for the same thirteen. Taped scraps by default, full cards with a
 header band, or quiet callouts with no colour at all.
@@ -131,7 +131,7 @@ A quote is a sheet with a coil binding down its left edge. Punched holes, a
 tinted page, and the binding grows with the quote rather than sitting as a stub
 beside one line. Nest them and each level gets its own sheet.
 
-![Quotes in N2O Paper: single line, long, inline formatting, and three nested levels](images/quotes.jpg)
+![Quotes in N2O Paper: single line, long, inline formatting, and three nested levels](images/quotes.png)
 
 ## Seven palettes
 
@@ -143,30 +143,30 @@ from the traditional colours of Japan.
 
 **Forest**, the theme's own, measured from two meadow photographs.
 
-![Forest](images/palette-forest.jpg)
+![Forest](images/palette-forest.png)
 
 **Ink**, indigo dyeing: navy cloth, deep blue, a forget-me-not light.
 
-![Ink](images/palette-ink.jpg)
+![Ink](images/palette-ink.png)
 
 **Oxblood**, a dark blood red with an ENJI glow on the sidebars.
 
-![Oxblood](images/palette-oxblood.jpg)
+![Oxblood](images/palette-oxblood.png)
 
 **Rose**, rose in bloom, NAKABENI light on cream paper.
 
-![Rose](images/palette-rose.jpg)
+![Rose](images/palette-rose.png)
 
 **Sepia**, a tea house: scorched tea, chestnut, amber, a celadon cup.
 
-![Sepia](images/palette-sepia.jpg)
+![Sepia](images/palette-sepia.png)
 
 **Graphite** is pencil lead and **Coal** is sumi ink, both monochrome, with
 nothing coloured but the two fixed heading levels.
 
-![Graphite](images/palette-graphite.jpg)
+![Graphite](images/palette-graphite.png)
 
-![Coal](images/palette-coal.jpg)
+![Coal](images/palette-coal.png)
 
 ## Pictures
 
@@ -175,7 +175,7 @@ grain of its own, deeper at the foot, a hairline edge, a faint sheen where the
 light catches it, and one corner lifting a little. That is the default and it
 costs you nothing: write the embed and you get the print.
 
-![A print floated into the left margin, with the text wrapping past it](images/pic-left.jpg)
+![A print floated into the left margin, with the text wrapping past it](images/pic-left.png)
 
 Everything past that is a flag. Obsidian puts whatever follows the pipe into the
 embed's alt text, and the theme reads a word there as a switch.
@@ -191,7 +191,7 @@ embed's alt text, and the theme reads a word there as a switch.
 
 A round print drops the frame entirely.
 
-![A round print](images/pic-round.jpg)
+![A round print](images/pic-round.png)
 
 ### Sizing, and the one thing that catches people
 
@@ -203,7 +203,7 @@ number goes last:
 ![[photo.png|left 300]]     left margin, and NO width
 ```
 
-![The same picture at 160px, 480px and the full width of the column](images/pic-sizes.jpg)
+![The same picture at 160px, 480px and the full width of the column](images/pic-sizes.png)
 
 The second one looks like it should work and does not. `left 300` is one piece
 of alt text: the theme sees the word `left` in it and floats the picture,
@@ -211,7 +211,7 @@ Obsidian sees no width field at all and sets none.
 
 ### Captions
 
-![A print captioned in pen along its foot](images/pic-caption.jpg)
+![A print captioned in pen along its foot](images/pic-caption.png)
 
 Any text that is not a flag word becomes the caption, written in pen across the
 foot of the print. A bare file name does not: `.png`, `.jpg`, `.jpeg`, `.gif`,
@@ -228,13 +228,13 @@ A note embedded in another note is a sheet held on with a steel paperclip.
 | `![[note\|seamless]]` | no frame and no clip, the text flowing straight in |
 | `![[note\|torn]]` | a torn scrap of khaki |
 
-![A note embedded seamlessly, with no frame and no clip](images/pic-seamless.jpg)
+![A note embedded seamlessly, with no frame and no clip](images/pic-seamless.png)
 
-![A note embedded as a torn scrap of khaki](images/pic-torn.jpg)
+![A note embedded as a torn scrap of khaki](images/pic-torn.png)
 
 ### Ageing everything
 
-![An aged print: faded warm, with dust, fine scratches and a crease](images/pic-aged.jpg)
+![An aged print: faded warm, with dust, fine scratches and a crease](images/pic-aged.png)
 
 `aged` on one embed ages that photo. The **Aged photos** switch under Paper in
 the settings plugin ages every photo in the vault instead, which is worth trying
@@ -245,15 +245,15 @@ once even if you turn it straight back off.
 Lists and tasks, tables, links and tags, and the two community plugins most
 people live in. Nothing is left in Obsidian's default look.
 
-![Lists and tasks](images/02-lists-and-tasks.jpg)
+![Lists and tasks](images/02-lists-and-tasks.png)
 
-![Tables](images/05-tables.jpg)
+![Tables](images/05-tables.png)
 
-![Links, tags and embeds](images/06-links-tags-and-embeds.jpg)
+![Links, tags and embeds](images/06-links-tags-and-embeds.png)
 
-![A Dataview table](images/10-dataview.jpg)
+![A Dataview table](images/10-dataview.png)
 
-![A Kanban board](images/11-kanban.jpg)
+![A Kanban board](images/11-kanban.png)
 
 ## Made to be read
 
