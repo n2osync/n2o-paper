@@ -141,6 +141,62 @@ nothing coloured but the two fixed heading levels.
 
 ![Coal](images/palette-coal.jpg)
 
+## Pictures
+
+A picture is an instant print laid on the sheet. Warm white frame paper with a
+grain of its own, deeper at the foot, a hairline edge, a faint sheen where the
+light catches it, and one corner lifting a little. That is the default and it
+costs you nothing: write the embed and you get the print.
+
+Everything past that is a flag. Obsidian puts whatever follows the pipe into the
+embed's alt text, and the theme reads a word there as a switch.
+
+| Write this | You get |
+|---|---|
+| `![[photo.png]]` | the print, on the sheet |
+| `![[photo.png\|left]]` | floated into the left margin, the text wrapping past it |
+| `![[photo.png\|right]]` | the same on the right |
+| `![[photo.png\|round]]` | a round print, no frame |
+| `![[photo.png\|aged]]` | one photo faded warm, with dust, fine scratches and a crease |
+| `![[photo.png\|A cabin in the pines]]` | the print, captioned in pen along its foot |
+
+### Sizing, and the one thing that catches people
+
+Obsidian reads a width only after a FURTHER pipe, so the flag goes first and the
+number goes last:
+
+```
+![[photo.png|left|300]]     300px wide, in the left margin
+![[photo.png|left 300]]     left margin, and NO width
+```
+
+The second one looks like it should work and does not. `left 300` is one piece
+of alt text: the theme sees the word `left` in it and floats the picture,
+Obsidian sees no width field at all and sets none.
+
+### Captions
+
+Any text that is not a flag word becomes the caption, written in pen across the
+foot of the print. A bare file name does not: `.png`, `.jpg`, `.jpeg`, `.gif`,
+`.webp`, `.svg`, `.avif` and `.bmp` are recognised and left off, so an embed you
+never captioned stays clean instead of being labelled with its own filename.
+
+### Embedded notes
+
+A note embedded in another note is a sheet held on with a steel paperclip.
+
+| Write this | You get |
+|---|---|
+| `![[note]]` | the sheet, with the clip over its top edge |
+| `![[note\|seamless]]` | no frame and no clip, the text flowing straight in |
+| `![[note\|torn]]` | a torn scrap of khaki |
+
+### Ageing everything
+
+`aged` on one embed ages that photo. The **Aged photos** switch under Paper in
+the settings plugin ages every photo in the vault instead, which is worth trying
+once even if you turn it straight back off.
+
 ## The rest of the page
 
 Lists and tasks, tables, links and tags, and the two community plugins most
