@@ -1,6 +1,6 @@
 /*
 N2O PAPER
-Version 1.0.8
+Version 1.0.9
 
 A theme for Obsidian, by N2O Sync.
 https://n2osync.com
@@ -5132,8 +5132,18 @@ body.theme-light:not(.n2o-code-light):not(.n2o-code-contrast) {
  * The blocks go dark, inline code keeps the paper treatment.
  * Obsidian has no separate inline background variable, only
  * --code-normal-inline for the text, so the surface is set here. */
+/* Inline code is the palette's own ink, with a ceiling on how pale it may be.
+ *
+ * Six palettes sit between 24% and 30% lightness and read comfortably on the
+ * chip. Rose is 46%, nearly twice as light, so the same rule put pale pink on
+ * near white: measured off the rendered pixels at 3.91, under the 4.5 that
+ * normal text needs. It was the one palette that objectively failed.
+ *
+ * A ceiling rather than a new colour, so the ONLY palette that moves is the one
+ * that was broken. min() leaves 24, 25, 26, 29, 29 and 30 exactly where they
+ * were and pulls 46 down to 30. */
 body.theme-light:not(.n2o-code-light):not(.n2o-code-contrast) {
-  --code-normal-inline: var(--n2o-green);
+  --code-normal-inline: hsl(var(--n2o-h), var(--n2o-s), min(var(--n2o-l), 30%));
 }
 
 body.theme-light:not(.n2o-code-light):not(.n2o-code-contrast) :is(.markdown-preview-view, .cm-content) code:not(pre code),
