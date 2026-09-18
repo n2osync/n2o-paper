@@ -61,8 +61,6 @@
 
 ---
 
----
-
 > **Not an Obsidian product.** N2O Paper is an independent theme. It is not made
 > by, endorsed by, or affiliated with Obsidian.
 
@@ -169,9 +167,11 @@ from the traditional colours of Japan.
 **Graphite** is pencil lead and **Coal** is sumi ink, both monochrome, with
 nothing coloured but the two fixed heading levels.
 
-![Graphite](https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/palette-graphite.png)
+![Graphite, pencil lead](https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/palette-graphite.png)
 
-![Coal](https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/palette-coal.png)
+And Coal, sumi ink.
+
+![Coal, sumi ink](https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/palette-coal.png)
 
 ## Pictures
 
@@ -219,7 +219,11 @@ A flag is a single word in the flags position. Six of them do something:
 | `seamless` | for an embedded NOTE: no frame, no paperclip, the text flowing straight in |
 | `torn` | for an embedded NOTE: a torn scrap of khaki |
 
+`left` and `right` put the picture in the margin and let the text run past it.
+
 ![A print floated into the left margin, with the text wrapping past it](https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/pic-left.png)
+
+`round` drops the frame altogether, so there is no foot and no caption.
 
 ![A round print](https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/pic-round.png)
 
@@ -282,11 +286,18 @@ A note embedded in another note is a sheet held on with a steel paperclip.
 | `![[note\|seamless]]` | no frame and no clip, the text flowing straight in |
 | `![[note\|torn]]` | a torn scrap of khaki |
 
+`seamless`, for a note that should read as part of the page:
+
 ![A note embedded seamlessly, with no frame and no clip](https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/pic-seamless.png)
+
+`torn`, for one that should read as something slipped in:
 
 ![A note embedded as a torn scrap of khaki](https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/pic-torn.png)
 
 ### Ageing everything
+
+An aged print is faded warm and handled: dust, fine scratches, a crease with
+cracks running off it, worn pale edges and corners gone dark.
 
 ![An aged print: faded warm, with dust, fine scratches and a crease](https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/pic-aged.png)
 
@@ -296,16 +307,25 @@ work normally on all of them without needing a flag at all.
 
 ## The rest of the page
 
-Lists and tasks, tables, links and tags, and the two community plugins most
-people live in. Nothing is left in Obsidian's default look.
+Nothing is left in Obsidian's default look.
+
+**Lists and tasks.** Pencil checkboxes, a line struck in the same hand.
 
 ![Lists and tasks](https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/02-lists-and-tasks.png)
 
+**Tables**, as cards with a coloured header band and hairline rules.
+
 ![Tables](https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/05-tables.png)
+
+**Links, tags and embeds.** Tags are stamped, links take the palette's hue.
 
 ![Links, tags and embeds](https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/06-links-tags-and-embeds.png)
 
+**Dataview**, given the same card treatment as a plain table.
+
 ![A Dataview table](https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/10-dataview.png)
+
+**Kanban.** The board is a desk, each lane a sheet, each card a slip of paper.
 
 ![A Kanban board](https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/11-kanban.png)
 
