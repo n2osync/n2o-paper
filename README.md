@@ -60,16 +60,32 @@ because ink on a printed slab does not break the way ink on paper does.
 
 ![A code block on the sheet](images/detail-code.jpg)
 
-**A quote is a sheet with a coil binding** down its left edge, punched holes and
-all. Turn it off if you would rather have a plain rule.
-
-![A blockquote with its coil binding](images/detail-quote.jpg)
-
 **Tables are cards**, with a coloured header band, hairline rules and a quiet
 alternating tint. Dataview and Kanban get the same treatment: a board is a desk,
 each lane a sheet, each card a slip of paper.
 
 ![A table as a card](images/detail-table.jpg)
+
+## Thirteen callouts
+
+Every type Obsidian ships, each with its own tape colour and icon. The tape
+lands in a different place on each one, the tear along the bottom is drawn fresh
+every time, and the tint of the paper shifts with the type.
+
+![The thirteen callout types in N2O Paper](images/callouts.jpg)
+
+Three styles for the same thirteen. Taped scraps by default, full cards with a
+header band, or quiet callouts with no colour at all.
+
+![Switching between the taped, card and quiet callout styles](images/callout-styles.gif)
+
+## Quotes
+
+A quote is a sheet with a coil binding down its left edge. Punched holes, a
+tinted page, and the binding grows with the quote rather than sitting as a stub
+beside one line. Nest them and each level gets its own sheet.
+
+![Quotes in N2O Paper: single line, long, inline formatting, and three nested levels](images/quotes.jpg)
 
 ## Seven palettes
 
@@ -105,6 +121,21 @@ nothing coloured but the two fixed heading levels.
 ![Graphite](images/palette-graphite.jpg)
 
 ![Coal](images/palette-coal.jpg)
+
+## The rest of the page
+
+Lists and tasks, tables, links and tags, and the two community plugins most
+people live in. Nothing is left in Obsidian's default look.
+
+![Lists and tasks](images/02-lists-and-tasks.jpg)
+
+![Tables](images/05-tables.jpg)
+
+![Links, tags and embeds](images/06-links-tags-and-embeds.jpg)
+
+![A Dataview table](images/10-dataview.jpg)
+
+![A Kanban board](images/11-kanban.jpg)
 
 ## Made to be read
 
