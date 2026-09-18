@@ -1,6 +1,6 @@
 /*
 N2O PAPER
-Version 1.0.0
+Version 1.0.1
 
 A theme for Obsidian, by N2O Sync.
 https://n2osync.com
@@ -1254,9 +1254,6 @@ Tags Styles
 
 /*** body background color ***/
 :where(.theme-light) .view-content .cm-editor,
-:where(.theme-light) .workspace-split.mod-root .view-content {
-  /* background-color: var(--content-bgcolor) !important; */
-}
 
 /*** Headings ***/
 :where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-1.cm-line, :where(.theme-light) .markdown-rendered h1 {font-size: var(--size-h1); line-height: 1.2;}
@@ -1298,7 +1295,6 @@ Tags Styles
 :where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-6.cm-line:hover:before {
   --title-height-title-id: 12px;
   position: absolute;
-  top: calc(var(--title-height-title-id)/1.5);
   right: 0;
   top: 50%;
   transform: translateY(-50%);
@@ -1438,9 +1434,6 @@ Tags Styles
 
 :where(.theme-light) .workspace-ribbon.mod-left:before, 
 :where(body.theme-light).is-hidden-frameless:not(.is-popout-window) .sidebar-toggle-button.mod-right,
-:where(.theme-light) .workspace-tab-header-container {
-  /* background-color: var(--tab-container-background2) !important; */
-}
 
 /* .workspace-tabs.mod-top.mod-top-left-space .workspace-tab-header-container {background-color: var(--color-base-15)} */
 
@@ -1775,7 +1768,6 @@ body:where(.theme-light):not(.n2o-plain-checkboxes) input[data-task='<']:checked
 body:where(.theme-light):not(.n2o-plain-checkboxes) li[data-task='<'] > input:checked,
 body:where(.theme-light):not(.n2o-plain-checkboxes) li[data-task='<'] > p > input:checked {
   color: var(--text-faint);
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='h-5 w-5' viewBox='0 0 20 20' fill='currentColor'%3E%3Cpath fill-rule='evenodd' d='M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z' clip-rule='evenodd' /%3E%3C/svg%3E");
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='h-5 w-5' viewBox='0 0 20 20' fill='currentColor'%3E%3Cpath fill-rule='evenodd' d='M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z' clip-rule='evenodd' /%3E%3C/svg%3E");
 }
 body:where(.theme-light):not(.n2o-plain-checkboxes) input[data-task='?']:checked,
