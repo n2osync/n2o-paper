@@ -1,6 +1,6 @@
 /*
 N2O PAPER
-Version 1.0.11
+Version 1.0.12
 
 A theme for Obsidian, by N2O Sync.
 https://n2osync.com
@@ -515,6 +515,47 @@ settings:
       - n2o-table-card
       - n2o-table-ledger
       - n2o-table-rows
+-
+  id: n2o-synced
+  title: Synced pages
+  type: heading
+  level: 2
+-
+  id: n2o-synced-note
+  title: These only appear on pages synced from Notion
+  description: N2O Sync writes Notion's structure as custom callout types, because a callout is the only block Obsidian gives it to carry columns, folded headings and block colours in. The theme dresses each of them for what it is. If you do not sync from Notion, none of this is on your pages and none of these controls do anything.
+  type: heading
+  level: 3
+-
+  id: n2o-notion-tape-plain
+  title: One tape colour for Notion callouts
+  description: Notion's nine callout colours arrive as nine coloured tapes, matching the source page. Turn this on to put all nine on the theme's own olive instead, for a page of many callouts where nine colours is too many. Off by default.
+  type: class-toggle
+-
+  id: n2o-notion-pencil
+  title: Show the pencil on Notion callouts
+  description: Obsidian draws a pencil on any callout type it does not know, and Notion's own icon is already in the text, so a synced callout wears two. The pencil is hidden by default. Turn this on to get it back.
+  type: class-toggle
+-
+  id: n2o-heading-callouts-taped
+  title: Folded headings as taped scraps
+  description: Notion's foldable headings arrive as callouts rather than as heading tags, and are drawn as headings with a fold arrow. Turn this on to dress them as taped scraps like every other callout. Off by default.
+  type: class-toggle
+-
+  id: n2o-columns-taped
+  title: Columns as taped scraps
+  description: A Notion column is layout, not a notice, so it is drawn with no tape, no torn edge and no shadow. Turn this on to give each column the full scrap treatment. Off by default, and busy on a page of three column rows.
+  type: class-toggle
+-
+  id: n2o-sync-state-loud
+  title: Loud sync-state lines
+  description: The four lines N2O Sync writes about a note's own state are quiet by default, and the one that says everything is fine fades into the page. Turn this on to give all four a full tape. Off by default.
+  type: class-toggle
+-
+  id: n2o-bodyless-scrap
+  title: Keep the scrap on a one-line callout
+  description: A callout with a title and no body is drawn as just the label, because the reserved space below it would otherwise be an empty torn rectangle. Turn this on to keep the scrap under it. Off by default.
+  type: class-toggle
   -
     id: n2o-code
     title: Code
@@ -4912,6 +4953,28 @@ body.theme-light .callout[data-callout="n2o-purple"] { --n2o-tape-rot: -0.50deg;
 body.theme-light .callout[data-callout="n2o-pink"]   { --n2o-tape-rot: -0.88deg; --n2o-tilt: -0.33deg; }
 body.theme-light .callout[data-callout="n2o-red"]    { --n2o-tape-rot: -0.60deg; --n2o-tilt: -0.36deg; }
 
+/* ── The pencil ──────────────────────────────────────────────────────
+ *
+ * Obsidian draws a `pencil` icon for any callout type it does not recognise,
+ * and it does not recognise a single one of these. Notion's OWN icon is
+ * already in the title text, because that is where N2O Sync writes it, so
+ * every synced callout arrived wearing two icons: a pencil nobody chose,
+ * followed by the ⬜ or 🟠 the page actually has.
+ *
+ * The theme never set an icon here. This is Obsidian's fallback showing
+ * through a type nothing had claimed, which is the same shape as everything
+ * else found today: the platform answering a question the theme had not.
+ *
+ * Hidden rather than replaced. Replacing it would mean choosing nine icons to
+ * sit beside the nine Notion already supplied. */
+body.theme-light .callout:is(
+  [data-callout="n2o-gray"], [data-callout="n2o-brown"], [data-callout="n2o-orange"],
+  [data-callout="n2o-yellow"], [data-callout="n2o-green"], [data-callout="n2o-blue"],
+  [data-callout="n2o-purple"], [data-callout="n2o-pink"], [data-callout="n2o-red"]
+) > .callout-title > .callout-icon {
+  display: none;
+}
+
 /* NOTION COLUMNS                                        */
 /* ─────────────────────────────────────────────────── */
 
@@ -4992,6 +5055,205 @@ body.theme-light .callout:is([data-callout="multi-column"], [data-callout^="colu
  * misalignment rather than as spacing. */
 body.theme-light .callout[data-callout^="column"] > .callout-content > :first-child {
   margin-top: 0;
+}
+
+/* A CALLOUT WITH NOTHING IN IT                          */
+/* ─────────────────────────────────────────────────── */
+
+/* ## The scenario
+ *
+ * Notion's most common callout is one line. "Yellow. The classic note." No
+ * body, no second paragraph, just the sentence on the label. A page of nine of
+ * them is what a Notion colour reference looks like, and the owner's own
+ * Callout Rainbow is exactly that.
+ *
+ * This theme reserves 32px at the top of every callout for the tape, which
+ * hangs above the scrap rather than sitting in the flow. With a body that is
+ * the right amount of room. With NO body it produces a taped label followed by
+ * an empty torn rectangle about 60px tall containing three pixels of nothing,
+ * nine times down the page.
+ *
+ * Measured rather than guessed. Obsidian still builds the content element for
+ * a bodyless callout, holding a single `<p dir="auto"></p>` that genuinely
+ * matches `:empty`, and the callout comes out 61 to 62px tall of which 32 is
+ * the reservation and 3 is the paragraph.
+ *
+ * ## What this does
+ *
+ * When the body is empty, the callout IS the label. The scrap and its torn
+ * edge go, the reservation goes, and the tape sits in the flow as a tape
+ * rather than hanging off a rectangle that holds nothing.
+ *
+ * ## Why the selector is shaped like this
+ *
+ * `:has()` reaching THROUGH the content element in one flat selector, rather
+ * than `:empty` on the content itself, which never matches because the
+ * paragraph is a child and a child is content as far as `:empty` is concerned.
+ *
+ * Flat, and that matters: the first version nested one `:has()` inside another,
+ * `:has(> .callout-content:has(> p:only-child:empty))`. Nesting `:has()` is
+ * INVALID, so the browser threw the whole selector away and all four rules with
+ * it. Nothing changed on screen, the partial was plainly in the built and
+ * deployed theme.css, and it took asking the element directly whether it
+ * matched to find out the selector was never valid in the first place.
+ *
+ * `:has()` is already used elsewhere in this theme and is the only way to
+ * style a parent by what is inside it. It also cannot be done in the plugin:
+ * N2O Sync has no way to know a theme reserves space above a callout. */
+
+body.theme-light .callout:has(> .callout-content > p:only-child:empty) {
+  padding-top: 0;
+  margin: 1.5em 0;
+  background: none;
+  filter: none;
+  transform: none;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+/* The scrap surface is a ::before, so the element's own background going
+ * transparent leaves the paper behind. Fourth time this has caught something
+ * in one session, which is why it is written down every time. */
+body.theme-light .callout:has(> .callout-content > p:only-child:empty)::before {
+  content: none;
+}
+
+/* The tape comes back into the flow. It is positioned absolutely so that it
+ * can hang above a scrap; with no scrap to hang above, absolute positioning
+ * would leave it overlapping whatever comes next. */
+body.theme-light .callout:has(> .callout-content > p:only-child:empty) > .callout-title {
+  position: static;
+  top: auto;
+  left: auto;
+  right: auto;
+  max-width: 100%;
+  transform: rotate(var(--n2o-tape-rot));
+}
+
+/* And the empty paragraph itself, which otherwise contributes its own line
+ * height below the tape. */
+body.theme-light .callout:has(> .callout-content > p:only-child:empty) > .callout-content {
+  display: none;
+}
+
+/* THE SWITCHES BEHIND THE SYNCED-PAGE CONTROLS          */
+/* ─────────────────────────────────────────────────── */
+
+/* Every control in `src/settings/07b-synced.yml` turns a treatment OFF, never
+ * on. The fixed behaviour is the default, so a reader who never opens the
+ * settings gets the page drawn the right way, and each switch is an escape for
+ * somebody who wants the old shape back.
+ *
+ * That direction matters for a second reason: `check-settings.mjs` refuses a
+ * control whose class no rule uses, so each one below has to earn its place by
+ * undoing something real. A toggle that turned a treatment ON would need the
+ * treatment to live behind it, which would mean a synced page looked wrong
+ * until the reader found the switch. */
+
+/* ── Put the nine Notion colours back on the theme's olive ─────────── */
+body.theme-light.n2o-notion-tape-plain .callout:is(
+  [data-callout="n2o-gray"], [data-callout="n2o-brown"], [data-callout="n2o-orange"],
+  [data-callout="n2o-yellow"], [data-callout="n2o-green"], [data-callout="n2o-blue"],
+  [data-callout="n2o-purple"], [data-callout="n2o-pink"], [data-callout="n2o-red"]
+) {
+  --n2o-tape: var(--n2o-tape-olive);
+  --n2o-tape-ink: var(--n2o-ink-on-olive);
+}
+
+/* ── Give the fallback pencil back ─────────────────────────────────── */
+body.theme-light.n2o-notion-pencil .callout:is(
+  [data-callout="n2o-gray"], [data-callout="n2o-brown"], [data-callout="n2o-orange"],
+  [data-callout="n2o-yellow"], [data-callout="n2o-green"], [data-callout="n2o-blue"],
+  [data-callout="n2o-purple"], [data-callout="n2o-pink"], [data-callout="n2o-red"]
+) > .callout-title > .callout-icon {
+  display: inline-flex;
+}
+
+/* ── Folded headings back to taped scraps ──────────────────────────── */
+body.theme-light.n2o-heading-callouts-taped .callout:is(
+  [data-callout="heading-1"], [data-callout="heading-2"],
+  [data-callout="heading-3"], [data-callout="heading-4"]) {
+  padding-top: 32px;
+  margin: 2.6em 0;
+}
+body.theme-light.n2o-heading-callouts-taped .callout:is(
+  [data-callout="heading-1"], [data-callout="heading-2"],
+  [data-callout="heading-3"], [data-callout="heading-4"]) > .callout-title {
+  position: absolute;
+  font-family: var(--font-monospace-theme, var(--font-monospace));
+  font-size: calc(var(--callout-title-size, 1em) * 0.84);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--n2o-tape-ink);
+  padding: 8px 22px 8px 18px;
+}
+body.theme-light.n2o-heading-callouts-taped .callout:is(
+  [data-callout="heading-1"], [data-callout="heading-2"],
+  [data-callout="heading-3"], [data-callout="heading-4"]) > .callout-title::before {
+  content: "";
+}
+
+/* ── Columns back to taped scraps ──────────────────────────────────── */
+body.theme-light.n2o-columns-taped .callout:is(
+  [data-callout="multi-column"], [data-callout^="column"]) {
+  padding-top: 32px;
+  margin: 2.6em 0;
+}
+body.theme-light.n2o-columns-taped .callout:is(
+  [data-callout="multi-column"], [data-callout^="column"])::before {
+  content: "";
+}
+body.theme-light.n2o-columns-taped .callout:is(
+  [data-callout="multi-column"], [data-callout^="column"]) > .callout-title {
+  display: inline-flex;
+}
+
+/* ── The four sync-state lines, loud ───────────────────────────────── */
+body.theme-light.n2o-sync-state-loud .callout:is(
+  [data-callout="n2o-synced"], [data-callout="n2o-synced-source-missing"],
+  [data-callout="n2o-unresolved-database"], [data-callout="n2o-unsupported"]) {
+  padding-top: 32px;
+  margin: 2.6em 0;
+  background: none;
+  border-left: 0;
+}
+body.theme-light.n2o-sync-state-loud .callout:is(
+  [data-callout="n2o-synced"], [data-callout="n2o-synced-source-missing"],
+  [data-callout="n2o-unresolved-database"], [data-callout="n2o-unsupported"])::before {
+  content: "";
+}
+body.theme-light.n2o-sync-state-loud .callout:is(
+  [data-callout="n2o-synced"], [data-callout="n2o-synced-source-missing"],
+  [data-callout="n2o-unresolved-database"], [data-callout="n2o-unsupported"]) > .callout-title {
+  position: absolute;
+  font-family: var(--font-monospace-theme, var(--font-monospace));
+  font-style: normal;
+  font-size: calc(var(--callout-title-size, 1em) * 0.84);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--n2o-tape-ink);
+  opacity: 1;
+  padding: 8px 22px 8px 18px;
+}
+body.theme-light.n2o-sync-state-loud .callout:is(
+  [data-callout="n2o-synced"], [data-callout="n2o-synced-source-missing"],
+  [data-callout="n2o-unresolved-database"], [data-callout="n2o-unsupported"]) > .callout-title::before {
+  content: "";
+}
+
+/* ── Keep the scrap under a one-line callout ───────────────────────── */
+body.theme-light.n2o-bodyless-scrap .callout:has(> .callout-content > p:only-child:empty) {
+  padding-top: 32px;
+  margin: 2.6em 0;
+}
+body.theme-light.n2o-bodyless-scrap .callout:has(> .callout-content > p:only-child:empty)::before {
+  content: "";
+}
+body.theme-light.n2o-bodyless-scrap .callout:has(> .callout-content > p:only-child:empty) > .callout-title {
+  position: absolute;
+}
+body.theme-light.n2o-bodyless-scrap .callout:has(> .callout-content > p:only-child:empty) > .callout-content {
+  display: block;
 }
 
 /* Tables. A ruled grid on the page, the way the poster rules its own.
