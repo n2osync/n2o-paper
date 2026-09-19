@@ -1,6 +1,6 @@
 /*
 N2O PAPER
-Version 1.0.9
+Version 1.0.10
 
 A theme for Obsidian, by N2O Sync.
 https://n2osync.com
@@ -1004,6 +1004,30 @@ body:where(.theme-light) { --n2o-font-set: var(--font-family-serif); }
   --n2o-font-set: var(--font-family-iawriter-quattro);
   /* Quattro is drawn wide and needs pulling in to sit with the rest. */
   --n2o-font-tracking: -0.03rem;
+}
+
+/* Obsidian's OWN body-text variable, pointed at whichever set is chosen.
+ *
+ * This theme applies its font by writing `font-family: var(--n2o-font-set)` on
+ * the surfaces it styles, and never set `--font-text`. That is the variable
+ * Obsidian documents for body text, so a plugin with any reason to name the
+ * reader's font names that one, and under this theme it answered with
+ * Obsidian's DEFAULT sans rather than the serif on screen.
+ *
+ * It cost a real bug. N2O Sync's Notionify substitutes a flat emoji face by
+ * putting `"Twemoji N2O", var(--font-text), ...` on `.markdown-rendered`, which
+ * is correct and careful: the emoji font carries a `unicode-range` so only
+ * emoji fall through to it and text keeps the theme's face. Except that
+ * `var(--font-text)` resolved to Inter, Helvetica, Arial, and every synced page
+ * silently switched from the serif to a sans the moment Notionify was on.
+ * Measured 2026-09-18 by reading the computed family in both states.
+ *
+ * Declared at the view level as well as on body, because a note that picks its
+ * own face with `cssclasses` gets the class on the VIEW, and the alias has to
+ * follow it there or a per-note font would not reach a plugin either. */
+body:where(.theme-light),
+body.theme-light :is(.markdown-preview-view, .markdown-source-view, .markdown-rendered) {
+  --font-text: var(--n2o-font-set);
 }
 
 /* The same sets again, for a class that is NOT on body.
@@ -4528,6 +4552,358 @@ body.theme-light .markdown-source-view.mod-cm6 .cm-embed-block.cm-callout > .cal
 body.theme-light .markdown-source-view.mod-cm6 .cm-embed-block.cm-callout {
   position: relative;
   z-index: 60;
+}
+
+/* THE CALLOUT TYPES N2O SYNC EMITS                      */
+/* ─────────────────────────────────────────────────── */
+
+/* ## The scenario
+ *
+ * A reader syncs a Notion workspace into a vault and turns this theme on. Their
+ * pages come back wearing olive tape: every folded heading is a sticker, every
+ * "this note is synced" line shouts, and a page of nine differently coloured
+ * Notion callouts arrives as nine identical green bands.
+ *
+ * None of that is a bug in either product on its own. This theme dresses a
+ * callout as a scrap of paper taped to the sheet, which is right for the
+ * thirteen Obsidian types it knows about. N2O Sync writes Notion's structure as
+ * CUSTOM callout types, because that is the only block Obsidian gives it to
+ * work with, and it styles those correctly by type in its own stylesheet. The
+ * theme had simply never heard of them, so they all fell to the default tape.
+ *
+ * A contract diff between the two stylesheets found twenty two such types
+ * (`scripts/dev/contract-diff.mjs` in the n2o repo). This file answers for the
+ * ones that are NOT notices. The nine Notion colours are notices and keep the
+ * scrap; they are handled separately.
+ *
+ * ## What is undone, and why it has to be undone rather than recoloured
+ *
+ * The scrap is built from several things at once: a torn-edge mask, a paper
+ * texture, a drop shadow, a rotation, and 32px of top padding reserving room
+ * for a tape that is positioned absolutely. The tape itself is drawn by
+ * `.callout-title::before`, not by the title's own background, which is the
+ * part that catches you: stripping the title alone leaves the green band
+ * sitting there with the new text inside it. Measured on 2026-09-18 by doing
+ * exactly that and photographing the result.
+ */
+
+/* ── Folded headings ─────────────────────────────────────────────────
+ *
+ * Notion's foldable headings arrive as `[!heading-1]` through `[!heading-4]`,
+ * never as `<h1>`. They are headings that happen to fold, so they are dressed
+ * as headings: the theme's own face and accent, the size ladder, and the fold
+ * arrow Obsidian already draws carrying the affordance.
+ *
+ * No underline, deliberately. The theme's real headings carry a FULL WIDTH
+ * rule, and a text-width rule here would put two different underlines on one
+ * page, which reads as a mistake rather than as a system. */
+body.theme-light .callout:is(
+  [data-callout="heading-1"], [data-callout="heading-2"],
+  [data-callout="heading-3"], [data-callout="heading-4"]) {
+  background: none;
+  filter: none;
+  transform: none;
+  padding-top: 0;
+  margin: 1.6em 0 0.6em;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+body.theme-light .callout:is(
+  [data-callout="heading-1"], [data-callout="heading-2"],
+  [data-callout="heading-3"], [data-callout="heading-4"]) > .callout-title {
+  position: static;
+  background: none;
+  box-shadow: none;
+  transform: none;
+  padding: 0;
+  min-width: 0;
+  max-width: none;
+  text-transform: none;
+  letter-spacing: normal;
+  font-family: var(--n2o-font-set);
+  font-weight: 600;
+  color: var(--n2o-green);
+}
+
+/* The tape is a ::before on the title. Without this the band survives. */
+body.theme-light .callout:is(
+  [data-callout="heading-1"], [data-callout="heading-2"],
+  [data-callout="heading-3"], [data-callout="heading-4"]) > .callout-title::before {
+  content: none;
+}
+
+body.theme-light .callout[data-callout="heading-1"] > .callout-title { font-size: 1.9em; }
+body.theme-light .callout[data-callout="heading-2"] > .callout-title { font-size: 1.5em; }
+body.theme-light .callout[data-callout="heading-3"] > .callout-title { font-size: 1.22em; }
+body.theme-light .callout[data-callout="heading-4"] > .callout-title { font-size: 1.05em; }
+
+/* A heading callout has no icon of its own to show. */
+body.theme-light .callout:is(
+  [data-callout="heading-1"], [data-callout="heading-2"],
+  [data-callout="heading-3"], [data-callout="heading-4"]) > .callout-title .callout-icon {
+  display: none;
+}
+
+body.theme-light .callout:is(
+  [data-callout="heading-1"], [data-callout="heading-2"],
+  [data-callout="heading-3"], [data-callout="heading-4"]) > .callout-title .callout-fold {
+  opacity: 0.35;
+}
+
+body.theme-light .callout:is(
+  [data-callout="heading-1"], [data-callout="heading-2"],
+  [data-callout="heading-3"], [data-callout="heading-4"]) > .callout-content {
+  padding-left: 0;
+  padding-top: 0.2em;
+}
+
+/* ── Sync state ──────────────────────────────────────────────────────
+ *
+ * Four types, and they are NOT one group. Owner decision, 2026-09-18, after
+ * seeing all three options rendered.
+ *
+ * `n2o-synced` means everything is fine and appears on EVERY synced note, so
+ * it disappears into the page: faint, italic, no band. A line that says nothing
+ * is wrong should not be the loudest thing on the sheet.
+ *
+ * The other three mean something IS wrong and the reader may want to act on it:
+ * a Notion page deleted underneath them, a database never pulled, a block
+ * Obsidian cannot draw. Those keep a pale band and a left edge, so they read as
+ * a system note rather than as body text. Making these invisible too was the
+ * option that got rejected, and rightly: nobody would ever notice a page whose
+ * source had gone. */
+body.theme-light .callout:is(
+  [data-callout="n2o-synced"], [data-callout="n2o-synced-source-missing"],
+  [data-callout="n2o-unresolved-database"], [data-callout="n2o-unsupported"]) {
+  background: none;
+  filter: none;
+  transform: none;
+  padding-top: 0;
+  margin: 1.2em 0;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+body.theme-light .callout:is(
+  [data-callout="n2o-synced"], [data-callout="n2o-synced-source-missing"],
+  [data-callout="n2o-unresolved-database"], [data-callout="n2o-unsupported"]) > .callout-title {
+  position: static;
+  background: none;
+  box-shadow: none;
+  transform: none;
+  padding: 0;
+  min-width: 0;
+  max-width: none;
+  text-transform: none;
+  letter-spacing: normal;
+  font-family: var(--n2o-font-set);
+  font-size: 0.86em;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-faint);
+}
+
+body.theme-light .callout:is(
+  [data-callout="n2o-synced"], [data-callout="n2o-synced-source-missing"],
+  [data-callout="n2o-unresolved-database"], [data-callout="n2o-unsupported"]) > .callout-title::before {
+  content: none;
+}
+
+body.theme-light .callout:is(
+  [data-callout="n2o-synced"], [data-callout="n2o-synced-source-missing"],
+  [data-callout="n2o-unresolved-database"], [data-callout="n2o-unsupported"]) > .callout-title .callout-icon {
+  opacity: 0.5;
+  transform: scale(0.8);
+}
+
+/* The three that want noticing, on a band. */
+body.theme-light .callout:is(
+  [data-callout="n2o-synced-source-missing"],
+  [data-callout="n2o-unresolved-database"],
+  [data-callout="n2o-unsupported"]) {
+  background: var(--n2o-paper-grey);
+  border-left: 2px solid var(--n2o-rule);
+  padding: 0.5em 0.8em;
+}
+
+/* The one that does not. */
+body.theme-light .callout[data-callout="n2o-synced"] > .callout-title {
+  opacity: 0.7;
+}
+
+/* THE NINE NOTION CALLOUT COLOURS                       */
+/* ─────────────────────────────────────────────────── */
+
+/* ## The scenario
+ *
+ * A reader's Notion page has nine callouts in nine different colours, which is
+ * the whole point of colouring them. Synced into a vault with this theme on,
+ * all nine arrived wearing the same olive tape: the theme knew thirteen
+ * Obsidian callout types and none of the nine N2O Sync writes.
+ *
+ * Unlike the headings and the sync-state lines, these ARE notices, so they keep
+ * the scrap and the tape. Only the tape's colour changes.
+ *
+ * ## Where the colours come from
+ *
+ * Notion's own, verbatim from N2O Sync's `--n2o-fg-*` table, at the 0.9 alpha
+ * every other tape in this theme uses. Not invented, and not the theme's
+ * existing red/blue/green, which are close but not Notion's: fidelity to the
+ * source page is the reason somebody turns Notionify on at all.
+ *
+ * ## The ink on each
+ *
+ * Measured, not guessed. Each tape was composited over the sheet at 0.9 and the
+ * cream ink and the dark ink were both scored against it:
+ *
+ *   gray 3.50  brown 3.50  orange 4.53  yellow 5.33  green 3.48
+ *   blue 3.50  purple 3.48  pink 3.57   red 3.52
+ *
+ * The theme's own tapes run 3.51 (green) to 6.16 (ochre), so these sit at the
+ * house floor rather than below it, and the low contrast here is the same
+ * deliberate choice the rest of the theme makes.
+ *
+ * Cream ink on seven of them. Orange and yellow take the dark ink, because
+ * those are the only two where the margin is decisive rather than a rounding
+ * difference: 4.53 against 2.67, and 5.33 against 2.27.
+ *
+ * ## What this does NOT do
+ *
+ * It does not tint the scrap. When Notionify is on it already paints the
+ * callout body with Notion's background tint by the same type selector, and a
+ * second tint from here would double it. A contract diff between the two
+ * stylesheets found zero surfaces both of them paint, and that is worth
+ * keeping: the tape is ours, the body tint is theirs. */
+
+body.theme-light .callout[data-callout="n2o-gray"] {
+  --n2o-tape: rgba(120, 119, 116, 0.9);
+  --n2o-tape-ink: #fbf3e8;
+}
+body.theme-light .callout[data-callout="n2o-brown"] {
+  --n2o-tape: rgba(159, 107, 83, 0.9);
+  --n2o-tape-ink: #fbf3e8;
+}
+body.theme-light .callout[data-callout="n2o-orange"] {
+  --n2o-tape: rgba(217, 115, 13, 0.9);
+  --n2o-tape-ink: #3a2e14;
+}
+body.theme-light .callout[data-callout="n2o-yellow"] {
+  --n2o-tape: rgba(203, 145, 47, 0.9);
+  --n2o-tape-ink: #3a2e14;
+}
+body.theme-light .callout[data-callout="n2o-green"] {
+  --n2o-tape: rgba(68, 131, 97, 0.9);
+  --n2o-tape-ink: #eef6ee;
+}
+body.theme-light .callout[data-callout="n2o-blue"] {
+  --n2o-tape: rgba(51, 126, 169, 0.9);
+  --n2o-tape-ink: #f2f4fa;
+}
+body.theme-light .callout[data-callout="n2o-purple"] {
+  --n2o-tape: rgba(144, 101, 176, 0.9);
+  --n2o-tape-ink: #f3eef8;
+}
+body.theme-light .callout[data-callout="n2o-pink"] {
+  --n2o-tape: rgba(193, 76, 138, 0.9);
+  --n2o-tape-ink: #fbf0f6;
+}
+body.theme-light .callout[data-callout="n2o-red"] {
+  --n2o-tape: rgba(212, 76, 71, 0.9);
+  --n2o-tape-ink: #fbf3e8;
+}
+
+/* A little variety in how each one was stuck down, so a page of nine does not
+ * look like a printed form. The same trick the theme's own types use. */
+body.theme-light .callout[data-callout="n2o-brown"]  { --n2o-tape-rot: -0.85deg; --n2o-tilt: -0.28deg; }
+body.theme-light .callout[data-callout="n2o-orange"] { --n2o-tape-rot: -0.45deg; --n2o-tilt: -0.40deg; }
+body.theme-light .callout[data-callout="n2o-yellow"] { --n2o-tape-rot: -0.90deg; --n2o-tilt: -0.30deg; }
+body.theme-light .callout[data-callout="n2o-green"]  { --n2o-tape-rot: -0.55deg; --n2o-tilt: -0.38deg; }
+body.theme-light .callout[data-callout="n2o-blue"]   { --n2o-tape-rot: -0.80deg; --n2o-tilt: -0.25deg; }
+body.theme-light .callout[data-callout="n2o-purple"] { --n2o-tape-rot: -0.50deg; --n2o-tilt: -0.42deg; }
+body.theme-light .callout[data-callout="n2o-pink"]   { --n2o-tape-rot: -0.88deg; --n2o-tilt: -0.33deg; }
+body.theme-light .callout[data-callout="n2o-red"]    { --n2o-tape-rot: -0.60deg; --n2o-tilt: -0.36deg; }
+
+/* NOTION COLUMNS                                        */
+/* ─────────────────────────────────────────────────── */
+
+/* ## The scenario
+ *
+ * A Notion page puts three things side by side. Synced in, that arrives as
+ * `[!multi-column]` holding three `[!column]` callouts, because a callout is
+ * the only block Obsidian gives N2O Sync to carry the structure in.
+ *
+ * This theme dresses a callout as a scrap of paper taped to the sheet, so the
+ * reader got a torn scrap containing three more torn scraps: four tape bands,
+ * four drop shadows, four separate tilts, and a nested paper edge inside a
+ * paper edge. It was the worst thing the theme did to a synced page.
+ *
+ * ## What this does, and the line it does not cross
+ *
+ * It strips the scrap from both types. A column is a LAYOUT container, not a
+ * notice: nothing about it should be torn, tilted, shadowed or taped.
+ *
+ * It does NOT lay the columns out. N2O Sync already does that, correctly, with
+ * a flex row in its own stylesheet, and it gates that on Notionify being on.
+ * Whether a reader who has turned decoration OFF should still get side by side
+ * columns is Sync's decision about its own product, and taking it here would
+ * be this theme overruling a plugin on its own behaviour.
+ *
+ * The rule the two fixes so far have followed: fix what is ours. The font bug
+ * was ours because `--font-text` is the platform's contract and the theme was
+ * not answering it. The scrap on a column is ours because the theme put it
+ * there. The layout is Sync's.
+ *
+ * ## Why the selectors are written this way
+ *
+ * `[data-callout^="column"]` rather than `="column"`, because Sync writes the
+ * type with a trailing marker in some notes, which is also why the contract
+ * diff reported a bare `[data-callout="column"]` AND a `[data-callout="n2o-"]`
+ * prefix form. Matching the prefix covers both without guessing at the list. */
+
+body.theme-light .callout:is([data-callout="multi-column"], [data-callout^="column"]) {
+  background: none;
+  filter: none;
+  transform: none;
+  padding: 0;
+  margin: 1.1em 0;
+  -webkit-mask-image: none;
+  mask-image: none;
+  border: 0;
+}
+
+/* The scrap SURFACE is a ::before on the callout, not a background on it, so
+ * `background: none` above took the element's own paint and left the paper
+ * layer behind. Photographed after the first attempt: the tapes and torn edges
+ * were gone and a green block still sat behind every column. */
+body.theme-light .callout:is([data-callout="multi-column"], [data-callout^="column"])::before {
+  content: none;
+}
+
+/* The tape, and the ::before that draws it. A column has no title worth
+ * showing: Notion never gave it one, and Sync writes an empty string. */
+body.theme-light .callout:is([data-callout="multi-column"], [data-callout^="column"]) > .callout-title {
+  display: none;
+}
+
+body.theme-light .callout:is([data-callout="multi-column"], [data-callout^="column"]) > .callout-content {
+  padding: 0;
+}
+
+/* A nested column inherits the scrap variables from the callout above it, so
+ * anything INSIDE a column that is itself a callout gets its own treatment
+ * back. That is deliberate: a coloured Notion callout sitting in a column is
+ * still a notice and still wants its tape. */
+body.theme-light .callout:is([data-callout="multi-column"], [data-callout^="column"]) > .callout-content > .callout {
+  margin-block: 1.4em;
+}
+
+/* The first thing in a column should sit level with the first thing in its
+ * neighbour. Without this the theme's own top margin on a heading or a
+ * paragraph pushes one column down relative to the others, which reads as a
+ * misalignment rather than as spacing. */
+body.theme-light .callout[data-callout^="column"] > .callout-content > :first-child {
+  margin-top: 0;
 }
 
 /* Tables. A ruled grid on the page, the way the poster rules its own.
