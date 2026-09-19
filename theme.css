@@ -1,6 +1,6 @@
 /*
 N2O PAPER
-Version 1.0.10
+Version 1.0.11
 
 A theme for Obsidian, by N2O Sync.
 https://n2osync.com
@@ -2348,6 +2348,94 @@ body:where(.theme-light).n2o-flat-paper {
   --n2o-l-tooth: none;
   --n2o-l-creases: none;
   --n2o-paper-texture: 0;
+}
+
+/* OBSIDIAN'S SEMANTIC COLOURS                           */
+/* ─────────────────────────────────────────────────── */
+
+/* ## The scenario
+ *
+ * A plugin needs to paint an error message red. There is one correct way to do
+ * that in Obsidian, and every well behaved plugin does it: read `--text-error`.
+ * This theme declared none of that family, so the plugin got Obsidian's stock
+ * `#e93147`, a bright modern red, and painted it on warm cream paper.
+ *
+ * Measured against this theme's sheet, Obsidian's defaults are not merely out
+ * of key, they are hard to read:
+ *
+ *   --color-yellow   #e0ac00   1.83
+ *   --color-cyan     #00bfbc   2.01
+ *   --text-success   #08b94e   2.29
+ *   --text-warning   #ec7500   2.60
+ *   --text-error     #e93147   3.70
+ *
+ * Normal text wants 4.5. A success message at 2.29 on this paper is close to
+ * invisible, and nothing in either the theme or the plugin is doing anything
+ * wrong: the plugin asked the platform and the platform answered, because the
+ * theme had not.
+ *
+ * It is the same shape as the font bug, found the same way. N2O Sync alone
+ * carries about a hundred bare reads of this family: 45 of `--color-green`,
+ * 44 of `--text-error`. Answering here fixes every one of them, and every
+ * other plugin a reader installs, rather than patching one plugin's panels.
+ *
+ * ## Where the colours come from
+ *
+ * The theme's own tape family, which is already the palette's semantic set:
+ * its red, green, blue, amber and violet. Each is then darkened along its own
+ * hue until it reads at 4.5 or better as TEXT on the sheet, because a tape
+ * colour is designed to carry light ink ON it, not to be read against paper.
+ *
+ *   red     #bb432a  4.68      orange  #a3581c  4.65
+ *   green   #35784e  4.68      purple  #6f519e  5.52
+ *   blue    #3e64ac  5.10      pink    #ae4779  4.64
+ *   yellow  #8e621a  4.72      cyan    #2f7577  4.70
+ *
+ * Yellow moves furthest, from a 42% lightness tape to 33%, because there is no
+ * such thing as a readable bright yellow on cream and pretending otherwise is
+ * how the 1.83 happened.
+ *
+ * ## What this does NOT change
+ *
+ * `--text-accent` is left alone: the theme already declares it, as the palette
+ * hue, and it measures 7.36. This file fills the gaps rather than restyling
+ * what was already answered. */
+
+/* `body.theme-light`, NOT `body:where(.theme-light)`.
+ *
+ * The rest of this theme uses the :where form deliberately, so an option class
+ * on body outranks the default. That is right for variables only this theme
+ * declares. It is wrong here: OBSIDIAN declares this family itself, on
+ * `.theme-light`, and :where contributes nothing to specificity, so the first
+ * version of this file lost the cascade and changed nothing.
+ *
+ * It looked like it had worked, which is the part worth remembering. The
+ * background-modifier lines below took effect, because Obsidian does not
+ * redeclare those the same way, so the file was plainly being applied while
+ * every colour in it was being ignored. Caught by re-reading the resolved
+ * values after the build rather than by trusting that the rule was there. */
+body.theme-light {
+  --color-red: #bb432a;
+  --color-orange: #a3581c;
+  --color-yellow: #8e621a;
+  --color-green: #35784e;
+  --color-cyan: #2f7577;
+  --color-blue: #3e64ac;
+  --color-purple: #6f519e;
+  --color-pink: #ae4779;
+
+  /* The three a plugin reaches for by meaning rather than by hue. */
+  --text-error: var(--color-red);
+  --text-success: var(--color-green);
+  --text-warning: var(--color-orange);
+
+  /* These two are BACKGROUNDS, so they are the same hues at a paper weight:
+   * a tint behind a message, not the message itself. At full strength they
+   * painted a solid red block behind error text that was also red. */
+  --background-modifier-error: color-mix(in oklab, var(--color-red) 14%, var(--n2o-sheet));
+  --background-modifier-error-hover: color-mix(in oklab, var(--color-red) 22%, var(--n2o-sheet));
+  --background-modifier-success: color-mix(in oklab, var(--color-green) 14%, var(--n2o-sheet));
+  --background-modifier-message: color-mix(in oklab, var(--n2o-ink) 8%, var(--n2o-sheet));
 }
 
 /* =====================================================================
