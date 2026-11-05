@@ -18,13 +18,13 @@
 
 <p align="center">
   <a href="https://n2osync.com">Website</a> /
-  <a href="https://github.com/n2osync/n2o-paper-settings">Settings plugin</a> /
+  <a href="https://github.com/n2osync/n2o-paper-settings">N2O Settings</a> /
   <a href="https://github.com/n2osync/n2o-paper/issues/new">Report a bug</a> /
   <a href="https://github.com/n2osync/n2o-paper/issues/new">Request a feature</a>
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/palettes.gif" alt="Switching between the seven palettes of the N2O Paper theme in Obsidian" width="820" />
+  <img src="https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/palettes.gif" alt="One note in each of the seven N2O Paper palettes" width="820" />
 </p>
 
 ---
@@ -35,7 +35,7 @@
 
 <p align="center">
   <a href="#a-page-not-a-screen">A page, not a screen</a> /
-  <a href="#install-the-settings-plugin-too">Settings plugin</a> /
+  <a href="#n2o-settings-highly-recommended">N2O Settings</a> /
   <a href="#the-details-we-sweated">The details we sweated</a> /
   <a href="#thirteen-callouts">Thirteen callouts</a> /
   <a href="#quotes">Quotes</a>
@@ -49,10 +49,11 @@
   <a href="#sizing-and-the-one-thing-that-catches-people">Sizing</a> /
   <a href="#captions">Captions</a> /
   <a href="#embedded-notes">Embedded notes</a> /
-  <a href="#ageing-everything">Ageing</a> /
-  <a href="#the-rest-of-the-page">The rest of the page</a>
+  <a href="#the-rest-of-the-page">The rest of the page</a> /
+  <a href="#made-to-be-read">Made to be read</a>
   <br/>
-  <a href="#made-to-be-read">Made to be read</a> /
+  <a href="#better-on-real-pages">Better on real pages</a> /
+  <a href="#one-note-on-its-own">One note on its own</a> /
   <a href="#make-it-yours">Make it yours</a> /
   <a href="#install">Install</a> /
   <a href="#light-only">Light only</a> /
@@ -68,60 +69,65 @@
 
 The window is a desk. The note is a sheet of cream stock resting on it, with a
 grain you can see at full zoom and never at reading distance, and a light that
-falls from the top left and softens at the foot of the page.
+falls from the top left and softens at the foot of the page. Down the left runs
+a black bookcloth spine, and the sidebar takes the palette's colour.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/hero.png" alt="A note in N2O Paper, Forest palette" width="820" />
+  <img src="https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/hero.png" alt="A note in N2O Paper, Forest palette, with the file explorer and the spine" width="820" />
 </p>
 
-## Install the settings plugin too
+The sheet keeps a column you can read. With Readable line length on it is
+Obsidian's own width. With it off, the sheet stops at 860 px instead of running
+the width of the window, unless you turn on **Full width** or type a column
+width of your own.
 
-The theme looks the way it is meant to on its own. Every default below is the
-theme's own, and nothing else is needed to read with it.
+## N2O Settings, highly recommended
 
-**The plugin is what makes it yours.** A theme is CSS and cannot draw a settings
-tab, so the 110 controls are rendered by
-**[N2O Paper Settings](https://github.com/n2osync/n2o-paper-settings)**, free and
-in the community plugin list. Install it and the palette, the fonts, the paper
-grain and the light, the callout style, the table style and every syntax colour
-become a dropdown, a slider or a colour swatch.
+The theme is complete on its own. Every default below is the theme's own, and
+nothing else is needed to read with it.
 
-> Search **N2O Paper Settings** in Settings, Community plugins, Browse. It will
-> install this theme for you as well, so either one can come first.
+**N2O Settings is highly recommended, never required.** A theme is CSS and
+cannot draw a settings tab, so the 134 controls are drawn by
+**[N2O Settings](https://github.com/n2osync/n2o-paper-settings)**, free and in
+the community plugin list. It opens on a short list of quick choices (preset,
+palette, flat paper, column width, coil binding, font set, text size, callout
+style), then 12 pages for the rest, and Obsidian's settings search finds every
+control in them.
+
+> Search **N2O Settings** in Settings, Community plugins, Browse. It installs
+> this theme for you as well, so either one can come first.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/settings.png" alt="The settings tab" width="720" />
+  <img src="https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/settings.png" alt="The N2O Settings tab with the quick choices" width="720" />
 </p>
 
 ## The details we sweated
 
 **A callout is a scrap of paper taped to the sheet.** The tape carries the type,
-in one of thirteen colours. The torn edge is a real tear, drawn as a nine slice
-mask so it never repeats the same way twice, and the shadow follows the tear
-rather than a rectangle.
+in one of thirteen colours. The torn edge is a real tear, and the shadow follows
+the tear rather than a rectangle.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/detail-tape.png" alt="A callout: the tape, the torn edge, the paper grain" width="720" />
 </p>
 
 **Tasks are pencil marks.** A checked box is drawn in pencil, and the line
-through the text is struck in the same hand. A nested list under a done task
-keeps its own ink.
+through the text is struck in the same hand.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/detail-tasks.png" alt="Pencil checkboxes and a struck line" width="720" />
 </p>
 
-**Code sits on its own slip**, syntax coloured, with no paper texture over it,
-because ink on a printed slab does not break the way ink on paper does.
+**Code sits on its own slab**, syntax coloured, with no paper texture over it,
+and it looks the same in every palette. Live preview draws a code block as one
+slab too.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/detail-code.png" alt="A code block on the sheet" width="720" />
+  <img src="https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/detail-code.png" alt="Code blocks on the sheet" width="720" />
 </p>
 
 **Tables are cards**, with a coloured header band, hairline rules and a quiet
-alternating tint. Dataview and Kanban get the same treatment: a board is a desk,
-each lane a sheet, each card a slip of paper.
+alternating tint. Dataview and Kanban get the same treatment.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/detail-table.png" alt="A table as a card" width="720" />
@@ -129,19 +135,18 @@ each lane a sheet, each card a slip of paper.
 
 ## Thirteen callouts
 
-Every type Obsidian ships, each with its own tape colour and icon. The tape
-lands in a different place on each one, the tear along the bottom is drawn fresh
-every time, and the tint of the paper shifts with the type.
+Every type Obsidian ships, each with its own tape colour. The tape lands in a
+different place on each one, and the tint of the paper shifts with the type.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/callouts.png" alt="The thirteen callout types in N2O Paper" width="720" />
+  <img src="https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/callouts.png" alt="Callouts in N2O Paper" width="720" />
 </p>
 
-Three styles for the same thirteen. Taped scraps by default, full cards with a
-header band, or quiet callouts with no colour at all.
+Four styles for the same thirteen: taped scraps by default, cards with a header
+band, quiet callouts on cream, or plain boxes with a coloured edge and no tear.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/callout-styles.gif" alt="Switching between the taped, card and quiet callout styles" width="760" />
+  <img src="https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/callout-styles.gif" alt="Switching between the taped, card, quiet and plain callout styles" width="760" />
 </p>
 
 ## Quotes
@@ -157,12 +162,8 @@ beside one line. Nest them and each level gets its own sheet.
 ## Seven palettes
 
 One hue runs through the whole app: the title, the links, the table header, the
-sidebar and the light that falls across it. Five of the seven take exact colours
-from the traditional colours of Japan.
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/palettes.gif" alt="Switching palettes" width="820" />
-</p>
+sidebar, and the O of the N2O mark if you use N2O Sync. Five of the
+seven take exact colours from the traditional colours of Japan.
 
 **Forest**, the theme's own, measured from two meadow photographs.
 
@@ -194,8 +195,7 @@ from the traditional colours of Japan.
   <img src="https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/palette-sepia.png" alt="Sepia" width="720" />
 </p>
 
-**Graphite** is pencil lead and **Coal** is sumi ink, both monochrome, with
-nothing coloured but the two fixed heading levels.
+**Graphite** is pencil lead and **Coal** is sumi ink, both monochrome.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/palette-graphite.png" alt="Graphite, pencil lead" width="720" />
@@ -210,9 +210,8 @@ And Coal, sumi ink.
 ## Pictures
 
 A picture is an instant print laid on the sheet. Warm white frame paper with a
-grain of its own, deeper at the foot, a hairline edge, a faint sheen where the
-light catches it, and one corner lifting a little. That is the default and it
-costs nothing: write the embed and you get the print.
+grain of its own, deeper at the foot, a hairline edge, and one corner lifting a
+little. That is the default: write the embed and you get the print.
 
 ```
 ![[cabin.png]]
@@ -265,6 +264,16 @@ A flag is a single word in the flags position. Six of them do something:
   <img src="https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/pic-round.png" alt="A round print" width="720" />
 </p>
 
+`aged` fades one print warm and handles it: dust, fine scratches, a crease,
+worn pale edges and corners gone dark.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/pic-aged.png" alt="An aged print: faded warm, with dust, fine scratches and a crease" width="720" />
+</p>
+
+With N2O Settings installed you can also right-click a picture to resize it or
+set these flags from a menu.
+
 ### Flags and a caption together
 
 Put the flag first, the caption after it, a pipe between them:
@@ -277,10 +286,10 @@ Put the flag first, the caption after it, a pipe between them:
   <img src="https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/pipe-demo.png" alt="An aged print, captioned in pen on its foot" width="720" />
 </p>
 
-**This one needs the settings plugin.** A theme is CSS, the caption it draws is
-the alt text itself, and CSS cannot take a word out of the middle of an
-attribute. The plugin splits the two apart for it. Without the plugin the flag
-and the caption still work on their own, just not together.
+**This one needs N2O Settings.** A theme is CSS, the caption it draws is the alt
+text itself, and CSS cannot take a word out of the middle of an attribute. The
+plugin splits the two apart for it. Without the plugin the flag and the caption
+still work on their own, just not together.
 
 The pipe is what makes it unambiguous. A caption is free to contain a flag word:
 
@@ -305,7 +314,7 @@ of text: the theme sees the word `left` in it and floats the picture, Obsidian
 sees no width field at all and sets none.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/pic-sizes.png" alt="The same picture at 160px, 480px and the full width of the column" width="720" />
+  <img src="https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/pic-sizes.png" alt="The same picture at three sizes" width="720" />
 </p>
 
 ### Captions
@@ -333,7 +342,7 @@ A note embedded in another note is a sheet held on with a steel paperclip.
 `seamless`, for a note that should read as part of the page:
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/pic-seamless.png" alt="A note embedded seamlessly, with no frame and no clip" width="720" />
+  <img src="https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/pic-seamless.png" alt="A note embedded with no frame and no clip" width="720" />
 </p>
 
 `torn`, for one that should read as something slipped in:
@@ -342,24 +351,11 @@ A note embedded in another note is a sheet held on with a steel paperclip.
   <img src="https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/pic-torn.png" alt="A note embedded as a torn scrap of khaki" width="720" />
 </p>
 
-### Ageing everything
-
-An aged print is faded warm and handled: dust, fine scratches, a crease with
-cracks running off it, worn pale edges and corners gone dark.
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/pic-aged.png" alt="An aged print: faded warm, with dust, fine scratches and a crease" width="720" />
-</p>
-
-`aged` on one picture ages that one. The **Aged photos** switch under Paper in
-the settings plugin ages every photo in the vault instead, and then captions
-work normally on all of them without needing a flag at all.
-
 ## The rest of the page
 
 Nothing is left in Obsidian's default look.
 
-**Lists and tasks.** Pencil checkboxes, a line struck in the same hand.
+**Lists and tasks.** Each level has its own bullet, and pencil checkboxes.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/02-lists-and-tasks.png" alt="Lists and tasks" width="720" />
@@ -392,29 +388,86 @@ Nothing is left in Obsidian's default look.
 ## Made to be read
 
 Long reading was the whole point, so the type is set for it: a serif body at a
-measure of about seventy characters, headings that step down in colour rather
-than shout in size, and a page that holds its measure when you split the window
-or open it on a phone.
+measure you can follow, headings that step down in colour rather than shout in
+size, and a page that holds its measure when you split the window or open it on
+a phone.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/scroll.gif" alt="Scrolling a note" width="820" />
+  <img src="https://raw.githubusercontent.com/n2osync/n2o-paper/main/images/scroll.gif" alt="Scrolling a travel note with pictures, a map and a quote" width="820" />
 </p>
 
 The palette is deliberately soft. Ink that settles rather than shouts, pale
 teals and warm greys, so an hour in a note is an hour your eyes can take.
 
+## Better on real pages
+
+This release was checked against a hundred real notes and fifty pages synced
+from Notion, not only hand-written test pages. What changed:
+
+- A one-line callout shows its whole sentence instead of cutting it off.
+- A folded callout is just its tape and fold arrow, not an empty torn strip.
+- A code fence with no language looks like code in both reading view and live
+  preview. Turn on **Plain fences on paper** under Code to set it in the text
+  face instead.
+- Live preview draws a code block as one slab, not a stack of pills.
+- Properties in live preview are their normal size.
+- No grey bars beside bold words and links in live preview.
+- A heading wrapped in bold keeps the heading colour.
+- Lists keep one rhythm in both modes, with the bullet clear of the text.
+- Wide tables fit the sheet: the header row wraps instead of running off the
+  edge.
+- Dates and numbers in tables use lining figures, so 01/13 no longer reads as
+  o1/13.
+- A wrapped quote line in live preview stays clear of the rule.
+- The ribbon and the spine are styled again on Obsidian 1.15.
+
+## One note on its own
+
+Add these to a note's `cssclasses` property to change that note alone. They
+combine, and they work without N2O Settings.
+
+| Class | What it does |
+|---|---|
+| `paper-wide` | a column 1.6 times the readable width |
+| `paper-flat` | no texture or ink layer on the sheet and its scraps |
+| `paper-plain-callouts` | callouts as plain boxes with a coloured edge |
+| `paper-no-coil` | no coil on the sheet or on quotes |
+| `paper-palette-forest`, `-ink`, `-oxblood`, `-graphite`, `-sepia`, `-rose`, `-coal` | the note's text, headings, links and highlight in that palette |
+| `n2o-font-default`, `n2o-font-inter`, `n2o-font-ibm`, `n2o-font-fira`, `n2o-font-iawriter-quattro` | the note's own font set |
+
 ## Make it yours
 
-All 110 controls live in
-[N2O Paper Settings](https://github.com/n2osync/n2o-paper-settings), free and in
-the community plugin list.
+All 134 controls live in
+[N2O Settings](https://github.com/n2osync/n2o-paper-settings), free and in the
+community plugin list. Three looks set several at once: **Reading** (the
+theme's own textured paper, serif, torn callouts), **Writing** (lighter paper,
+sans, plain callouts) and **Plain** (flat paper, no coil, plain callouts, quiet
+chrome). You can save your own looks too.
 
-Nine sections, 110 controls: **Looks** (palette, sidebars, heading size, font
-set), **Colours** (every ink on the page, with live swatches), **Typography**,
-**Layout**, **Paper** (grain, light, drift, softbox), **Components** (callouts,
-tables, tasks, tags, embeds), **Code** (syntax colour by colour), **Interface**,
-and **Advanced**, the fine numbers behind the presets. Export writes what you
-changed to the clipboard, and Import puts it back.
+The 12 pages:
+
+- **Colours**: the seven palettes, and the text, page, highlight and selection
+  colours, each with an opacity.
+- **Paper and desk**: flat paper, flat type and rules, column width, full
+  width, desk margin, texture, light, and the coil binding.
+- **Text**: font set, a custom font stack, interface font, flat emoji, text
+  size, line height, bold and italic, links, tags, note title and properties.
+- **Headings**: a heading font apart from the text, scale, letter spacing, the
+  rule under H1, and each level's colour, size and weight.
+- **Callouts and quotes**: torn scraps, plain boxes, cards or quiet callouts,
+  and the coil on quotes.
+- **Lists and tasks**: bullet style, numbering, indent, indent guides, and
+  pencil or plain checkboxes.
+- **Tables**, **Code** and **Pictures**.
+- **Window and sidebars**: spine, right sidebar material, file explorer rows,
+  tab bar height and corners.
+- **Synced from Notion**: how pages synced by N2O Sync are drawn.
+- **Accessibility**: reduce motion, higher contrast and larger interface text.
+  The system's reduced motion setting is honoured without the plugin, and under
+  forced colours the textures and torn edges drop away.
+
+Export copies what you changed to the clipboard, and Import asks whether to
+merge it with your values or replace them.
 
 ## Install
 
@@ -427,7 +480,8 @@ Appearance.
 ## Light only
 
 N2O Paper is a light theme. In dark mode it applies nothing and Obsidian's own
-dark look shows, so there is no half painted page.
+dark look shows, so there is no half painted page. N2O Settings applies nothing
+in dark mode either.
 
 ## Licence
 
