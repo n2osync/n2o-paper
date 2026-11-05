@@ -1,6 +1,6 @@
 /*
 N2O PAPER
-Version 1.2.0
+Version 1.2.1
 
 A theme for Obsidian, by N2O Sync.
 https://n2osync.com
@@ -6532,10 +6532,10 @@ body.theme-light .cm-content .image-embed[alt~="aged"]:not([alt~="round"]) .imag
 
 /* an inline field is a small caption-and-value pair on the line: the key
  * in muted mono capitals, the value in the serif with a sage underline */
+/* inline, not inline-flex: a flex box cannot break across lines, so a value
+ * that reached the margin wrapped inside its own box and left a gap */
 body.theme-light .dataview.inline-field {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.35em;
+  display: inline;
   padding: 0;
   margin: 0 0.15em;
   background: transparent;
@@ -6549,6 +6549,7 @@ body.theme-light .dataview.inline-field-key {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--n2o-mono);
+  margin-right: 0.35em;
   background: transparent;
   padding: 0;
   border: 0;
@@ -7570,18 +7571,13 @@ body.theme-light :is(.paper-palette-forest, .paper-palette-ink, .paper-palette-o
   --table-column-alt-background: hsla(var(--n2o-h), var(--n2o-s), var(--n2o-l), 0.03);
 }
 
-/* The N2O mark takes the palette. N2O Sync draws its gem O with an inline
- * three-stop gradient (.n2o-brand-mark); stop-color in CSS outranks the stop
- * attributes, so the O runs from a pale accent through the accent to the
- * palette shade. Under any other theme the mark keeps its own purple. */
-body.theme-light .n2o-brand-mark linearGradient stop:nth-of-type(1) {
-  stop-color: color-mix(in oklab, var(--n2o-sun) 55%, #ffffff);
-}
-body.theme-light .n2o-brand-mark linearGradient stop:nth-of-type(2) {
-  stop-color: var(--n2o-sun);
-}
-body.theme-light .n2o-brand-mark linearGradient stop:nth-of-type(3) {
-  stop-color: color-mix(in oklab, var(--n2o-sun) 60%, var(--n2o-shade));
+/* The N2O mark takes the palette. N2O Sync colours its gem O from three
+ * variables and falls back to its own purple; Paper sets them, so the O runs
+ * from a pale accent through the accent to the palette shade. */
+body.theme-light {
+  --n2o-mark-light: color-mix(in oklab, var(--n2o-sun) 55%, #ffffff);
+  --n2o-mark-mid: var(--n2o-sun);
+  --n2o-mark-deep: color-mix(in oklab, var(--n2o-sun) 60%, var(--n2o-shade));
 }
 
 /* Print. The poster is for a screen. On paper the desk, the sheet, the
