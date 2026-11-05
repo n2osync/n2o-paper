@@ -1,6 +1,6 @@
 /*
 N2O PAPER
-Version 1.1.0
+Version 1.2.0
 
 A theme for Obsidian, by N2O Sync.
 https://n2osync.com
@@ -12,209 +12,235 @@ name: N2O Paper
 id: n2o-paper
 settings:
   -
-    id: n2o-g-general
-    title: General
-    description: The dozen choices that recolour, refont or flatten the whole theme at once, and where these settings are kept.
+    id: n2o-p-colours
+    title: Colours
+    description: The palette, and the colours of text, pages, highlights and the selection.
     type: heading
     level: 1
-    flat: true
-    hideTitle: true
   -
-    id: n2o-g-palette-and-frame
-    title: Palette and frame
+    id: n2o-preset
+    title: Preset
+    description: Sets the paper, fonts and callouts together. Change any of them afterwards and the preset reads Custom.
+    type: preset-list
+    quick: true
+    aliases: [look, style, reading, writing, plain, minimal]
+    presets:
+      - id: reading
+        title: Reading
+        values:
+          n2o-flat-paper: false
+          n2o-flat: false
+          n2o-paper-texture: 50
+          n2o-paper-drift: 100
+          n2o-paper-light: 100
+          n2o-softbox: 140
+          n2o-font-type: n2o-font-default
+          n2o-plain-callouts: false
+          n2o-quote-no-coil: false
+          n2o-hide-icons: false
+      - id: writing
+        title: Writing
+        values:
+          n2o-flat-paper: false
+          n2o-flat: false
+          n2o-paper-texture: 30
+          n2o-paper-drift: 50
+          n2o-paper-light: 70
+          n2o-softbox: 100
+          n2o-font-type: n2o-font-inter
+          n2o-plain-callouts: true
+          n2o-quote-no-coil: true
+          n2o-hide-icons: false
+      - id: plain
+        title: Plain
+        values:
+          n2o-flat-paper: true
+          n2o-flat: true
+          n2o-paper-texture: 0
+          n2o-paper-drift: 0
+          n2o-paper-light: 0
+          n2o-softbox: 0
+          n2o-font-type: n2o-font-inter
+          n2o-plain-callouts: true
+          n2o-quote-no-coil: true
+          n2o-hide-icons: true
+          n2o-coil-binding: false
+  -
+    id: n2o-g-palette
+    title: Palette
     type: heading
     level: 2
   -
     id: n2o-palette
     title: Palette
-    description: One hue runs through the whole theme, the sidebar, headings, tapes, table headers, links and the tinted scraps. Each palette moves all of it together.
+    description: One hue for the sidebar, headings, tapes, table headers and links, moved together.
     type: class-select
+    quick: true
+    aliases: [colour, color, theme, hue, accent]
     allowEmpty: false
     default: n2o-palette-forest
     options:
-      - n2o-palette-forest
-      - n2o-palette-ink
-      - n2o-palette-oxblood
-      - n2o-palette-graphite
-      - n2o-palette-sepia
-      - n2o-palette-rose
-      - n2o-palette-coal
+      - label: Forest
+        value: n2o-palette-forest
+      - label: Ink
+        value: n2o-palette-ink
+      - label: Oxblood
+        value: n2o-palette-oxblood
+      - label: Graphite
+        value: n2o-palette-graphite
+      - label: Sepia
+        value: n2o-palette-sepia
+      - label: Rose
+        value: n2o-palette-rose
+      - label: Coal
+        value: n2o-palette-coal
   -
-    id: n2o-right
-    title: Right sidebar
-    description: The right sidebar can stand a step apart from the left, deeper in the palette's own colour, or in another material, walnut wood or brushed dark metal.
-    type: class-select
-    allowEmpty: false
-    default: n2o-right-palette
-    options:
-      - n2o-right-palette
-      - n2o-right-deeper
-      - n2o-right-walnut
-      - n2o-right-metal
-  -
-    id: n2o-no-black-frame
-    title: No black frame
-    description: The spine down the left edge and the bar across the top of the window are black bookcloth by default, the palette's hue deep in the black, the spine keeping its weave and its sewn seam. Turn this on to give them the palette's colour instead.
-    type: class-toggle
-  -
-    id: n2o-accent-frame
-    title: Accent frame around the window
-    description: A two pixel line of the theme colour along the window's edge. Off by default.
-    type: class-toggle
-  -
-    id: n2o-g-fonts
-    title: Fonts
+    id: n2o-g-text-colours
+    title: Text colours
     type: heading
     level: 2
   -
-    id: n2o-font-type
-    title: Font set
-    description: Five faces ship with the theme. Any note can override this on its own with a cssclasses property.
-    type: class-select
-    allowEmpty: false
-    default: n2o-font-default
-    options:
-      - n2o-font-default
-      - n2o-font-inter
-      - n2o-font-ibm
-      - n2o-font-fira
-      - n2o-font-iawriter-quattro
+    id: text-normal
+    title: Text
+    description: Body text in notes and the interface.
+    type: variable-themed-color
+    format: hex
+    default-light: '#2b2a26'
   -
-    id: n2o-ui-font
-    title: Interface font
-    description: The sidebars and their panes. Inter is the theme's own; Serif matches the page. The text field under Typography still overrides the rest of the chrome.
-    type: class-select
-    allowEmpty: false
-    default: n2o-ui-font-inter
-    options:
-      - n2o-ui-font-inter
-      - n2o-ui-font-serif
-      - n2o-ui-font-ibm
-      - n2o-ui-font-quattro
-      - n2o-ui-font-system
+    id: text-muted
+    title: Muted text
+    description: Secondary text such as captions, property values and the sidebar.
+    type: variable-themed-color
+    format: hex
+    default-light: '#5d5c55'
   -
-    id: n2o-heading-scale
-    title: Heading size
-    description: Scales every heading level together. Medium is the theme's own.
-    type: class-select
-    allowEmpty: false
-    default: n2o-headings-medium
-    options:
-      - n2o-headings-medium
-      - n2o-headings-large
-      - n2o-headings-small
+    id: text-faint
+    title: Faint text
+    description: The quietest text, such as placeholders, line numbers and dates.
+    type: variable-themed-color
+    format: hex
+    default-light: '#9a978c'
   -
-    id: n2o-g-code-look
-    title: Code look
-    type: heading
-    level: 2
-  -
-    id: n2o-code-theme
-    title: Code blocks
-    description: Warm dark is the theme's own. Paper matches the page instead. Each sets every syntax colour together.
-    type: class-select
-    allowEmpty: false
-    default: n2o-code-warm-dark
-    options:
-      - n2o-code-warm-dark
-      - n2o-code-light
-      - n2o-code-contrast
-  -
-    id: n2o-code-font
-    title: Code font
-    description: Fira Code ships with the theme, so it looks the same on every machine. Quattro is duospace, for notes that are more prose than program.
-    type: class-select
-    allowEmpty: false
-    default: n2o-code-font-fira
-    options:
-      - n2o-code-font-fira
-      - n2o-code-font-system
-      - n2o-code-font-quattro
-      - n2o-code-font-body
-  -
-    id: n2o-code-text
-    title: Code text size
-    description: Moves the type size and the space around it together, so small code stays readable.
-    type: class-select
-    allowEmpty: false
-    default: n2o-code-text-medium
-    options:
-      - n2o-code-text-medium
-      - n2o-code-text-large
-      - n2o-code-text-small
-  -
-    id: n2o-g-paper-or-flat
-    title: Paper or flat
-    type: heading
-    level: 2
-  -
-    id: n2o-flat-paper
-    title: Flat paper
-    description: Every texture and the ink layer off at once.
-    type: class-toggle
-  -
-    id: n2o-flat
-    title: Flat page
-    description: Rules are scored into the paper and headings are pressed into it by default. Turn this on for a flat page with plain lines and plain type.
-    type: class-toggle
-  -
-    id: n2o-g-page
+    id: n2o-g-page-colours
     title: Page
-    description: The sheet itself: its width, stock, light and binding.
-    type: heading
-    level: 1
-  -
-    id: n2o-g-sheet-and-margins
-    title: Sheet and margins
     type: heading
     level: 2
-  -
-    id: n2o-pin-width
-    title: Pin your own body width
-    description: Off by default, so Obsidian's own readable width applies and the theme imposes nothing. Turn this on to set a width yourself. Either way it only has an effect with Readable line length on, under Editor.
-    type: class-toggle
-  -
-    id: width-body-content
-    title: Width of body content
-    description: Where you write and read.
-    type: variable-number
-    default: 700
-    format: px
-    showWhen: n2o-pin-width
-  -
-    id: n2o-desk-margin
-    title: Desk margin
-    description: The desk showing either side of the sheet. The gap above and below stays put. Most visible with readable line width off.
-    type: variable-number-slider
-    default: 96
-    min: 8
-    max: 160
-    step: 4
-    format: px
   -
     id: background-primary
     title: Editor background
+    aliases: [paper colour, sheet]
     type: variable-themed-color
     format: hex
     default-light: '#ede8dc'
-    default-dark: '#191919'
   -
     id: divider-color
     title: Dividers and borders
     type: variable-themed-color
     format: hex
     default-light: '#cdc7b6'
-    default-dark: '#2f2f2f'
+  -
+    id: n2o-g-highlight-and-selection
+    title: Highlight and selection
+    type: heading
+    level: 2
+  -
+    id: text-highlight-bg
+    title: Highlight
+    description: The marker behind ==highlighted== text. Left alone it follows the palette.
+    aliases: [marker, highlighter]
+    type: variable-themed-color
+    format: hex
+    default-light: 'rgba(107, 122, 98, 0.32)'
+  -
+    id: n2o-highlight-opacity
+    title: Highlight opacity
+    description: How strongly the highlight colour shows. 100 is the colour as chosen.
+    type: variable-number-slider
+    unit: '%'
+    default: 100
+    min: 10
+    max: 100
+    step: 5
+  -
+    id: text-selection
+    title: Text selection
+    type: variable-themed-color
+    format: hex
+    default-light: 'rgba(185, 190, 169, 0.55)'
+  -
+    id: n2o-selection-opacity
+    title: Selection opacity
+    description: How strongly the selection colour shows. 100 is the colour as chosen.
+    type: variable-number-slider
+    unit: '%'
+    default: 100
+    min: 10
+    max: 100
+    step: 5
+  -
+    id: n2o-p-paper
+    title: Paper and desk
+    description: The sheet, its texture and light, the desk around it and the coil binding.
+    type: heading
+    level: 1
+  -
+    id: n2o-g-sheet
+    title: Sheet
+    type: heading
+    level: 2
+  -
+    id: n2o-flat-paper
+    title: Flat paper
+    description: Every texture and the ink layer off at once, for a plain sheet.
+    type: class-toggle
+    quick: true
+    aliases: [texture, grain, plain, paper]
+  -
+    id: n2o-flat
+    title: Flat type and rules
+    description: Turn this on to stop headings and rules looking pressed into the paper.
+    type: class-toggle
+    aliases: [letterpress, relief, emboss]
+  -
+    id: width-body-content
+    title: Column width
+    description: The width of the text column. Empty means Obsidian's width, or 860 px when Readable line length is off.
+    type: variable-number
+    quick: true
+    aliases: [line width, readable line length, page width, measure]
+    unit: px
+    format: px
+    placeholder: 860
+    cycle: [700, 860, 1000, unset]
+  -
+    id: n2o-full-width
+    title: Full width
+    description: With Readable line length off, the sheet fills the pane instead of stopping at the column width.
+    type: class-toggle
+    aliases: [wide, line width, readable line length, page width]
+  -
+    id: n2o-desk-margin
+    title: Desk margin
+    description: The desk showing either side of the sheet when the window is wider than the column.
+    type: variable-number-slider
+    aliases: [desk, gutter]
+    unit: px
+    default: 96
+    min: 8
+    max: 160
+    step: 4
+    format: px
   -
     id: n2o-g-paper-texture
-    title: Paper texture
+    title: Texture
     type: heading
     level: 2
   -
     id: n2o-paper-texture
     title: Paper texture
-    description: How much of the paper shows through, all four layers together. 50 is the theme's own.
+    description: How much of the paper shows through, all layers together. 50 is the theme's own.
     type: variable-number-slider
+    aliases: [grain, stock]
     default: 50
     min: 0
     max: 100
@@ -222,7 +248,7 @@ settings:
   -
     id: n2o-paper-drift
     title: Drift of tone
-    description: The slow warm-and-cool drift across every paper. 100 is the theme's own, 0 is none.
+    description: The slow warm and cool drift across every paper. 0 is none.
     type: variable-number-slider
     default: 100
     min: 0
@@ -231,17 +257,18 @@ settings:
   -
     id: n2o-paper-no-fibres
     title: No fibres
-    description: The sparse fibres in the sheet are on by default. Turn this on to remove them.
+    description: Turn this on to remove the sparse fibres in the sheet.
     type: class-toggle
   -
     id: n2o-paper-no-tooth
     title: No tooth
-    description: The fine grain of the stock, on the sheet and the scraps, is on by default. Turn this on to remove it.
+    description: Turn this on to remove the fine grain of the stock, on the sheet and the scraps.
     type: class-toggle
+    aliases: [grain]
   -
     id: n2o-paper-no-creases
     title: No creases
-    description: The faint creases in the sheet are on by default. Turn this on to remove them.
+    description: Turn this on to remove the faint creases in the sheet.
     type: class-toggle
   -
     id: n2o-g-light
@@ -251,7 +278,7 @@ settings:
   -
     id: n2o-paper-light
     title: Light across the page
-    description: Brighter at the top left, dimmer at the bottom right, darker at the very edge. 0 is flat, 200 is twice the theme's own.
+    description: Brighter at the top left, dimmer at the bottom right. 0 is flat, 200 is twice the theme's own.
     type: variable-number-slider
     default: 100
     min: 0
@@ -260,8 +287,9 @@ settings:
   -
     id: n2o-softbox
     title: Softbox
-    description: A soft light over the page, like a photographer's softbox. A pool of light on the desk, the head of the sheet brighter, every scrap, quote and table card lit from above, and wide soft shadows that lift them off the page. Text stays crisp. 0 is off, 140 is the theme's own.
+    description: A soft light over the desk and the sheet, with the shadows that lift scraps and cards off it. 0 is off.
     type: variable-number-slider
+    aliases: [shadow, glow, lighting]
     default: 140
     min: 0
     max: 280
@@ -269,7 +297,7 @@ settings:
   -
     id: n2o-softbox-panels
     title: Softbox on the sidebars
-    description: The same soft light, very gently, on the two sidebar panels, a glow at the top of each where it meets the page. 0 is off, 100 is the theme's own, 200 is twice it.
+    description: The same light, very gently, at the top of each sidebar. 0 is off.
     type: variable-number-slider
     default: 100
     min: 0
@@ -283,13 +311,17 @@ settings:
   -
     id: n2o-coil-binding
     title: Coil binding
-    description: A steel coil down the left edge of the sheet, through a column of punched holes. Off by default.
+    description: A steel coil down the left edge of the sheet, through a column of punched holes.
     type: class-toggle
+    quick: true
+    aliases: [spiral, notebook, binding, coil]
   -
     id: n2o-coil-pitch
     title: Coil spacing
-    description: The distance between turns of the coil. Closer turns make a finer coil, further apart a coarser one. 40 is the theme's own.
+    description: The distance between turns of the coil.
     type: variable-number-slider
+    depends: n2o-coil-binding
+    unit: px
     default: 40
     min: 24
     max: 64
@@ -298,21 +330,83 @@ settings:
   -
     id: n2o-coil-slant
     title: Coil slant
-    description: How steeply the turns of the coil lean, from flat rings to a steep spiral. Sets the sheet's coil and the coil on quotes.
+    description: How steeply the turns lean, from flat rings to a steep spiral. Also sets the coil on quotes.
     type: class-select
+    depends: n2o-coil-binding
     allowEmpty: false
     default: n2o-coil-slant-regular
     options:
-      - n2o-coil-slant-flat
-      - n2o-coil-slant-gentle
-      - n2o-coil-slant-regular
-      - n2o-coil-slant-steep
+      - label: Flat
+        value: n2o-coil-slant-flat
+      - label: Gentle
+        value: n2o-coil-slant-gentle
+      - label: Regular
+        value: n2o-coil-slant-regular
+      - label: Steep
+        value: n2o-coil-slant-steep
   -
-    id: n2o-g-text
+    id: n2o-p-text
     title: Text
-    description: Body type, emphasis, links, headings and custom font stacks.
+    description: Fonts, text size, emphasis, links, tags, the note title and properties.
     type: heading
     level: 1
+  -
+    id: n2o-g-fonts
+    title: Fonts
+    type: heading
+    level: 2
+  -
+    id: n2o-font-type
+    title: Font set
+    description: The face for note text. Default is the serif. A note can choose its own with cssclasses.
+    type: class-select
+    quick: true
+    aliases: [typeface, font, serif, sans]
+    allowEmpty: false
+    default: n2o-font-default
+    options:
+      - label: Serif
+        value: n2o-font-default
+      - label: Inter
+        value: n2o-font-inter
+      - label: IBM Plex Sans
+        value: n2o-font-ibm
+      - label: Fira Code
+        value: n2o-font-fira
+      - label: iA Writer Quattro
+        value: n2o-font-iawriter-quattro
+  -
+    id: n2o-font-set
+    title: Custom text font
+    description: Any installed font, as a CSS font stack. Overrides Font set. A note's own font still wins.
+    type: variable-text
+    aliases: [typeface, font family]
+    default: Georgia, Iowan Old Style, Palatino Linotype, Book Antiqua, serif
+  -
+    id: n2o-ui-font
+    title: Interface font
+    description: The sidebars, tabs and menus.
+    type: class-select
+    aliases: [ui font, chrome font]
+    allowEmpty: false
+    default: n2o-ui-font-inter
+    options:
+      - label: Inter
+        value: n2o-ui-font-inter
+      - label: Serif
+        value: n2o-ui-font-serif
+      - label: IBM Plex Sans
+        value: n2o-ui-font-ibm
+      - label: iA Writer Quattro
+        value: n2o-ui-font-quattro
+      - label: System
+        value: n2o-ui-font-system
+  -
+    id: n2o-flat-emoji
+    title: Flat emoji
+    description: Draws every emoji in flat Twemoji faces, the ones Notion uses, instead of the system's glossy ones.
+    type: class-toggle
+    aliases: [twemoji, emoji]
   -
     id: n2o-g-body-text
     title: Body text
@@ -320,45 +414,23 @@ settings:
     level: 2
   -
     id: font-paragraph
-    title: Body paragraph size
-    description: The size of body text.
+    title: Text size
+    description: The size of note text.
     type: variable-number
+    quick: true
+    aliases: [font size, body size]
+    unit: rem
     default: 1.125
     format: rem
   -
     id: line-height-normal
     title: Line height
     type: variable-number-slider
+    aliases: [leading, line spacing]
     default: 1.6
     min: 1.1
     max: 2.2
     step: 0.05
-  -
-    id: text-normal
-    title: Body text
-    type: variable-themed-color
-    format: hex
-    default-light: '#2b2a26'
-    default-dark: '#d4d4d4'
-  -
-    id: text-muted
-    title: Muted text
-    type: variable-themed-color
-    format: hex
-    default-light: '#5d5c55'
-    default-dark: '#9b9b98'
-  -
-    id: text-faint
-    title: Faint text
-    type: variable-themed-color
-    format: hex
-    default-light: '#9a978c'
-    default-dark: '#7f7f7d'
-  -
-    id: n2o-g-bold-italic-and-highlights
-    title: Bold, italic and highlights
-    type: heading
-    level: 2
   -
     id: bold-weight
     title: Bold weight
@@ -373,28 +445,12 @@ settings:
     type: variable-themed-color
     format: hex
     default-light: '#2b2a26'
-    default-dark: '#ff5c95'
   -
     id: italic-color
     title: Italic text
     type: variable-themed-color
     format: hex
     default-light: '#2e5a45'
-    default-dark: '#4fc9d8'
-  -
-    id: text-highlight-bg
-    title: Highlight
-    type: variable-themed-color
-    format: hex
-    default-light: 'rgba(107, 122, 98, 0.32)'
-    default-dark: '#5b4b00'
-  -
-    id: text-selection
-    title: Text selection
-    type: variable-themed-color
-    format: hex
-    default-light: 'rgba(185, 190, 169, 0.55)'
-    default-dark: '#31463d'
   -
     id: n2o-g-links
     title: Links
@@ -406,49 +462,170 @@ settings:
     type: variable-themed-color
     format: hex
     default-light: '#2e5a45'
-    default-dark: '#e070d8'
   -
     id: link-color-hover
     title: Links, hovered
     type: variable-themed-color
     format: hex
     default-light: '#22392d'
-    default-dark: '#f29ceb'
   -
     id: link-external-color
     title: External links
     type: variable-themed-color
     format: hex
     default-light: '#2e5a45'
-    default-dark: '#4aa8c4'
   -
-    id: n2o-g-headings-level-by-level
-    title: Headings, level by level
+    id: n2o-g-tags
+    title: Tags
     type: heading
     level: 2
-    badge: Advanced
+  -
+    id: tag-color
+    title: Tag text
+    type: variable-themed-color
+    format: hex
+    default-light: '#4a5c50'
+  -
+    id: tag-background
+    title: Tag background
+    type: variable-themed-color
+    format: hex
+    default-light: '#d6d9c6'
+  -
+    id: tag-size
+    title: Tag size
+    type: variable-number
+    unit: em
+    default: 0.72
+    format: em
+  -
+    id: tag-radius
+    title: Tag corner radius
+    type: variable-number
+    unit: em
+    default: 2
+    format: em
+  -
+    id: tag-border-width
+    title: Tag border width
+    type: variable-number
+    unit: px
+    default: 0
+    format: px
+  -
+    id: n2o-g-title-and-properties
+    title: Note title and properties
+    type: heading
+    level: 2
+  -
+    id: inline-title-size
+    title: Note title size
+    description: The title shown above the note when Show inline title is on.
+    type: variable-number
+    aliases: [inline title]
+    unit: rem
+    default: 2.6
+    format: rem
+  -
+    id: n2o-properties-size
+    title: Properties size
+    description: The names and values in a note's properties, as a share of their usual size.
+    type: variable-number-slider
+    aliases: [frontmatter, metadata]
+    unit: '%'
+    default: 100
+    min: 70
+    max: 150
+    step: 5
+  -
+    id: n2o-p-headings
+    title: Headings
+    description: The heading font, scale, spacing and rule, and each level's colour, size and weight.
+    type: heading
+    level: 1
+  -
+    id: n2o-g-heading-style
+    title: Style
+    type: heading
+    level: 2
+  -
+    id: n2o-heading-font
+    title: Heading font
+    description: The face for headings and the note title, apart from the text. Text follows Font set.
+    type: class-select
+    aliases: [title font, typeface]
+    allowEmpty: false
+    default: n2o-heading-font-serif
+    options:
+      - label: Serif
+        value: n2o-heading-font-serif
+      - label: Same as text
+        value: n2o-heading-font-text
+      - label: Inter
+        value: n2o-heading-font-inter
+      - label: IBM Plex Sans
+        value: n2o-heading-font-ibm
+      - label: iA Writer Quattro
+        value: n2o-heading-font-quattro
+  -
+    id: n2o-heading-scale
+    title: Heading size
+    description: Scales every heading level together.
+    type: class-select
+    allowEmpty: false
+    default: n2o-headings-medium
+    options:
+      - label: Medium
+        value: n2o-headings-medium
+      - label: Large
+        value: n2o-headings-large
+      - label: Small
+        value: n2o-headings-small
+  -
+    id: n2o-heading-tracking
+    title: Heading letter spacing
+    description: Space between the letters of every heading. Negative draws them closer.
+    type: variable-number
+    aliases: [tracking, kerning]
+    unit: em
+    default: -0.01
+    format: em
+  -
+    id: n2o-heading-rule
+    title: Rule under headings
+    description: Which headings carry a line under them. The note title follows H1.
+    type: class-select
+    aliases: [underline, hairline, border]
+    allowEmpty: false
+    default: n2o-heading-rule-h1
+    options:
+      - label: Title and H1
+        value: n2o-heading-rule-h1
+      - label: Title, H1 and H2
+        value: n2o-heading-rule-h1-h2
+      - label: None
+        value: n2o-heading-rule-none
   -
     id: n2o-headings-plain
-    title: Plain headings
-    description: Every heading level takes its own colour from the palette by default. Turn this on to set them all in one colour.
+    title: One heading colour
+    description: Turn this on to set every level in one colour instead of a ramp from the palette.
     type: class-toggle
   -
-    id: n2o-g-headings-level-by-level-heading-1
-    title: Heading 1
+    id: n2o-g-heading-levels
+    title: Level by level
     type: heading
-    level: 3
+    level: 2
   -
     id: h1-color
     title: H1 colour
     type: variable-themed-color
     format: hex
     default-light: '#2e5a45'
-    default-dark: '#4ec3d0'
   -
     id: size-h1
     title: H1 size
-    description: Font size of H1
     type: variable-number
+    unit: rem
     default: 2.4
     format: rem
   -
@@ -460,22 +637,16 @@ settings:
     max: 900
     step: 50
   -
-    id: n2o-g-headings-level-by-level-heading-2
-    title: Heading 2
-    type: heading
-    level: 3
-  -
     id: h2-color
     title: H2 colour
     type: variable-themed-color
     format: hex
     default-light: '#2e5a45'
-    default-dark: '#5fd39c'
   -
     id: size-h2
     title: H2 size
-    description: Font size of H2
     type: variable-number
+    unit: rem
     default: 1.85
     format: rem
   -
@@ -487,22 +658,16 @@ settings:
     max: 900
     step: 50
   -
-    id: n2o-g-headings-level-by-level-heading-3
-    title: Heading 3
-    type: heading
-    level: 3
-  -
     id: h3-color
     title: H3 colour
     type: variable-themed-color
     format: hex
     default-light: '#2e5a45'
-    default-dark: '#ff6b76'
   -
     id: size-h3
     title: H3 size
-    description: Font size of H3
     type: variable-number
+    unit: rem
     default: 1.5
     format: rem
   -
@@ -514,22 +679,16 @@ settings:
     max: 900
     step: 50
   -
-    id: n2o-g-headings-level-by-level-heading-4
-    title: Heading 4
-    type: heading
-    level: 3
-  -
     id: h4-color
     title: H4 colour
     type: variable-themed-color
     format: hex
     default-light: '#2e5a45'
-    default-dark: '#3fc0c0'
   -
     id: size-h4
     title: H4 size
-    description: Font size of H4
     type: variable-number
+    unit: rem
     default: 1.25
     format: rem
   -
@@ -541,22 +700,16 @@ settings:
     max: 900
     step: 50
   -
-    id: n2o-g-headings-level-by-level-heading-5
-    title: Heading 5
-    type: heading
-    level: 3
-  -
     id: h5-color
     title: H5 colour
     type: variable-themed-color
     format: hex
     default-light: '#4a5c50'
-    default-dark: '#e0a0a0'
   -
     id: size-h5
     title: H5 size
-    description: Font size of H5
     type: variable-number
+    unit: rem
     default: 1.1
     format: rem
   -
@@ -568,22 +721,16 @@ settings:
     max: 900
     step: 50
   -
-    id: n2o-g-headings-level-by-level-heading-6
-    title: Heading 6
-    type: heading
-    level: 3
-  -
     id: h6-color
     title: H6 colour
     type: variable-themed-color
     format: hex
     default-light: '#7c8279'
-    default-dark: '#b39a8b'
   -
     id: size-h6
     title: H6 size
-    description: Font size of H6
     type: variable-number
+    unit: rem
     default: 1
     format: rem
   -
@@ -595,60 +742,65 @@ settings:
     max: 900
     step: 50
   -
-    id: n2o-g-custom-fonts
-    title: Custom fonts
-    type: heading
-    level: 2
-    badge: Advanced
-  -
-    id: n2o-font-set
-    title: Custom body family
-    description: Any font on your machine, as a CSS font stack. Overrides the set above. A note that sets its own font still wins over this.
-    type: variable-text
-    default: Georgia, Iowan Old Style, Palatino Linotype, Book Antiqua, serif
-  -
-    id: font-interface-theme
-    title: Interface font
-    description: Sidebar, menus, settings and every other chrome surface.
-    type: variable-text
-    default: Georgia, serif
-  -
-    id: font-monospace-theme
-    title: Monospace font
-    description: Code blocks and inline code.
-    type: variable-text
-    default: Menlo, SFMono-Regular, Consolas, monospace
-  -
-    id: n2o-g-callouts-tables-and-lists
-    title: Callouts, tables and lists
-    description: The pieces laid on the sheet: scraps, quotes, tables, checkboxes, tags, photos.
+    id: n2o-p-callouts
+    title: Callouts and quotes
+    description: How callouts and quotes are drawn on the sheet.
     type: heading
     level: 1
   -
-    id: n2o-g-callouts
+    id: n2o-g-callout-style
     title: Callouts
     type: heading
     level: 2
   -
-    id: n2o-quiet-callouts
-    title: Quiet callouts
-    description: Every callout on cream with a moss tape from the palette, the type still named on it. For notes with many callouts, where thirteen colours would be too many. Off by default.
+    id: n2o-plain-callouts
+    title: Plain callouts
+    description: Turn this on for flat boxes with a coloured edge instead of torn scraps under tape.
     type: class-toggle
+    quick: true
+    aliases: [callout style, torn edge, scrap, tape, box]
   -
     id: n2o-callout-cards
     title: Card callouts
-    description: A coloured band across the top with the title in it, paper below, and only the bottom edge torn. Off by default, which is the taped scrap.
+    description: A coloured band across the top with the title in it, paper below, only the bottom edge torn.
     type: class-toggle
+    aliases: [band, header]
+  -
+    id: n2o-quiet-callouts
+    title: Quiet callouts
+    description: Every callout on cream under a palette tape, for notes where many colours would be too many.
+    type: class-toggle
+    aliases: [one colour, monochrome]
   -
     id: n2o-marker-spots
     title: Marker-filled spot tapes
-    description: Danger and Bug tapes hatched in like a marker, with an ink outline. Off by default, plain tape in the two colours.
+    description: Danger and Bug tapes hatched in like a marker, with an ink outline.
     type: class-toggle
+    aliases: [tape, hatch]
   -
     id: n2o-bodyless-scrap
     title: Keep the scrap on a one-line callout
-    description: A callout with a title and no body is drawn as just the label, because the reserved space below it would otherwise be an empty torn rectangle. Turn this on to keep the scrap under it. Off by default.
+    description: A callout with a title and no body is drawn as its label alone. Turn this on to keep the scrap under it.
     type: class-toggle
+    aliases: [scrap]
+  -
+    id: n2o-g-callout-details
+    title: Details
+    type: heading
+    level: 2
+  -
+    id: callout-title-size
+    title: Callout title size
+    type: variable-number
+    unit: em
+    default: 1
+    format: em
+  -
+    id: callout-padding
+    title: Callout padding
+    description: 'Space inside a callout, as a CSS shorthand for top, right, bottom and left, for example 16px 12px 12px 24px.'
+    type: variable-text
+    default: 32px 36px 26px 40px
   -
     id: callout-blend-mode
     title: Callout blend mode
@@ -662,53 +814,6 @@ settings:
       - multiply
       - screen
   -
-    id: callout-padding
-    title: Callout padding
-    description: A CSS shorthand, so all four sides can differ. Example: 16px 12px 12px 24px
-    type: variable-text
-    default: 32px 36px 26px 40px
-  -
-    id: callout-title-size
-    title: Callout title size
-    type: variable-number
-    default: 1
-    format: em
-  -
-    id: n2o-g-synced-from-notion
-    title: Synced from Notion
-    type: heading
-    level: 2
-  -
-    id: n2o-notion-tape-plain
-    title: One tape colour for Notion callouts
-    description: Notion's nine callout colours arrive as nine coloured tapes, matching the source page. Turn this on to put all nine on the theme's own olive instead, for a page of many callouts where nine colours is too many. Off by default.
-    type: class-toggle
-  -
-    id: n2o-notion-pencil
-    title: Show the pencil on Notion callouts
-    description: Obsidian draws a pencil on any callout type it does not know, and Notion's own icon is already in the text, so a synced callout wears two. The pencil is hidden by default. Turn this on to get it back.
-    type: class-toggle
-  -
-    id: n2o-heading-callouts-taped
-    title: Folded headings as taped scraps
-    description: Notion's foldable headings arrive as callouts rather than as heading tags, and are drawn as headings with a fold arrow. Turn this on to dress them as taped scraps like every other callout. Off by default.
-    type: class-toggle
-  -
-    id: n2o-columns-taped
-    title: Columns as taped scraps
-    description: A Notion column is layout, not a notice, so it is drawn with no tape, no torn edge and no shadow. Turn this on to give each column the full scrap treatment. Off by default, and busy on a page of three column rows.
-    type: class-toggle
-  -
-    id: n2o-sync-state-loud
-    title: Loud sync-state lines
-    description: The four lines N2O Sync writes about a note's own state are quiet by default, and the one that says everything is fine fades into the page. Turn this on to give all four a full tape. Off by default.
-    type: class-toggle
-  -
-    id: n2o-flat-emoji
-    title: Flat emoji
-    description: Notion draws emoji flat; Windows draws them glossy and raised. Turn this on to set every emoji in the flat Twemoji faces, the same ones Notion uses, so a synced page matches its source. Only emoji change, text keeps your font set. Off by default, because it costs about half a megabyte.
-    type: class-toggle
-  -
     id: n2o-g-quotes
     title: Quotes
     type: heading
@@ -716,52 +821,79 @@ settings:
   -
     id: n2o-quote-no-coil
     title: No coil on quotes
-    description: A steel coil down the left edge of every quote in reading mode, a size finer than the sheet's, is on by default. Turn this on to remove it.
+    description: Turn this on to remove the fine coil down the left edge of every quote in reading mode.
     type: class-toggle
+    aliases: [blockquote, spiral]
   -
     id: blockquote-size
     title: Quote text size
     type: variable-number
+    aliases: [blockquote]
+    unit: rem
     default: 1
     format: rem
   -
     id: blockquote-font-style
     title: Quote text style
     type: variable-select
+    aliases: [blockquote, italic]
     default: italic
     options:
       - italic
       - normal
   -
-    id: n2o-g-tables
-    title: Tables
+    id: n2o-p-lists
+    title: Lists and tasks
+    description: Bullets, numbering, indents and checkboxes.
+    type: heading
+    level: 1
+  -
+    id: n2o-g-lists
+    title: Lists
     type: heading
     level: 2
   -
-    id: n2o-table-style
-    title: Table style
-    description: Card is a pale piece laid on the sheet with an accent header band. Ledger is the open form, green capitals on a green rule and hairlines, no card. Rows keeps the card and stripes every second row instead of every second column.
+    id: n2o-bullet-style
+    title: Bullet style
+    description: Outline steps from a disc to a ring, a diamond and a dash as lists nest. Discs and Dashes keep one shape.
     type: class-select
+    aliases: [bullets, markers]
     allowEmpty: false
-    default: n2o-table-card
+    default: n2o-bullets-outline
     options:
-      - n2o-table-card
-      - n2o-table-ledger
-      - n2o-table-rows
+      - label: Outline
+        value: n2o-bullets-outline
+      - label: Discs
+        value: n2o-bullets-disc
+      - label: Dashes
+        value: n2o-bullets-dash
   -
-    id: table-head-fontsize
-    title: Table head size
-    description: Font size of table head cell
-    type: variable-number
-    default: 0.95
-    format: rem
+    id: list-numbered-style
+    title: Numbered lists
+    description: How numbers are written in reading mode. The editor shows the numbers as typed.
+    type: variable-select
+    aliases: [numbering, ordered list]
+    default: decimal
+    options:
+      - decimal
+      - decimal-leading-zero
+      - lower-alpha
+      - lower-roman
   -
-    id: table-cell-fontsize
-    title: Table cell size
-    description: Font size of table cell
+    id: list-indent
+    title: List indent
+    description: How far each nested level steps in.
     type: variable-number
-    default: 1
-    format: rem
+    aliases: [nesting, indentation]
+    unit: em
+    default: 1.5
+    format: em
+  -
+    id: n2o-indent-guides
+    title: Indent guides
+    description: Thin lines down nested lists. Needs Indentation guides on under Editor.
+    type: class-toggle
+    aliases: [indentation guides, lines]
   -
     id: n2o-g-checkboxes
     title: Checkboxes
@@ -770,12 +902,13 @@ settings:
   -
     id: n2o-plain-checkboxes
     title: Plain checkboxes
-    description: Checkboxes are drawn in pencil by default. Turn this on for Obsidian's plain ones, for example if you style them in your own snippet.
+    description: Checkboxes are drawn in pencil. Turn this on for Obsidian's plain ones.
     type: class-toggle
+    aliases: [tasks, todo, pencil]
   -
     id: n2o-checkbox-color
     title: Checkbox colour
-    description: The pencil line of an open box and the ink of a done one. Left alone, open boxes are graphite and done ones follow the palette.
+    description: The pencil line of an open box and the ink of a done one.
     type: variable-color
     format: hex
     default: '#3b3833'
@@ -783,93 +916,97 @@ settings:
     id: n2o-checkbox-size
     title: Checkbox size
     type: variable-number
+    unit: px
     default: 22
     format: px
   -
     id: n2o-checkbox-radius
     title: Checkbox corner radius
-    description: Plain checkboxes only. A pencil box is drawn by hand and has no corners to round.
     type: variable-number
+    depends: n2o-plain-checkboxes
+    unit: px
     default: 4
     format: px
   -
-    id: n2o-g-tags
-    title: Tags
-    type: heading
-    level: 2
-  -
-    id: tag-color
-    title: Tag text
-    type: variable-themed-color
-    format: hex
-    default-light: '#4a5c50'
-    default-dark: '#f68d45'
-  -
-    id: tag-background
-    title: Tag background
-    type: variable-themed-color
-    format: hex
-    default-light: '#d6d9c6'
-    default-dark: '#3a2f27'
-  -
-    id: tag-size
-    title: Tag size
-    type: variable-number
-    default: 0.72
-    format: em
-  -
-    id: tag-radius
-    title: Tag corner radius
-    type: variable-number
-    default: 2
-    format: em
-  -
-    id: tag-border-width
-    title: Tag border width
-    type: variable-number
-    default: 0
-    format: px
-  -
-    id: n2o-g-photos
-    title: Photos
-    type: heading
-    level: 2
-  -
-    id: n2o-no-photo-mount
-    title: No print mount on photos
-    description: Every picture is laid on a warm white print with a foot for its caption. Turn this on for the picture alone, no mount, no foot, no shadow. One picture can go without on its own with the plain flag, as in ![[photo.png|plain]]. Off by default.
-    type: class-toggle
-  -
-    id: n2o-g-code
-    title: Code
-    description: Code blocks, inline code and syntax colours.
+    id: n2o-p-tables
+    title: Tables
+    description: How tables are laid on the sheet.
     type: heading
     level: 1
   -
-    id: n2o-g-code-blocks
+    id: n2o-g-tables
+    title: Tables
+    type: heading
+    level: 2
+  -
+    id: n2o-table-style
+    title: Table style
+    description: Card is a pale piece with an accent header band. Ledger is open, with hairlines and no card. Rows stripes every second row.
+    type: class-select
+    aliases: [ledger, stripes, grid]
+    allowEmpty: false
+    default: n2o-table-card
+    options:
+      - label: Card
+        value: n2o-table-card
+      - label: Ledger
+        value: n2o-table-ledger
+      - label: Rows
+        value: n2o-table-rows
+  -
+    id: table-head-fontsize
+    title: Header text size
+    type: variable-number
+    unit: rem
+    default: 0.95
+    format: rem
+  -
+    id: table-cell-fontsize
+    title: Cell text size
+    type: variable-number
+    unit: rem
+    default: 1
+    format: rem
+  -
+    id: n2o-p-code
+    title: Code
+    description: Code blocks, inline code, code fonts and syntax colours.
+    type: heading
+    level: 1
+  -
+    id: n2o-g-code-look
     title: Code blocks
     type: heading
     level: 2
   -
-    id: n2o-code-plain-as-code
-    title: Style plain fences as code
-    description: A fence with no language is set as paper by default, closer to a note than a terminal. Turn this on to make it look like every other code block. Reading mode only.
+    id: n2o-code-theme
+    title: Code theme
+    description: Warm dark is the theme's own. Paper matches the page. Each sets every syntax colour together.
+    type: class-select
+    aliases: [syntax, dark, slab]
+    allowEmpty: false
+    default: n2o-code-warm-dark
+    options:
+      - label: Warm dark
+        value: n2o-code-warm-dark
+      - label: Paper
+        value: n2o-code-light
+      - label: High contrast
+        value: n2o-code-contrast
+  -
+    id: n2o-code-plain-as-prose
+    title: Plain fences on paper
+    description: Set a fence with no language on paper in the text face, like a note, instead of as code. Reading mode only, so live preview still draws it as code.
     type: class-toggle
   -
     id: n2o-code-line-numbers
     title: Line numbers
-    description: Numbers in the margin of a code block, in the editor. Reading mode hands a block to one element, where a counter has nothing to count. Off by default.
+    description: Numbers in the margin of a code block, in the editor.
     type: class-toggle
-  -
-    id: code-size
-    title: Code size
-    type: variable-number
-    default: 0.875
-    format: em
   -
     id: code-background
     title: Block background
-    description: One colour for both light and dark, because a code block is dark in both.
+    description: The slab behind a code block.
     type: variable-color
     format: hex
     default: '#23221f'
@@ -883,27 +1020,72 @@ settings:
     id: code-radius
     title: Corner radius
     type: variable-number
+    unit: px
     default: 4
     format: px
   -
-    id: n2o-g-inline-code
-    title: Inline code
+    id: n2o-g-code-fonts
+    title: Fonts and size
     type: heading
     level: 2
-    badge: Advanced
   -
-    id: code-normal-inline
-    title: Inline code text
-    description: Inline code keeps the paper surface, so this is the red-on-paper colour rather than the block one.
-    type: variable-color
-    format: hex
-    default: '#2e5a45'
+    id: n2o-code-font
+    title: Code font
+    description: Fira Code ships with the theme. System uses the monospace font below. Quattro suits notes that are more prose than program.
+    type: class-select
+    aliases: [monospace, mono]
+    allowEmpty: false
+    default: n2o-code-font-fira
+    options:
+      - label: Fira Code
+        value: n2o-code-font-fira
+      - label: System
+        value: n2o-code-font-system
+      - label: iA Writer Quattro
+        value: n2o-code-font-quattro
+      - label: Same as text
+        value: n2o-code-font-body
+  -
+    id: font-monospace-theme
+    title: Monospace font
+    description: A CSS font stack for the System code font and the labels on callout tapes.
+    type: variable-text
+    aliases: [mono]
+    default: Menlo, SFMono-Regular, Consolas, monospace
+  -
+    id: n2o-code-text
+    title: Code text size
+    description: Moves the type size and the space around it together.
+    type: class-select
+    allowEmpty: false
+    default: n2o-code-text-medium
+    options:
+      - label: Medium
+        value: n2o-code-text-medium
+      - label: Large
+        value: n2o-code-text-large
+      - label: Small
+        value: n2o-code-text-small
+  -
+    id: code-size
+    title: Code size, fine
+    description: The exact size of code, relative to the text around it.
+    type: variable-number
+    unit: em
+    default: 0.875
+    format: em
   -
     id: n2o-g-syntax-colours
     title: Syntax colours
     type: heading
     level: 2
-    badge: Advanced
+  -
+    id: code-normal-inline
+    title: Inline code text
+    description: Inline code sits on the paper, so it has its own colour.
+    type: variable-color
+    format: hex
+    default: '#2e5a45'
   -
     id: code-normal
     title: Block text
@@ -931,14 +1113,14 @@ settings:
   -
     id: code-function
     title: Functions
-    description: In Live Preview this also colours properties, builtins and attributes, because Obsidian maps them all to this one variable there.
+    description: In Live Preview this also colours properties, builtins and attributes.
     type: variable-color
     format: hex
     default: '#7aa2f7'
   -
     id: code-property
     title: Properties
-    description: Reading mode only. Live Preview colours properties from Functions above, which is Obsidian's own mapping.
+    description: Reading mode only. Live Preview colours properties from Functions.
     type: variable-color
     format: hex
     default: '#7dcfff'
@@ -968,30 +1150,97 @@ settings:
     default: '#f7768e'
   -
     id: code-important
-    title: Important and constants
+    title: Important and regular expressions
+    description: Reading mode only, as Obsidian colours them.
     type: variable-color
     format: hex
     default: '#ff9e64'
   -
-    id: n2o-g-window
-    title: Window
-    description: The chrome around the page: sidebars, tabs, scrollbars, corners.
+    id: n2o-p-pictures
+    title: Pictures
+    description: How pictures sit on the sheet.
     type: heading
     level: 1
+  -
+    id: n2o-g-photos
+    title: Prints
+    type: heading
+    level: 2
+  -
+    id: n2o-no-photo-mount
+    title: No print mount on photos
+    description: Pictures are laid on a white print with a foot for the caption. Turn this on for the picture alone. One picture can go without with the plain flag.
+    type: class-toggle
+    aliases: [photo, image, frame, polaroid, print]
+  -
+    id: n2o-p-window
+    title: Window and sidebars
+    description: The frame, the sidebars, the file explorer, tabs, scrollbars and corners.
+    type: heading
+    level: 1
+  -
+    id: n2o-g-frame
+    title: Frame
+    type: heading
+    level: 2
+  -
+    id: n2o-no-black-frame
+    title: Palette-coloured spine
+    description: The spine on the left and the bar across the top are black bookcloth. Turn this on to give them the palette's colour.
+    type: class-toggle
+    aliases: [spine, bookcloth, frame, black]
+  -
+    id: n2o-accent-frame
+    title: Accent frame around the window
+    description: A two pixel line of the palette colour along the window's edge.
+    type: class-toggle
+    aliases: [border, outline]
+  -
+    id: n2o-right
+    title: Right sidebar
+    description: The right sidebar can stand apart from the left, deeper in the palette, or in walnut wood or brushed metal.
+    type: class-select
+    aliases: [wood, walnut, metal, material]
+    allowEmpty: false
+    default: n2o-right-palette
+    options:
+      - label: Palette
+        value: n2o-right-palette
+      - label: Deeper
+        value: n2o-right-deeper
+      - label: Walnut
+        value: n2o-right-walnut
+      - label: Brushed metal
+        value: n2o-right-metal
   -
     id: n2o-g-sidebars
     title: Sidebars
     type: heading
     level: 2
   -
+    id: n2o-explorer-density
+    title: File explorer rows
+    description: How much space each file and folder takes in the sidebar.
+    type: class-select
+    aliases: [density, compact, spacing, file list]
+    allowEmpty: false
+    default: n2o-explorer-normal
+    options:
+      - label: Normal
+        value: n2o-explorer-normal
+      - label: Compact
+        value: n2o-explorer-compact
+      - label: Roomy
+        value: n2o-explorer-roomy
+  -
     id: n2o-hide-icons
     title: Hide icons in the sidebar
-    description: File and folder icons are on by default. Turn this on to remove them.
+    description: Turn this on to remove the file and folder icons.
     type: class-toggle
   -
     id: n2o-new-note-button-top
     title: New note button at the top
-    description: The new note button sits at the bottom of the sidebar by default. Turn this on to leave it where Obsidian puts it.
+    description: The theme moves the new note button to the foot of the file explorer. Turn this on to keep it at the top.
     type: class-toggle
   -
     id: n2o-hide-ribbon
@@ -1004,14 +1253,26 @@ settings:
     type: heading
     level: 2
   -
+    id: header-height
+    title: Tab bar height
+    description: The height of the tab bar and of each pane's header.
+    type: variable-number-slider
+    aliases: [tabs, header]
+    unit: px
+    default: 40
+    min: 28
+    max: 56
+    step: 2
+    format: px
+  -
     id: n2o-small-pinned-tabs
     title: Small pinned tabs
-    description: Pinned tabs get smaller
+    description: Pinned tabs shrink to their icon.
     type: class-toggle
   -
     id: n2o-hide-scrollbar
     title: Hide scrollbars
-    description: Scrollbars are visible by default. Turn this on to hide them.
+    description: Turn this on to hide the scrollbars.
     type: class-toggle
   -
     id: n2o-g-corners
@@ -1021,21 +1282,105 @@ settings:
   -
     id: radius-s
     title: Small corner radius
+    description: Buttons, inputs and other small controls.
     type: variable-number
+    unit: px
     default: 4
     format: px
   -
     id: radius-m
     title: Medium corner radius
+    description: Menus, cards and the panes inside sidebars.
     type: variable-number
+    unit: px
     default: 8
     format: px
   -
     id: radius-l
     title: Large corner radius
+    description: Dialogs, popovers and the settings window.
     type: variable-number
+    unit: px
     default: 10
     format: px
+  -
+    id: n2o-p-notion
+    title: Synced from Notion
+    description: How pages synced from Notion by N2O Sync are drawn.
+    type: heading
+    level: 1
+  -
+    id: n2o-g-synced-from-notion
+    title: Synced pages
+    type: heading
+    level: 2
+  -
+    id: n2o-notion-tape-plain
+    title: One tape colour for Notion callouts
+    description: Notion's nine callout colours arrive as nine tapes. Turn this on to put all nine on the theme's olive.
+    type: class-toggle
+    aliases: [tape, colour]
+  -
+    id: n2o-notion-pencil
+    title: Show the pencil on Notion callouts
+    description: The pencil Obsidian draws on a callout type it does not know is hidden, because Notion's own icon is in the title. Turn this on to show it.
+    type: class-toggle
+    aliases: [icon]
+  -
+    id: n2o-heading-callouts-taped
+    title: Folded headings as taped scraps
+    description: Notion's foldable headings are drawn as headings with a fold arrow. Turn this on to draw them as taped scraps.
+    type: class-toggle
+    aliases: [toggle heading, scrap]
+  -
+    id: n2o-columns-taped
+    title: Columns as taped scraps
+    description: A Notion column is drawn as plain layout. Turn this on to give each column the full scrap.
+    type: class-toggle
+    aliases: [scrap]
+  -
+    id: n2o-sync-state-loud
+    title: Loud sync-state lines
+    description: The lines N2O Sync writes about a note's own state are quiet. Turn this on to give each a full tape.
+    type: class-toggle
+  -
+    id: n2o-p-access
+    title: Accessibility
+    description: Motion, contrast and interface text size. The system's own reduced motion and forced colours settings are always honoured.
+    type: heading
+    level: 1
+  -
+    id: n2o-g-access
+    title: Accessibility
+    type: heading
+    level: 2
+  -
+    id: n2o-reduce-motion
+    title: Reduce motion
+    description: Turns off the theme's transitions and Obsidian's animations. On by itself when the system asks for reduced motion.
+    type: class-toggle
+    aliases: [animation, motion, transitions]
+  -
+    id: n2o-high-contrast
+    title: Higher contrast
+    description: Darker secondary text, rules and markers, and quieter paper texture.
+    type: class-toggle
+    aliases: [contrast, legibility, readability]
+  -
+    id: n2o-ui-text
+    title: Interface text size
+    description: Larger text in the sidebars, tabs, menus and status bar. Note text keeps Text size.
+    type: class-select
+    aliases: [ui size, font size, zoom]
+    allowEmpty: false
+    default: n2o-ui-text-normal
+    options:
+      - label: Normal
+        value: n2o-ui-text-normal
+      - label: Large
+        value: n2o-ui-text-large
+      - label: Larger
+        value: n2o-ui-text-larger
 */
 
 /*** CODE - FIRA CODE ***/
@@ -1289,7 +1634,7 @@ Preview Mode
 
 body.theme-light :is(.markdown-preview-view, .cm-content) .metadata-properties-heading:before {font-size: 10px;}
 
-:where(.theme-light) .metadata-container .metadata-add-button {cursor: pointer; transition: all .07s linear;}
+:where(.theme-light) .metadata-container .metadata-add-button {cursor: pointer; transition: all var(--n2o-motion, .07s) linear;}
 :where(.theme-light) .show-properties .metadata-container {padding-bottom: 40px}
 
 :where(.theme-light) .metadata-properties-heading {cursor: pointer;}
@@ -1403,31 +1748,22 @@ DARK VARIABLES
 /*** 
 Body text 
 ***/
-/* Readable line width, in BOTH renderers. Live preview sizes .cm-sizer and
- * reading view sizes .markdown-preview-sizer, and for a long time only the
- * first was listed here, so the control moved the editor and left the reading
- * pane at Obsidian's own 700px. */
-:where(.theme-light) .markdown-source-view.mod-cm6.is-readable-line-width .cm-content,
-:where(.theme-light) .markdown-source-view.mod-cm6.is-readable-line-width .cm-line,
-:where(.theme-light) .markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer,
-:where(.theme-light) .markdown-preview-view.is-readable-line-width .markdown-preview-sizer {
-  /* OBSIDIAN'S OWN WIDTH BY DEFAULT. The theme used to declare
-   * --width-body-content: 700px, which quietly overrode --file-line-width for
-   * every reader who never opened the control. Pinning a width is a choice,
-   * and it is not the theme's to make on somebody's behalf. */
-  max-width: var(--file-line-width);
-}
-
-/* Unless the reader asks for their own, with the toggle that reveals the box.
- * Gating on the class rather than on the variable being set is what lets the
- * box carry a real default of 700 instead of sitting there empty: an empty
- * field reads as broken, and "blank means the theme stays out of it" is a
- * rule nobody can see. */
-body.theme-light.n2o-pin-width .markdown-source-view.mod-cm6.is-readable-line-width .cm-content,
-body.theme-light.n2o-pin-width .markdown-source-view.mod-cm6.is-readable-line-width .cm-line,
-body.theme-light.n2o-pin-width .markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer,
-body.theme-light.n2o-pin-width .markdown-preview-view.is-readable-line-width .markdown-preview-sizer {
+/* Column width, in both renderers. Readable line length on: the control when
+ * set, else Obsidian's own --file-line-width. Off: the control when set, else
+ * 860px, because Paper is a sheet on a desk and a full-width sheet breaks it.
+ * n2o-full-width lifts the cap when Readable line length is off. */
+body.theme-light .markdown-source-view.mod-cm6.is-readable-line-width :is(.cm-content, .cm-line, .cm-sizer),
+body.theme-light .markdown-preview-view.is-readable-line-width .markdown-preview-sizer {
   max-width: var(--width-body-content, var(--file-line-width));
+}
+body.theme-light .markdown-source-view.mod-cm6:not(.is-readable-line-width) .cm-sizer,
+body.theme-light .markdown-preview-view:not(.is-readable-line-width) .markdown-preview-sizer {
+  max-width: var(--width-body-content, 860px);
+  margin-inline: auto;
+}
+body.theme-light.n2o-full-width .markdown-source-view.mod-cm6:not(.is-readable-line-width) .cm-sizer,
+body.theme-light.n2o-full-width .markdown-preview-view:not(.is-readable-line-width) .markdown-preview-sizer {
+  max-width: none;
 }
 
 :where(.theme-light) .external-link {background-position-y: 1px;}
@@ -1493,7 +1829,7 @@ body.theme-light .cm-hashtag.cm-hashtag-end {
   margin-bottom: 10px;
   border-radius: 3px;
   cursor: pointer;
-  transition: linear .10s all;
+  transition: linear var(--n2o-motion, .1s) all;
   font-size: .9rem;
   padding: 0 var(--size-4-5);
 }
@@ -1513,9 +1849,6 @@ body.theme-light .cm-hashtag.cm-hashtag-end {
   background-color: var(--color-red);
   color: #fff;
 }
-
-/*** body background color ***/
-:where(.theme-light) .view-content .cm-editor,
 
 /*** Headings ***/
 :where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-1.cm-line, :where(.theme-light) :is(.markdown-preview-view, .cm-content) h1 {font-size: var(--size-h1); line-height: 1.2;}
@@ -1538,9 +1871,10 @@ body.theme-light .cm-hashtag.cm-hashtag-end {
 
 /*** LISTS ***/
 
+/* A list item keeps the text's leading in live preview, as it does in reading
+ * view; at 1.4 plus an extra 5px a list was a different rhythm in each mode. */
 :where(.theme-light) .markdown-source-view.mod-cm6 .cm-content > .cm-line.HyperMD-list-line {
-  line-height: 1.4;
-  padding-bottom: 5px;
+  line-height: var(--line-height-normal, 1.6);
 }
 
 :where(.theme-light) .markdown-source-view.mod-cm6 .cm-indent::before {
@@ -1619,7 +1953,7 @@ body.theme-light .cm-hashtag.cm-hashtag-end {
   justify-content: flex-end;
 }
 
-:where(.theme-light) .workspace-ribbon.mod-left.is-collapsed {
+:where(.theme-light) .workspace-ribbon:is(.mod-left, .mod-primary).is-collapsed {
   border-right-color: var(--color-base-15)
 }
 
@@ -1694,7 +2028,7 @@ body.theme-light .cm-hashtag.cm-hashtag-end {
   background-color: var(--color-base-10);
 }
 
-:where(.theme-light) .workspace-ribbon.mod-left:before, 
+:where(.theme-light) .workspace-ribbon:is(.mod-left, .mod-primary):before, 
 :where(body.theme-light).is-hidden-frameless:not(.is-popout-window) .sidebar-toggle-button.mod-right,
 
 /* .workspace-tabs.mod-top.mod-top-left-space .workspace-tab-header-container {background-color: var(--color-base-15)} */
@@ -1821,7 +2155,7 @@ body.theme-light.n2o-small-pinned-tabs .workspace-tab-header:has(.mod-pinned) {
   order: 1;
 }
 
-:where(body.theme-light).n2o-hide-ribbon .workspace-ribbon.mod-left {display: none;}
+:where(body.theme-light).n2o-hide-ribbon .workspace-ribbon:is(.mod-left, .mod-primary) {display: none;}
 
 
 :where(.theme-light) .menu {
@@ -2258,6 +2592,7 @@ body.theme-light {
   --n2o-l-fibres: var(--n2o-tex-paper);
   --n2o-l-tooth: var(--n2o-tex-scan-fine);
   --n2o-l-creases: var(--n2o-tex-scan-crease);
+  --n2o-l-ink: var(--n2o-tex-ink);
   /* Darken would blend a paper slip into a sage one and hide the tape. */
   --callout-blend-mode: normal;
 
@@ -2367,7 +2702,9 @@ body.theme-light {
   --checkbox-marker-color: var(--n2o-paper);
 
   /* Lists */
-  --list-spacing: 0.275em;
+  /* above and below each item, both modes: a list reads as one block of
+   * lines, not a stack of paragraphs */
+  --list-spacing: 0.15em;
   --list-indent: 1.5em;
 
   /* Chrome */
@@ -2391,7 +2728,7 @@ body.theme-light {
 
   /* Inline title, through Obsidian's own variables, which is the only way to
    * reach it in live preview: the editor applies --inline-title-font itself. */
-  --inline-title-font: var(--font-family-serif);
+  --inline-title-font: var(--n2o-heading-font, var(--n2o-font-set));
   --inline-title-weight: 400;
   --inline-title-size: 2.6rem;
   --inline-title-color: var(--n2o-green);
@@ -2431,6 +2768,15 @@ body:where(.theme-light) {
 
 :where(.theme-light) :is(.markdown-preview-view, .cm-content) em,
 :where(.theme-light) .cm-s-obsidian .cm-em { color: var(--italic-color); }
+
+/* Inside a heading, emphasis takes the heading's colour, and bold its weight.
+ * Notion and AI-written pages wrap whole headings in **bold**, and the bold
+ * colour on the strong itself beat the inherited heading colour, so one H3
+ * came out ink-black and bold while its siblings were the heading colour. */
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) :is(h1, h2, h3, h4, h5, h6) :is(strong, em),
+:where(.theme-light) .cm-s-obsidian .HyperMD-header :is(.cm-strong, .cm-em) { color: inherit; }
+:where(.theme-light) :is(.markdown-preview-view, .cm-content) :is(h1, h2, h3, h4, h5, h6) strong,
+:where(.theme-light) .cm-s-obsidian .HyperMD-header .cm-strong { font-weight: inherit; }
 
 /* The counterpart to ungating the icon rules above: this is now how you turn
  * sidebar icons OFF, rather than the class that used to be required to turn
@@ -2693,7 +3039,7 @@ body.theme-light .app-container {
 body.theme-light :is(
   .workspace, .workspace-split:not(.mod-left-split):not(.mod-right-split), .workspace-tabs, .workspace-tab-header-container,
   .workspace-tab-container, .workspace-leaf, .workspace-leaf-content,
-  .workspace-ribbon:not(.mod-left):not(.mod-right), .view-header, .nav-header, .nav-files-container,
+  .workspace-ribbon:not(.mod-left):not(.mod-right):not(.mod-primary):not(.mod-secondary), .view-header, .nav-header, .nav-files-container,
   .workspace-leaf-content[data-type="markdown"] .view-content,
   .markdown-preview-view, .markdown-source-view, .cm-editor, .cm-scroller
 ) {
@@ -2716,9 +3062,9 @@ body.theme-light .mod-root .workspace-tab-header-container {
  * edge, ribbon and toolbar included, with cream ink on it. The colour
  * comes from the accent control, so changing the accent recolours the
  * panel. The fine tooth shows as a faint sparkle on the dark. */
-body.theme-light .workspace-ribbon.mod-left,
+body.theme-light .workspace-ribbon:is(.mod-left, .mod-primary),
 body.theme-light .workspace-split.mod-left-split,
-body.theme-light .workspace-ribbon.mod-right,
+body.theme-light .workspace-ribbon:is(.mod-right, .mod-secondary),
 body.theme-light .workspace-split.mod-right-split {
   --n2o-panel: var(--n2o-panel-base);
   --n2o-panel-ink-muted: color-mix(in srgb, var(--n2o-panel-ink) 72%, transparent);
@@ -2739,7 +3085,7 @@ body.theme-light .workspace-split.mod-right-split {
   /* the interface voice: a clean sans, distinct from the page serif */
   font-family: var(--n2o-ui-font);
   --font-interface: var(--n2o-ui-font);
-  --nav-item-size: 14px;
+  --nav-item-size: var(--font-ui-small);
   --text-normal: var(--n2o-panel-ink);
   --text-muted: var(--n2o-panel-ink-muted);
   --text-faint: var(--n2o-panel-ink-faint);
@@ -2825,8 +3171,8 @@ body.theme-light .workspace-split:is(.mod-left-split, .mod-right-split) .search-
  * each closed by a hairline. The list between them is the panel itself.
  * A light edge on the inside of the panel and a dark edge on the outside
  * give it a cut, not a bleed, against the desk. */
-body.theme-light .workspace-ribbon.mod-left,
-body.theme-light .workspace-ribbon.mod-right {
+body.theme-light .workspace-ribbon:is(.mod-left, .mod-primary),
+body.theme-light .workspace-ribbon:is(.mod-right, .mod-secondary) {
   background:
     linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.14) 60%, rgba(0, 0, 0, 0.24)),
     var(--n2o-tex-panel) repeat 0 0 / 128px 128px,
@@ -2947,7 +3293,7 @@ body.theme-light .titlebar-button-container.mod-right .titlebar-button::before {
   inset: 6px 7px;
   z-index: -1;
   border-radius: 6px;
-  transition: background-color 120ms ease;
+  transition: background-color var(--n2o-motion, 120ms) ease;
 }
 body.theme-light .titlebar-button-container.mod-right .titlebar-button:hover {
   color: var(--n2o-panel-ink);
@@ -2970,7 +3316,7 @@ body.theme-light .titlebar-button-container.mod-right .titlebar-button.mod-close
  * point larger with a hair of tracking, and the active item is a pill
  * with a light left edge. */
 body.theme-light .workspace-split:is(.mod-left-split, .mod-right-split) {
-  --nav-item-size: 14px;
+  --nav-item-size: var(--font-ui-small);
   --nav-item-weight: 400;
   --nav-item-weight-hover: 500;
   --nav-heading-weight: 600;
@@ -3232,6 +3578,12 @@ body.theme-light .view-header-title-parent .view-header-breadcrumb-separator {
 }
 /* the ledger drops its own top rule when it sits under the inline title,
  * which has one already */
+/* the ledger's em sizes resolve against the note's text size in BOTH modes:
+ * reading view inherits it from .markdown-rendered, live preview would
+ * otherwise inherit the editor's smaller interface size */
+body.theme-light .markdown-source-view .metadata-container {
+  font-size: var(--font-paragraph);
+}
 body.theme-light .inline-title + .metadata-container {
   border-top: 0;
   margin-top: 0.2em;
@@ -3244,12 +3596,12 @@ body.theme-light .metadata-container {
   --metadata-gap: 0;
   --metadata-label-width: 9em;
   --metadata-label-font: var(--n2o-code-font, var(--font-monospace-theme));
-  --metadata-label-font-size: 0.72em;
+  --metadata-label-font-size: calc(0.72em * var(--n2o-properties-size, 100) / 100);
   --metadata-label-text-color: var(--n2o-mono);
   --metadata-label-background-hover: transparent;
   --metadata-label-background-active: transparent;
   --metadata-input-font: var(--n2o-font-set, var(--font-family-serif));
-  --metadata-input-font-size: 0.95em;
+  --metadata-input-font-size: calc(0.95em * var(--n2o-properties-size, 100) / 100);
   --metadata-input-text-color: var(--n2o-ink);
   --metadata-input-background: transparent;
   --metadata-input-background-hover: rgba(255, 253, 246, 0.45);
@@ -3487,7 +3839,7 @@ body.theme-light .workspace-split:is(.mod-left-split, .mod-right-split) .search-
 /* the spine: the left icon strip in bookcloth, its seam sewn just inside
  * its right edge. The stitches are a layer of the spine itself, so they
  * stay when the sidebar collapses, and go with the spine if it is hidden. */
-body.theme-light .workspace-ribbon.mod-left {
+body.theme-light .workspace-ribbon:is(.mod-left, .mod-primary) {
   background:
     var(--n2o-tex-stitch) right -1px top 3px / 8px 12px repeat-y,
     linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.14) 60%, rgba(0, 0, 0, 0.24)),
@@ -3523,10 +3875,10 @@ body.theme-light .sidebar-toggle-button.mod-left .clickable-icon {
  * toggle and the settings block at its foot each drew a pale rule across
  * it, which crossed the seam. The spacing
  * stays; only the lines go. */
-body.theme-light .workspace-ribbon.mod-left::before {
+body.theme-light .workspace-ribbon:is(.mod-left, .mod-primary)::before {
   border-bottom-color: transparent;
 }
-body.theme-light .workspace-ribbon.mod-left .side-dock-settings {
+body.theme-light .workspace-ribbon:is(.mod-left, .mod-primary) .side-dock-settings {
   border-top-color: transparent;
 }
 
@@ -3665,7 +4017,7 @@ body.theme-light.n2o-right-metal {
   --titlebar-background: #2b2d30;
   --titlebar-background-focused: #2b2d30;
 }
-body.theme-light.n2o-right-walnut :is(.workspace-split.mod-right-split, .workspace-ribbon.mod-right) {
+body.theme-light.n2o-right-walnut :is(.workspace-split.mod-right-split, .workspace-ribbon:is(.mod-right, .mod-secondary)) {
   --n2o-panel: #33241a;
   background:
     var(--n2o-panel-softbox),
@@ -3674,7 +4026,7 @@ body.theme-light.n2o-right-walnut :is(.workspace-split.mod-right-split, .workspa
     var(--n2o-tex-walnut) repeat 0 0 / 512px 2048px fixed,
     #33241a;
 }
-body.theme-light.n2o-right-metal :is(.workspace-split.mod-right-split, .workspace-ribbon.mod-right) {
+body.theme-light.n2o-right-metal :is(.workspace-split.mod-right-split, .workspace-ribbon:is(.mod-right, .mod-secondary)) {
   --n2o-panel: #2b2d30;
   background:
     var(--n2o-panel-softbox),
@@ -3703,7 +4055,7 @@ body.theme-light.n2o-right-deeper {
   --titlebar-background: hsl(from var(--n2o-panel-base) h s calc(l - 8));
   --titlebar-background-focused: hsl(from var(--n2o-panel-base) h s calc(l - 8));
 }
-body.theme-light.n2o-right-deeper :is(.workspace-split.mod-right-split, .workspace-ribbon.mod-right) {
+body.theme-light.n2o-right-deeper :is(.workspace-split.mod-right-split, .workspace-ribbon:is(.mod-right, .mod-secondary)) {
   --n2o-panel: hsl(from var(--n2o-panel-base) h s calc(l - 5));
 }
 
@@ -3722,7 +4074,7 @@ body.theme-light:not(.n2o-no-black-frame) {
   --titlebar-background: var(--n2o-frame);
   --titlebar-background-focused: var(--n2o-frame);
 }
-body.theme-light:not(.n2o-no-black-frame) :is(.workspace-ribbon.mod-left, .sidebar-toggle-button.mod-left) {
+body.theme-light:not(.n2o-no-black-frame) :is(.workspace-ribbon:is(.mod-left, .mod-primary), .sidebar-toggle-button.mod-left) {
   --n2o-panel: var(--n2o-frame);
 }
 body.theme-light:not(.n2o-no-black-frame) .workspace .workspace-tabs.mod-top > .workspace-tab-header-container,
@@ -3735,6 +4087,14 @@ body.theme-light:not(.n2o-no-black-frame) .titlebar-button-container.mod-right {
     var(--n2o-tex-panel) repeat 0 0 / 128px 128px fixed,
     var(--n2o-frame);
   image-rendering: pixelated;
+}
+
+/* File explorer rows: Obsidian's own padding, tighter or looser. */
+body:where(.theme-light).n2o-explorer-compact {
+  --nav-item-padding: 1px var(--size-4-2) 1px var(--size-4-6);
+}
+body:where(.theme-light).n2o-explorer-roomy {
+  --nav-item-padding: var(--size-4-2) var(--size-4-2) var(--size-4-2) var(--size-4-6);
 }
 
 /* Layer 1: the sheet. The content column becomes a page: its own paper,
@@ -3814,7 +4174,7 @@ body.theme-light:not(.n2o-flat-paper) .cm-sizer::after {
   inset: 0;
   z-index: 50;
   pointer-events: none;
-  background: var(--n2o-tex-ink) repeat 0 0 / 160px 160px;
+  background: var(--n2o-l-ink) repeat 0 0 / 160px 160px;
   mix-blend-mode: screen;
 }
 body.theme-light .callout {
@@ -3826,7 +4186,7 @@ body.theme-light:not(.n2o-flat-paper) .callout::after {
   inset: 0;
   z-index: 2;
   pointer-events: none;
-  background: var(--n2o-tex-ink) repeat 0 0 / 160px 160px;
+  background: var(--n2o-l-ink) repeat 0 0 / 160px 160px;
   mix-blend-mode: screen;
   /* The tear: a nine-slice mask. Torn bottom and sides with real corners,
    * a straight top, edges repeating along a piece of any size. The shadow
@@ -3860,8 +4220,9 @@ body.theme-light .markdown-source-view.mod-cm6 .cm-embed-block:is(.image-embed, 
  * a tight contact shadow under it and a soft ambient one around it, both
  * warmed so they read as shadow on cream rather than grey. A true colour
  * bleed would need the plugin to sample the image. */
-body.theme-light :is(.markdown-preview-view, .cm-content) img:not(.emoji):not([width="0"]),
-body.theme-light .cm-content img:not(.emoji):not(.cm-widgetBuffer) {
+/* .cm-widgetBuffer is the zero-width <img> CodeMirror puts beside every
+ * hidden marker and widget; given this shadow it paints a grey bar */
+body.theme-light :is(.markdown-preview-view, .cm-content) img:not(.emoji):not([width="0"]):not(.cm-widgetBuffer) {
   border-radius: 3px;
   box-shadow:
     0 0 0 1px rgba(43, 42, 38, 0.08),
@@ -3876,7 +4237,8 @@ body.theme-light .cm-content .image-embed {
 
 /* Code is a printed slab, not ink on paper: no specks, no texture. */
 body.theme-light :is(.markdown-preview-view, .cm-content) pre,
-body.theme-light .cm-line.HyperMD-codeblock {
+body.theme-light .cm-line.HyperMD-codeblock,
+body.theme-light .cm-line:has(> .cm-hmd-indented-code) {
   position: relative;
   z-index: 61;
   text-shadow: none;
@@ -4012,9 +4374,9 @@ body.theme-light {
 :where(.theme-light) .cm-contentContainer .cm-content .HyperMD-header.cm-line,
 :where(.theme-light) :is(.markdown-preview-view, .cm-content) :is(h1, h2, h3, h4, h5, h6),
 :where(.theme-light) .inline-title {
-  font-family: var(--font-family-serif);
+  font-family: var(--n2o-heading-font, var(--n2o-font-set));
   font-weight: 400;
-  letter-spacing: -0.01em;
+  letter-spacing: var(--n2o-heading-tracking, -0.01em);
 }
 :where(.theme-light) :is(.markdown-preview-view, .cm-content) h1, :where(.theme-light) .cm-content .HyperMD-header-1.cm-line, :where(.theme-light) .inline-title { font-weight: var(--h1-weight, 400); }
 :where(.theme-light) :is(.markdown-preview-view, .cm-content) h2, :where(.theme-light) .cm-content .HyperMD-header-2.cm-line { font-weight: var(--h2-weight, 400); }
@@ -4176,11 +4538,17 @@ body.theme-light {
   --list-bullet-size: 0.48em;
 }
 
+/* Live preview hangs the disc at the end of the "- " marker, so it sat 3px
+ * from the text where reading view leaves 11px; move it back to match. */
+body.theme-light .cm-formatting-list-ul .list-bullet::after {
+  margin-inline-start: -0.84em;
+}
+
 /* the bullet: a disc at the first level, then a ring, then a small
  * diamond, then a short dash, the way a typeset outline steps down */
 body.theme-light .list-bullet::after {
   opacity: 1;
-  transition: opacity 120ms ease, transform 120ms ease;
+  transition: opacity var(--n2o-motion, 120ms) ease, transform var(--n2o-motion, 120ms) ease;
 }
 body.theme-light :is(.markdown-preview-view, .cm-content) ul ul > li > .list-bullet::after,
 body.theme-light .HyperMD-list-line-2 .list-bullet::after {
@@ -4228,7 +4596,39 @@ body.theme-light .HyperMD-list-line:hover .cm-formatting-list-ol {
   color: color-mix(in srgb, var(--list-marker-color) 68%, transparent);
 }
 body.theme-light .cm-formatting-list-ol {
-  transition: color 120ms ease;
+  transition: color var(--n2o-motion, 120ms) ease;
+}
+
+/* Bullet style: Discs or Dashes keep one shape at every level. */
+body.theme-light.n2o-bullets-disc :is(.markdown-preview-view, .cm-content) ul ul li > .list-bullet::after,
+body.theme-light.n2o-bullets-disc .HyperMD-list-line .list-bullet::after {
+  background: var(--list-marker-color);
+  box-shadow: none;
+  border-radius: 50%;
+  width: var(--list-bullet-size);
+  height: var(--list-bullet-size);
+  transform: none;
+}
+body.theme-light.n2o-bullets-dash :is(.markdown-preview-view, .cm-content) li > .list-bullet::after,
+body.theme-light.n2o-bullets-dash .HyperMD-list-line .list-bullet::after {
+  background: var(--list-marker-color);
+  box-shadow: none;
+  border-radius: 1px;
+  width: calc(var(--list-bullet-size) * 1.6);
+  height: 2px;
+  transform: none;
+}
+
+/* Indent guides are off in this theme; the toggle draws Obsidian's own back. */
+body.theme-light.n2o-indent-guides .markdown-rendered.show-indentation-guide li > :is(ul, ol)::before,
+body.theme-light.n2o-indent-guides .markdown-source-view.mod-cm6 .cm-indent::before {
+  border-inline-end: var(--indentation-guide-width) solid var(--indentation-guide-color);
+}
+
+/* Numbered lists: the outer list takes Numbered lists even where N2O Sync
+ * numbers synced pages the Notion way; nested lists keep that. */
+body.theme-light .markdown-rendered :not(li) > ol {
+  list-style-type: var(--list-numbered-style);
 }
 
 /* Relief. The page is not flat: a rule is a score pressed into the
@@ -4321,7 +4721,7 @@ body.theme-light:not(.n2o-flat) .cm-embed-block.math-block {
  * the pen was set down and lifted, at both ends of every line it covers. */
 body.theme-light :is(.markdown-preview-view, .cm-content) mark,
 body.theme-light .cm-highlight {
-  --n2o-hl: var(--text-highlight-bg);
+  --n2o-hl: color-mix(in srgb, var(--text-highlight-bg) calc(var(--n2o-highlight-opacity, 100) * 1%), transparent);
   color: inherit;
   background:
     radial-gradient(0.5em 75% at 0.22em 52%, var(--n2o-hl), transparent 72%),
@@ -4333,6 +4733,13 @@ body.theme-light .cm-highlight {
   padding: 0.05em 0.18em;
   margin: 0 -0.08em;
   border-radius: 0.28em 0.18em 0.32em 0.22em;
+}
+
+/* The selection, scaled by Selection opacity like the highlight above. */
+body.theme-light ::selection,
+body.theme-light .cm-selectionBackground,
+body.theme-light .cm-focused .cm-selectionBackground {
+  background-color: color-mix(in srgb, var(--text-selection) calc(var(--n2o-selection-opacity, 100) * 1%), transparent);
 }
 
 /* Pencil on the task list: an open task is a box drawn by hand; a done
@@ -4435,6 +4842,27 @@ body.theme-light .cm-hashtag.cm-hashtag-end {
   border-radius: 0 3px 3px 0;
 }
 
+/* Heading font. The serif by default; "text" unsets the variable so headings
+ * follow the note's own font set, per note included. */
+body:where(.theme-light) { --n2o-heading-font: var(--font-family-serif); }
+body:where(.theme-light).n2o-heading-font-text    { --n2o-heading-font: initial; }
+body:where(.theme-light).n2o-heading-font-inter   { --n2o-heading-font: var(--font-family-inter); }
+body:where(.theme-light).n2o-heading-font-ibm     { --n2o-heading-font: var(--font-family-ibm); }
+body:where(.theme-light).n2o-heading-font-quattro { --n2o-heading-font: var(--font-family-iawriter-quattro); }
+
+/* Rule under headings: H1 and the note title by default, H2 as well, or none. */
+body.theme-light.n2o-heading-rule-h1-h2 :is(.markdown-preview-view, .cm-content) h2,
+body.theme-light.n2o-heading-rule-h1-h2 .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-2.cm-line {
+  border-bottom: 1px solid var(--n2o-green-deep);
+  padding-bottom: 0.2em;
+}
+body.theme-light.n2o-heading-rule-none :is(.markdown-preview-view, .cm-content) :is(.el-h1 h1, h1),
+body.theme-light.n2o-heading-rule-none .cm-contentContainer .cm-content .HyperMD-header.HyperMD-header-1.cm-line,
+body.theme-light.n2o-heading-rule-none .inline-title {
+  border-bottom: 0;
+  box-shadow: none;
+}
+
 /* Set apart. Callouts and quotes become a sage panel with a green rule,
  * which is the poster's tape and its pinned sheets. */
 body.theme-light .cm-line.HyperMD-quote {
@@ -4442,6 +4870,18 @@ body.theme-light .cm-line.HyperMD-quote {
   border-left: 2px solid var(--n2o-green);
   font-size: var(--blockquote-size);
   font-style: var(--blockquote-font-style);
+  /* Obsidian zeroes .cm-line padding, so a wrapped line of a quote ran
+   * under the rule while the first line sat 15px in; a hanging indent
+   * puts every line of the quote on the same edge, clear of the rule. */
+  padding-inline-start: 15px;
+  text-indent: -15px;
+}
+/* air above the first line and below the last, as reading view has */
+body.theme-light .cm-line.HyperMD-quote:not(.HyperMD-quote + .HyperMD-quote) {
+  padding-top: 0.35em;
+}
+body.theme-light .cm-line.HyperMD-quote:not(:has(+ .HyperMD-quote)) {
+  padding-bottom: 0.35em;
 }
 /* A quote is a torn strip of khaki. A quote inside it is a strip of
  * cream on the khaki, and a third level is pale on the cream, each with
@@ -5312,6 +5752,9 @@ body.theme-light .callout[data-callout^="column"] > .callout-content > :first-ch
  * matches `:empty`, and the callout comes out 61 to 62px tall of which 32 is
  * the reservation and 3 is the paragraph.
  *
+ * Obsidian 1.15 builds no content element for it at all, so the selectors
+ * match either shape.
+ *
  * ## What this does
  *
  * When the body is empty, the callout IS the label. The scrap and its torn
@@ -5335,7 +5778,10 @@ body.theme-light .callout[data-callout^="column"] > .callout-content > :first-ch
  * style a parent by what is inside it. It also cannot be done in the plugin:
  * N2O Sync has no way to know a theme reserves space above a callout. */
 
-body.theme-light .callout:has(> .callout-content > p:only-child:empty) {
+/* A FOLDED callout (`> [!info]- Log details`) is the same case: its body is
+ * hidden, so the scrap would be drawn around nothing. Folded, it is just the
+ * tape with its fold arrow; unfolded, it is a scrap again. */
+body.theme-light .callout:is(:has(> .callout-content > p:only-child:empty), :not(:has(> .callout-content)), .is-collapsed) {
   padding-top: 0;
   margin: 1.5em 0;
   background: none;
@@ -5348,14 +5794,14 @@ body.theme-light .callout:has(> .callout-content > p:only-child:empty) {
 /* The scrap surface is a ::before, so the element's own background going
  * transparent leaves the paper behind. Fourth time this has caught something
  * in one session, which is why it is written down every time. */
-body.theme-light .callout:has(> .callout-content > p:only-child:empty)::before {
+body.theme-light .callout:is(:has(> .callout-content > p:only-child:empty), :not(:has(> .callout-content)), .is-collapsed)::before {
   content: none;
 }
 
 /* The tape comes back into the flow. It is positioned absolutely so that it
  * can hang above a scrap; with no scrap to hang above, absolute positioning
  * would leave it overlapping whatever comes next. */
-body.theme-light .callout:has(> .callout-content > p:only-child:empty) > .callout-title {
+body.theme-light .callout:is(:has(> .callout-content > p:only-child:empty), :not(:has(> .callout-content)), .is-collapsed) > .callout-title {
   position: static;
   top: auto;
   left: auto;
@@ -5366,14 +5812,40 @@ body.theme-light .callout:has(> .callout-content > p:only-child:empty) > .callou
 
 /* And the empty paragraph itself, which otherwise contributes its own line
  * height below the tape. */
-body.theme-light .callout:has(> .callout-content > p:only-child:empty) > .callout-content {
+body.theme-light .callout:is(:has(> .callout-content > p:only-child:empty), :not(:has(> .callout-content)), .is-collapsed) > .callout-content {
   display: none;
+}
+
+/* In the flow the tape can grow downwards, so it wraps instead of cutting
+ * the sentence. A Notion one-line callout keeps its WHOLE text on this
+ * label, and "Status: In review. Owner: me. Reviewers: Sam, Pr..." lost
+ * the rest of the sentence; in a narrow column "Went well" became
+ * "WENT WE...". */
+body.theme-light .callout:is(:has(> .callout-content > p:only-child:empty), :not(:has(> .callout-content)), .is-collapsed) > .callout-title,
+body.theme-light .callout:is(:has(> .callout-content > p:only-child:empty), :not(:has(> .callout-content)), .is-collapsed) > .callout-title > .callout-title-inner {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+body.theme-light .callout:is(:has(> .callout-content > p:only-child:empty), :not(:has(> .callout-content)), .is-collapsed) > .callout-title {
+  min-width: 0;
+}
+
+/* A synced Notion callout's label is a sentence someone wrote, not a tag:
+ * it reads in the text face, in sentence case, at text spacing. */
+body.theme-light .callout[data-callout^="n2o-"]:is(:has(> .callout-content > p:only-child:empty), :not(:has(> .callout-content)), .is-collapsed) > .callout-title {
+  font-family: var(--n2o-font-set, var(--font-text));
+  font-size: var(--font-paragraph, 1em);
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+  line-height: 1.45;
 }
 
 /* THE SWITCHES BEHIND THE SYNCED-PAGE CONTROLS          */
 /* ─────────────────────────────────────────────────── */
 
-/* Every control in `src/settings/06c-synced-callouts.yml` turns a treatment OFF, never
+/* Every control in `src/settings/11-notion.yml` turns a treatment OFF, never
  * on. The fixed behaviour is the default, so a reader who never opens the
  * settings gets the page drawn the right way, and each switch is an escape for
  * somebody who wants the old shape back.
@@ -5395,11 +5867,18 @@ body.theme-light.n2o-notion-tape-plain .callout:is(
 }
 
 /* ── Give the fallback pencil back ─────────────────────────────────── */
+/* The second selector outranks N2O Sync's own icon rule, (0,8,1) in
+ * styles/070-notionify.css, so the pencil returns with Sync enabled too. */
 body.theme-light.n2o-notion-pencil .callout:is(
   [data-callout="n2o-gray"], [data-callout="n2o-brown"], [data-callout="n2o-orange"],
   [data-callout="n2o-yellow"], [data-callout="n2o-green"], [data-callout="n2o-blue"],
   [data-callout="n2o-purple"], [data-callout="n2o-pink"], [data-callout="n2o-red"]
-) > .callout-title > .callout-icon {
+) > .callout-title > .callout-icon,
+body.theme-light.n2o-notion-pencil.n2o-notionify-on .markdown-rendered .callout:is(
+  [data-callout="n2o-gray"], [data-callout="n2o-brown"], [data-callout="n2o-orange"],
+  [data-callout="n2o-yellow"], [data-callout="n2o-green"], [data-callout="n2o-blue"],
+  [data-callout="n2o-purple"], [data-callout="n2o-pink"], [data-callout="n2o-red"]
+) > .callout-title > .callout-icon:not(:empty) {
   display: inline-flex;
 }
 
@@ -5476,18 +5955,70 @@ body.theme-light.n2o-sync-state-loud .callout:is(
 }
 
 /* ── Keep the scrap under a one-line callout ───────────────────────── */
-body.theme-light.n2o-bodyless-scrap .callout:has(> .callout-content > p:only-child:empty) {
+body.theme-light.n2o-bodyless-scrap .callout:is(:has(> .callout-content > p:only-child:empty), :not(:has(> .callout-content))) {
   padding-top: 32px;
   margin: 2.6em 0;
 }
-body.theme-light.n2o-bodyless-scrap .callout:has(> .callout-content > p:only-child:empty)::before {
+body.theme-light.n2o-bodyless-scrap .callout:is(:has(> .callout-content > p:only-child:empty), :not(:has(> .callout-content)))::before {
   content: "";
 }
-body.theme-light.n2o-bodyless-scrap .callout:has(> .callout-content > p:only-child:empty) > .callout-title {
+body.theme-light.n2o-bodyless-scrap .callout:is(:has(> .callout-content > p:only-child:empty), :not(:has(> .callout-content))) > .callout-title {
   position: absolute;
 }
-body.theme-light.n2o-bodyless-scrap .callout:has(> .callout-content > p:only-child:empty) > .callout-content {
+body.theme-light.n2o-bodyless-scrap .callout:is(:has(> .callout-content > p:only-child:empty), :not(:has(> .callout-content))) > .callout-content {
   display: block;
+}
+
+/* Plain callouts: a flat box in the scrap's colour with the tape's colour down
+ * its edge. No tape strip, no tear, no tilt, no ink layer. Vault wide from the
+ * toggle, or per note with cssclasses: paper-plain-callouts. */
+body.theme-light.n2o-plain-callouts .callout,
+body.theme-light .paper-plain-callouts .callout {
+  padding: 12px 18px;
+  transform: none;
+  filter: none;
+  background: var(--n2o-scrap);
+  border-inline-start: 3px solid var(--n2o-tape);
+  border-radius: var(--radius-s);
+}
+body.theme-light.n2o-plain-callouts .markdown-preview-view div.callout,
+body.theme-light .markdown-preview-view.paper-plain-callouts div.callout {
+  margin: 1.4em 0;
+}
+body.theme-light.n2o-plain-callouts .callout::before,
+body.theme-light.n2o-plain-callouts .callout::after,
+body.theme-light .paper-plain-callouts .callout::before,
+body.theme-light .paper-plain-callouts .callout::after,
+body.theme-light.n2o-plain-callouts .callout-title::before,
+body.theme-light .paper-plain-callouts .callout-title::before {
+  content: none;
+}
+body.theme-light.n2o-plain-callouts .callout-title,
+body.theme-light .paper-plain-callouts .callout-title {
+  position: static;
+  display: flex;
+  min-width: 0;
+  max-width: none;
+  padding: 0;
+  background: none;
+  box-shadow: none;
+  font-family: inherit;
+  font-size: var(--callout-title-size, 1em);
+  font-weight: 600;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--text-normal);
+}
+body.theme-light.n2o-plain-callouts .callout-content,
+body.theme-light .paper-plain-callouts .callout-content {
+  padding: 4px 0 0;
+}
+
+/* Live preview pays callout spacing in its wrapper's padding; a plain box
+ * needs less of it than a taped scrap. */
+body.theme-light.n2o-plain-callouts .markdown-source-view.mod-cm6 .cm-embed-block.cm-callout,
+body.theme-light .markdown-source-view.mod-cm6.paper-plain-callouts .cm-embed-block.cm-callout {
+  padding: calc(14px + 0.6em) 14px calc(16px + 0.6em);
 }
 
 /* Tables. A ruled grid on the page, the way the poster rules its own.
@@ -5560,7 +6091,10 @@ body.theme-light .table-editor thead tr > th {
   border-bottom: 0;
   padding-top: 0.6em;
   padding-bottom: 0.5em;
-  white-space: nowrap;
+  /* Headers wrap. Held to one line in spaced capitals they set the width of
+   * every column, and a nine-column table ran past the sheet and was cut
+   * at its edge with nothing to say it scrolled. */
+  white-space: normal;
 }
 /* Obsidian paints even header cells from the alt-column variable, which is
  * transparent so body columns stay clean, so those cells take the accent
@@ -5965,8 +6499,7 @@ body.theme-light .internal-embed.markdown-embed:not([alt~="seamless"])::after {
  * warm, frame and caption with it, and over the photo lies its wear from
  * the texture generator, dust and fine scratches and a crease with cracks
  * running off it, with the edges worn pale and the corners gone dark.
- * Off by default: a switch under Paper ages every photo, and the aged
- * flag ages one, ![[photo.png|aged]]. */
+ * Per picture: the aged flag ages one, ![[photo.png|aged]]. */
 
 /* the fade, on the whole print so the frame's paper yellows with it */
 body.theme-light :is(.markdown-preview-view, .cm-content) .image-embed[alt~="aged"] {
@@ -6140,18 +6673,41 @@ body.theme-light:not(.n2o-code-light):not(.n2o-code-contrast) .cm-inline-code {
   color: var(--code-normal-inline);
 }
 
+/* Indented code (four spaces) is a code BLOCK, and reading mode draws it
+ * as one. Live preview tags each of its lines as inline code, so it came out
+ * as a row of paper chips; the line gets the block surface instead. */
+body.theme-light .cm-line:has(> .cm-hmd-indented-code) {
+  background-color: var(--code-background);
+}
+body.theme-light .cm-line > .cm-inline-code.cm-hmd-indented-code {
+  background-color: transparent;
+  color: var(--code-normal);
+}
+
 /* The block itself. Rounded, quiet border, and the flair sits on the dark
  * surface so it needs lifting off the near-black. */
-body:where(.theme-light):not(.n2o-code-light) :is(.markdown-preview-view, .cm-content) pre,
-body:where(.theme-light):not(.n2o-code-light) .HyperMD-codeblock-bg {
+body:where(.theme-light):not(.n2o-code-light) :is(.markdown-preview-view, .cm-content) pre {
   border-radius: var(--code-radius, 6px);
+}
+/* Live preview builds the block from one element per line, so the corners
+ * belong to the first and last line only; rounding every line drew a stack
+ * of pills with a notch at each line. */
+body:where(.theme-light):not(.n2o-code-light) .HyperMD-codeblock-begin-bg {
+  border-radius: var(--code-radius, 6px) var(--code-radius, 6px) 0 0;
+}
+body:where(.theme-light):not(.n2o-code-light) .HyperMD-codeblock-end-bg {
+  border-radius: 0 0 var(--code-radius, 6px) var(--code-radius, 6px);
 }
 
 body.theme-light:not(.n2o-code-light):not(.n2o-code-contrast) .code-block-flair {
   color: #85807a;
 }
 
-/* --- A fence with no language is prose ------------------------------- */
+/* --- A fence with no language, on paper (opt in) --------------------- */
+
+/* Off by default since 2026-11-05: on real pages most unlabelled fences are
+ * paths, commands and logs, and set in a proportional serif they lost their
+ * alignment while live preview showed the same block as the dark slab. */
 
 /* Apple Notes rather than a terminal: paper surface, body font, no
  * syntax colours to apply anyway.
@@ -6162,7 +6718,7 @@ body.theme-light:not(.n2o-code-light):not(.n2o-code-contrast) .code-block-flair 
  * selector can match on. :has() does work and can spot an empty flair on the
  * opening line, but CSS cannot style the following lines of that block, so
  * the whole-block effect is not reachable. */
-body:where(.theme-light):not(.n2o-code-plain-as-code) :is(.markdown-preview-view, .cm-content) pre:has(> code:not([class*="language-"])) {
+body.n2o-code-plain-as-prose:where(.theme-light) :is(.markdown-preview-view, .cm-content) pre:has(> code:not([class*="language-"])) {
   background-color: var(--background-primary-alt);
   color: var(--text-normal);
   border: 1px solid var(--divider-color);
@@ -6172,7 +6728,7 @@ body:where(.theme-light):not(.n2o-code-plain-as-code) :is(.markdown-preview-view
   padding: 14px 16px;
 }
 
-body:where(.theme-light):not(.n2o-code-plain-as-code) :is(.markdown-preview-view, .cm-content) pre:has(> code:not([class*="language-"])) code {
+body.n2o-code-plain-as-prose:where(.theme-light) :is(.markdown-preview-view, .cm-content) pre:has(> code:not([class*="language-"])) code {
   color: inherit;
   font-family: inherit;
 }
@@ -6638,7 +7194,7 @@ body.theme-light .kanban-plugin__new-lane-button {
   border-radius: 0;
   box-shadow: none;
   cursor: pointer;
-  transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+  transition: background var(--n2o-motion, 120ms) ease, color var(--n2o-motion, 120ms) ease, border-color var(--n2o-motion, 120ms) ease;
 }
 body.theme-light .kanban-plugin__item-button-plus {
   font-size: 1.15rem;
@@ -6941,6 +7497,93 @@ body.theme-light:where(.n2o-palette-ink, .n2o-palette-oxblood, .n2o-palette-grap
   --n2o-tape-ink: var(--n2o-ink-on-moss);
 }
 
+/* Per-note classes, set with a note's cssclasses property. Obsidian puts them
+ * on the note's view, not on body, so each one works through variables the
+ * view's contents inherit, or through a rule that matches the vault-wide one
+ * and comes later. paper-plain-callouts is in 44g-plain-callouts.css. */
+
+/* paper-wide: a column 1.6 times the readable width. */
+:where(.theme-light) .paper-wide {
+  --width-body-content: calc(var(--file-line-width) * 1.6);
+}
+
+/* paper-flat: every texture and the ink layer off, as Flat paper does. */
+:where(.theme-light) .paper-flat {
+  --n2o-l-drift: none;
+  --n2o-l-fibres: none;
+  --n2o-l-tooth: none;
+  --n2o-l-creases: none;
+  --n2o-l-ink: none;
+  --n2o-paper-texture: 0;
+}
+
+/* paper-no-coil: no coil on the sheet or on quotes. */
+body.theme-light .markdown-reading-view > .markdown-preview-view.paper-no-coil > .markdown-preview-sizer::before,
+body.theme-light .paper-no-coil .cm-sizer::before,
+body.theme-light :is(.markdown-preview-view.paper-no-coil, .paper-no-coil .cm-content) blockquote::after {
+  content: none;
+}
+body.theme-light .markdown-reading-view > .markdown-preview-view.paper-no-coil > .markdown-preview-sizer,
+body.theme-light .paper-no-coil .cm-sizer {
+  padding-left: min(56px, 6%);
+}
+
+/* paper-palette-<name>: the note's text, headings, links, markers and
+ * highlight in another palette. The sidebars keep the vault's. */
+body.theme-light .paper-palette-forest   { --n2o-h: 92;  --n2o-s: 32%; --n2o-l: 25%; --text-highlight-bg: hsl(182 37% 64% / 0.42); }
+body.theme-light .paper-palette-ink      { --n2o-h: 215; --n2o-s: 82%; --n2o-l: 24%; --text-highlight-bg: rgb(129 199 212 / 0.45); }
+body.theme-light .paper-palette-oxblood  { --n2o-h: 355; --n2o-s: 44%; --n2o-l: 29%; --text-highlight-bg: rgb(159 53 58 / 0.22); }
+body.theme-light .paper-palette-graphite { --n2o-h: 60;  --n2o-s: 5%;  --n2o-l: 30%; --text-highlight-bg: rgb(145 152 159 / 0.45); }
+body.theme-light .paper-palette-sepia    { --n2o-h: 22;  --n2o-s: 45%; --n2o-l: 29%; --text-highlight-bg: rgb(105 176 172 / 0.45); }
+body.theme-light .paper-palette-rose     { --n2o-h: 343; --n2o-s: 50%; --n2o-l: 46%; --text-highlight-bg: rgb(220 159 180 / 0.45); }
+body.theme-light .paper-palette-coal     { --n2o-h: 0;   --n2o-s: 0%;  --n2o-l: 26%; --text-highlight-bg: rgb(130 130 130 / 0.45); }
+/* Colours derived from the hue on body resolve there, so they are derived
+ * again on the view. */
+body.theme-light :is(.paper-palette-forest, .paper-palette-ink, .paper-palette-oxblood, .paper-palette-graphite,
+  .paper-palette-sepia, .paper-palette-rose, .paper-palette-coal) {
+  --n2o-green: hsl(var(--n2o-h), var(--n2o-s), var(--n2o-l));
+  --n2o-green-deep: hsl(var(--n2o-h), var(--n2o-s), calc(var(--n2o-l) - 8%));
+  --n2o-sage: hsl(var(--n2o-h), calc(var(--n2o-s) * 0.55), 82%);
+  --n2o-sage-deep: hsl(var(--n2o-h), calc(var(--n2o-s) * 0.5), 70%);
+  --n2o-mono: hsl(var(--n2o-h), 6%, 50%);
+  --accent-h: var(--n2o-h);
+  --accent-s: var(--n2o-s);
+  --accent-l: var(--n2o-l);
+  --heading-text-color: var(--n2o-green);
+  --h1-color: var(--n2o-green);
+  --h2-color: var(--n2o-green);
+  --h3-color: var(--n2o-green);
+  --h4-color: var(--n2o-green);
+  --h5-color: var(--n2o-green-deep);
+  --h6-color: var(--n2o-mono);
+  --inline-title-color: var(--n2o-green);
+  --italic-color: var(--n2o-green);
+  --link-color: var(--n2o-green);
+  --link-color-hover: var(--n2o-green-deep);
+  --link-external-color: var(--n2o-green);
+  --hr-color: var(--n2o-green);
+  --blockquote-border-color: var(--n2o-green);
+  --list-marker-color: var(--n2o-green);
+  --checkbox-color: var(--n2o-green);
+  --tag-background: var(--n2o-sage);
+  --table-header-background: hsl(var(--n2o-h), var(--n2o-s), var(--n2o-l));
+  --table-column-alt-background: hsla(var(--n2o-h), var(--n2o-s), var(--n2o-l), 0.03);
+}
+
+/* The N2O mark takes the palette. N2O Sync draws its gem O with an inline
+ * three-stop gradient (.n2o-brand-mark); stop-color in CSS outranks the stop
+ * attributes, so the O runs from a pale accent through the accent to the
+ * palette shade. Under any other theme the mark keeps its own purple. */
+body.theme-light .n2o-brand-mark linearGradient stop:nth-of-type(1) {
+  stop-color: color-mix(in oklab, var(--n2o-sun) 55%, #ffffff);
+}
+body.theme-light .n2o-brand-mark linearGradient stop:nth-of-type(2) {
+  stop-color: var(--n2o-sun);
+}
+body.theme-light .n2o-brand-mark linearGradient stop:nth-of-type(3) {
+  stop-color: color-mix(in oklab, var(--n2o-sun) 60%, var(--n2o-shade));
+}
+
 /* Print. The poster is for a screen. On paper the desk, the sheet, the
  * grain and the light are all noise on top of what the printer's own
  * paper already is, so they go: plain white, black ink, the accent kept
@@ -7028,4 +7671,97 @@ body.theme-light.is-phone .cm-hashtag {
  * margin, so it hangs less and stays on the sheet */
 body.theme-light.is-phone .callout {
   --n2o-tape-over: -8px;
+}
+
+/* Reduce motion: the theme's transitions read --n2o-motion, and the toggle
+ * also zeroes Obsidian's own animation durations. The system setting turns
+ * the theme's off by itself. */
+@media (prefers-reduced-motion: reduce) {
+  body.theme-light { --n2o-motion: 0s; }
+}
+body.theme-light.n2o-reduce-motion {
+  --n2o-motion: 0s;
+  --anim-duration-superfast: 0ms;
+  --anim-duration-fast: 0ms;
+  --anim-duration-moderate: 0ms;
+  --anim-duration-slow: 0ms;
+}
+
+/* Higher contrast: darker secondary text, rules and markers, quieter paper. */
+body.theme-light.n2o-high-contrast {
+  --text-muted: #403f39;
+  --text-faint: #625f56;
+  --n2o-mono: hsl(var(--n2o-h), 10%, 32%);
+  --n2o-rule: #9d978a;
+  --divider-color: #9d978a;
+  --tag-color: var(--n2o-ink);
+  --list-marker-color: var(--n2o-green-deep);
+  --checkbox-border-color: var(--n2o-ink);
+  --n2o-paper-texture: 20;
+  --n2o-paper-drift: 40;
+}
+
+/* Interface text size: Obsidian's interface sizes, two or four pixels up. */
+body.theme-light.n2o-ui-text-large {
+  --font-ui-smaller: 15px;
+  --font-ui-small: 16px;
+  --font-ui-medium: 18px;
+  --font-ui-large: 22px;
+}
+body.theme-light.n2o-ui-text-larger {
+  --font-ui-smaller: 17px;
+  --font-ui-small: 18px;
+  --font-ui-medium: 20px;
+  --font-ui-large: 24px;
+}
+
+/* Forced colours: textures, torn masks and tilts go, so the system colours
+ * land on plain, straight shapes. The list is every --n2o-tex-* in
+ * 31-textures.css. */
+@media (forced-colors: active) {
+  body.theme-light {
+    --n2o-tex-aged: none;
+    --n2o-tex-aged-crease: none;
+    --n2o-tex-cloth: none;
+    --n2o-tex-cloth-light: none;
+    --n2o-tex-coil-flat: none;
+    --n2o-tex-coil-gentle: none;
+    --n2o-tex-coil-regular: none;
+    --n2o-tex-coil-steep: none;
+    --n2o-tex-coil1-flat: none;
+    --n2o-tex-coil1-gentle: none;
+    --n2o-tex-coil1-regular: none;
+    --n2o-tex-coil1-steep: none;
+    --n2o-tex-ground: none;
+    --n2o-tex-highlighter: none;
+    --n2o-tex-ink: none;
+    --n2o-tex-marker: none;
+    --n2o-tex-metal: none;
+    --n2o-tex-micro: none;
+    --n2o-tex-panel: none;
+    --n2o-tex-paper: none;
+    --n2o-tex-scan-crease: none;
+    --n2o-tex-scan-fine: none;
+    --n2o-tex-scan-laid: none;
+    --n2o-tex-scan-smooth: none;
+    --n2o-tex-stain: none;
+    --n2o-tex-stamp: none;
+    --n2o-tex-stitch: none;
+    --n2o-tex-stitch-across: none;
+    --n2o-tex-tape: none;
+    --n2o-tex-tear-a: none;
+    --n2o-tex-tear-b: none;
+    --n2o-tex-tear-bottom: none;
+    --n2o-tex-tear-c: none;
+    --n2o-tex-tear-d: none;
+    --n2o-tex-tear-qa: none;
+    --n2o-tex-tear-qb: none;
+    --n2o-tex-tear-qc: none;
+    --n2o-tex-tear-qd: none;
+    --n2o-tex-walnut: none;
+  }
+  body.theme-light .callout {
+    transform: none;
+    filter: none;
+  }
 }
